@@ -1,0 +1,3 @@
+module Generatorhq
+  VERSION = "0.0.1"
+end
