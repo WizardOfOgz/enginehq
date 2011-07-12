@@ -1,0 +1,30 @@
+      
+      <% screens = ["Advisors", "Agencies", "Carriers", "Contracts", "Licenses", "Policy Holders", "Policies", "Programs", "Products", "Transfer Companies"]; screens.push("Users") if current_user.is_super %>
+      <% screen = ["clipboard","premiums","activities","customs"].include?(@context) ? "Advisors" : @context.titleize %>
+      <form class="global-search" action="/search_global" method="get" autocomplete="off" novalidate="novalidate">
+        <%= render :partial => "/shared/search/form", :locals => {:query => @global_query, :screen => screen, :screens => screens, :prefix => "global", :error => false } %>
+        <p class="field actions"><!--[if IE]><input type="text" style="display: none;" disabled="disabled" size="1" /><![endif]--><input type="submit" value="Find" name="search_global" class="input" /></p>
+      </form>
+      <ul class="main-navigation">
+        <% active = [controller_name,@global_filter,@context] %>
+        <li class="link<%= " active" if active.include?("advisors") %>"><a title="Advisors" href="/advisors">Advisors</a></li>
+        <li class="link<%= " active" if active.include?("policies") %>"><a title="Policies" href="/policies">Policies</a></li>
+        <li class="link<%= " active" if active.include?("contracts") %>"><a title="Contracts" href="/contracts">Contracts</a></li>
+        <li class="link<%= " active" if active.include?("licenses") %>"><a title="Licenses" href="/licenses">Licenses</a></li>
+        <li class="main-navigation-menu">
+          <span class="title">More&hellip;</span>
+          <ul class="links">
+            <li class="link"><a href="/agencies">Agencies</a></li>
+            <li class="link"><a href="/carriers">Carriers</a></li>
+            <li class="link"><a href="/products">Products</a></li>
+            <li class="link"><a href="/policy_holders">Policy Holders</a></li>
+            <li class="link"><a href="/transfer_companies">Transfer Co.</a></li>
+            <li class="link"><a href="/programs">Programs</a></li>
+            <% if current_user.is_super %><li class="link"><a href="/users">Users</a></li><% end %>
+            <li class="link"><a href="/report/premiums">Premium Reports</a></li>
+            <li class="link"><a href="/report/activities">Activity Reports</a></li>
+            <li class="link"><a href="/report/customs">Custom Reports</a></li>
+          </ul>
+        </li>
+      </ul>
+    

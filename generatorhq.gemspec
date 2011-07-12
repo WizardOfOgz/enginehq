@@ -5,8 +5,8 @@ require "generatorhq/version"
 Gem::Specification.new do |s|
   s.name        = "generatorhq"
   s.version     = Generatorhq::VERSION
-  s.authors     = ["Ryan Bigg"]
-  s.email       = ["radarlistener@gmail.com"]
+  s.authors     = ["Kyle Ginavan"]
+  s.email       = ["kyle@agencieshq.com"]
   s.homepage    = ""
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{TODO: Write a gem description}

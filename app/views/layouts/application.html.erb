@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title><%= ENV_NAME %> - <%= controller_name.titleize %></title>
+<% if !user_signed_in? %>
+    <%= include_stylesheets "desktop", :media => "all" %>
+  </head>
+  <body>
+    <%= yield %>
+<% else %>
+    <%= include_stylesheets "desktop", :media => "all" %>
+  </head>
+  <body data-form-authenticity-token="<%= form_authenticity_token %>">
+    <div class="app-wrap" id="appWrap">
+      <div class="main-header" id="mainHeader">
+        <h1 class="logo"><a href="/clipboard" title="<%= ENV_NAME %>">Agencies<em>HQ</em></a></h1>
+        <ul class="main-account user-identity">
+          <li class="link name"><a href="/users/<%= current_user.id %>/overview"><span><%= current_user.person.first_name %></span></a></li>
+          <% if current_user.is_super? %>
+          <li class="link organization">
+            <a href="/organizations/<%= current_user.organization.id %>/overview">
+              <img src="<%= current_user.organization.avatar.url(:thumbnail) %>" alt="<%= current_user.organization.name %>" width="16" height="16" />
+              <span><%= current_user.organization.name %></span>
+            </a>
+          </li>
+          <% else %>
+          <li class="link organization">
+            <img src="<%= current_user.organization.avatar.url(:thumbnail) %>" alt="<%= current_user.organization.name %>" width="14" height="14" />
+            <span><%= current_user.organization.name %></span>
+          </li>
+          <% end %>
+          <li class="link menu-link">
+            <span>Applications</span>
+            <ul class="sub-links">
+              <li class="sub-link"><a href="/agencieshq">AgenciesHQ</a></li>
+              <li class="sub-link"><a href="/marketinghq">MarketingHQ</a></li>
+              <% if current_user.is_super? %>
+              <li class="sub-link"><a href="/singlesignonhq">SingleSignOnHQ</a></li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="link logout"><a href="/<%= destroy_user_session_path %>"><span>Logout</span></a></li>
+        </ul>
+      </div>
+      <div class="main-content" id="mainContent">
+        <h2 class="main-content-head"><%= controller_name.titleize %></h2>
+        <% if controller.sidebar %>
+        <div class="content-index">
+          <a class="action add-action" href="/<%= controller_name %>/new"><span>Add</span></a>
+          <a class="find<%= " active" if action_name == "index" %>" href="/<%= controller_name %>"><span>Find</span></a>
+          <%= render :partial => "/layouts/shared/sidebar.html" %>
+        </div>
+        <% end %>
+        <div class="content-sections" id="contentSections">
+        <%= render :partial => "/#{controller_name}/layout.html" %>
+        </div>
+      </div>
+      <div class="footer">
+        <h2 class="footer-head">More Information</h2>
+        <p class="copyright">&copy; <%= Time.zone.now.year %> <%= ENV_NAME %></p>
+        <ul class="footer-links">
+          <li class="link"><a href="/about"><span>About</span></a></li>
+          <li class="link"><a href="/terms"><span>Terms</span></a></li>
+          <li class="link"><a href="/privacy"><span>Privacy</span></a></li>
+          <li class="link"><a href="/help"><span>Help</span></a></li>
+        </ul>
+      </div>
+      <%= include_javascripts "desktop" %>
+    </div>
+<% end %>
+  </body>
+</html>
