@@ -1,6 +1,6 @@
-require "generatorhq/version"
+require "enginehq/version"
 
-module Generatorhq
+module Enginehq
   class Engine < Rails::Engine
       # Config defaults
       config.widget_factory_name = "default factory name"
