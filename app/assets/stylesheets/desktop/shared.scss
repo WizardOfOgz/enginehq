@@ -1,0 +1,26 @@
+@mixin clear-fix { content: ".";  visibility: hidden; clear: both; height: 0; display: block; }
+@mixin border-box { box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; -khtml-box-sizing: border-box; }
+
+@mixin user-select { -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; }
+
+$app-background: #E8E8E3;
+
+$blue-dark: #587AA2;
+$blue-darker: #2B4263;
+$blue-darkest: #35383E;
+
+$blue-lightest: #EDF4FE;
+$blue-lighter: #BECDE3;
+$blue-light: #8DADD6;
+
+
+$gray-darkest:transparent;
+$gray-darker:transparent;
+$gray-dark:#696966;
+$gray:transparent;
+$gray-light: #CBCAC8;
+$gray-lighter: #E3E3E3;
+$gray-lightest: #F6F6F6;
+
+$blue-gray-lightest: #F5F7FA;
+$blue-gray: #E6F0FD;

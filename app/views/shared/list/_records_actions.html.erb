@@ -1,0 +1,43 @@
+<% saveable = false unless saveable %>
+<div class="records-actions">
+  <input type="hidden" name="sort" value="<%= sort %>" />
+  <input type="hidden" name="page" value="<%= page %>" />
+  <input type="hidden" name="screen" value="<%= screen %>" />
+  <% if screens %>
+  <fieldset class="field select screen-records-field">
+    <label>
+    <span class="field-label">Show</span>
+    <select class="input" name="screen">
+      <option>All</option>
+      <% if screens.is_a?(Hash) %>
+      <% screens.each do |k,v| %>
+      <option<% if k == screen %> selected="selected"<% end %> value="<%= k %>"><%= v %></option>
+      <% end %>
+      <% else %>
+      <% screens.each do |screen_item| %>
+      <option<% if screen_item == screen %> selected="selected"<% end %> value="<%= screen_item %>"><%= screen_item %></option>
+      <% end %>
+      <% end %>
+    </select>
+    </label>
+    <span class="action screen-action"><input type="submit" name="screen_records" value="Screen" /></span>
+  </fieldset>
+  <% end %>
+  <% if saveable && false %>
+  <div class="save-list-field">
+    <p class="field text-field">
+      <label>
+        <input placeholder="Name this list" class="input" type="text" name="" value="" />
+      </label>
+    </p>
+    <span class="action save-action"><input type="submit" name="" value="Save" /></span>
+  </div>
+  <% end %>
+  <div class="action-group">
+    <h3 class="action export-action"><span>Export</span></h3>
+    <ul class="action-options">
+      <li class="option pdf-option"><input type="submit" name="pdf" value="PDF" /></li>
+      <li class="option csv-option"><input type="submit" name="csv" value="CSV" /></li>
+    </ul>
+  </div>
+</div>

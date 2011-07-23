@@ -1,0 +1,13 @@
+<div class="field-group-overview">
+  <h5 class="field-group-overview-head">Assistants</h5>
+  <% assistants = entity.assistants.reject{|assistant| assistant.new_record?} %>
+  <% if assistants.empty? %>
+  <p class="empty">None</p>
+  <% else %>
+  <ul class="overview-listing">
+    <% assistants.each do |assistant| %>
+    <li class="item assistant"><%= assistant.name %> <%= assistant.position %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>

@@ -1,0 +1,36 @@
+<fieldset class="field-group assistant" id="assistantsFieldsGroup">
+  <legend class="field-group-head"><span>Assistants</span><span class="action"><input type="submit" name="add" value="Add" /></span></legend>
+  <% assistants = entity.assistants %>
+  <% added_assistants = assistants.select{|a| !a.marked_for_destruction?} %>
+  <% removed_assistants = assistants.select{|a| a.marked_for_destruction? && !a.new_record?} %>
+  <% removed_assistants.each_with_index do |assistant, i| %>
+  <% prefix = "#{entity.class.to_s.underscore}[assistants_attributes][#{i + added_assistants.length}]" %>
+  <input type="hidden" name="<%= prefix %>[id]" value="<%= assistant.id %>" />
+  <input type="hidden" name="<%= prefix %>[remove]" value="remove" />
+  <% end %>
+  <table class="field-list">
+    <thead>
+      <th class="field-label">Name</th>
+      <th class="field-label">Position</th>
+      <th class="field-label actions">Actions</th>
+    </thead>
+    <tbody>
+      <% added_assistants.each_with_index do |assistant, i| %>
+      <% prefix = "#{entity.class.to_s.underscore}[assistants_attributes][#{i}]" %>  
+      <tr class="item">
+        <td class="text-field name <%= e?(assistant.errors.include?(:name)) %>">
+          <% if !assistant.new_record? %><input type="hidden" value="<%= assistant.id %>" name="<%= prefix %>[id]"/><% end %>
+          <input class="input" type="text" name="<%= prefix %>[name]" value="<%= assistant.name %>" />
+        </td>
+        <td class="text-field position <%= e?(assistant.errors.include?(:position)) %>">
+          <input class="input" type="text" name="<%= prefix %>[position]" value="<%= assistant.position %>" />
+        </td>
+        <td class="actions">
+          <span class="action"><input type="submit" name="<%= prefix %>[remove]" value="remove" /></span>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</fieldset>
+

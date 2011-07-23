@@ -1,0 +1,139 @@
+@import "../shared";
+@mixin text-type-input { display: block;  padding: 3px 0; margin: 0; width: 100%; line-height: 18px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+/***********************************
+* Field Groups
+************************************/
+.field-group, .sub-field-group {  border: 0 dotted $gray-light; border-top-width: 1px; margin: 0; padding: .5em 0 0; margin-top: .75em; position: relative;
+  .field-group-head, .sub-field-group-head {  padding: 0 .5em 0 0; height: 17px;  font-size: 14px; font-weight: bold; margin: 0; position: absolute; top: -0.75em; left: 0; }
+}
+.field-group:after { @include clear-fix; }
+
+/************************************
+* Field & Field Labels
+************************************/
+.field { float: left; margin: 0 0 1.5em; padding: 0;
+  label { display: block; margin-right: 10px; }
+  .value { display: block; margin: 0 10px 0 0; padding: 5px;  min-height: 14px; }
+  .input { font-size: 12px; }
+  > .action,  label .action, .action-group .action { display: block; float: left; padding: 0; height: 26px; width: 24px; border-left-style: none !important;  border-radius: 0 3px 3px 0;
+  	span { display: block;  width: 24px; height: 26px; position :relative; top: 3px; margin: 0 auto; text-indent: -9999px; overflow: hidden; }
+  }
+	.action-group { position: absolute; top: 24px; right: 10px;  }
+}
+
+td.field { float: none; margin: 0; }
+
+.field-label { font-weight: normal; font-size: 12px; height: 12px; line-height: 12px; padding: 6px 0; text-align: left; white-space: nowrap; 
+  .format { font-size: 10px; }
+}
+
+.error {
+  .field-label, .control-label { color: #BC180F; font-weight: bold; }
+}
+
+.radio-field { border: none;
+  .input { margin-left: 0; }
+}
+.checkbox-field { }
+.file-field { }
+.time-field { }
+
+/* @extends .field */
+.text-field { 
+  .input { @include text-type-input; }
+  .field-label { display: block; }
+}
+
+.html-field { width: 100%; position: relative; clear: both; padding-top: 24px;
+  .input { @include text-type-input; }
+  .field-label { visibility: hidden; position: absolute; }
+  .toggle-editor { position: absolute; top: 0; left: 0; cursor: pointer; color: #D07C02; }
+  .toggle-editor:hover { text-decoration: underline; }
+}
+
+/* @extends .field */
+.select-field {
+  .field-label { display: block; margin-bottom: 4px; }
+  .input { display: block; max-width: 100%; }
+}
+
+/* @extends .field */
+.date-field { border: none; z-index: 1; 
+  div { height: 26px; -webkit-appearance: textfield; -moz-appearance:textfield; margin-right: 0 !important; border: 1px solid #848484; border-color: #848484 #C1C1C1 #E0E0E0 #C1C1C1; background-color: #FFF; position: relative; overflow: hidden; float: left; }
+  div:after { @include clear-fix; }
+  .field-label { display: block; }
+  .control { float: left; margin: 0; white-space: nowrap; }
+  .control-label { display: none; }
+  .control.day:after,
+  .control.month:after { content: "\00a0/"; font-size: 16px; line-height: 30px; color: #b7b9be; background-color: transparent;}
+  .input { @include text-type-input; float: left; text-align: right; position: relative; width: 22px; border: none; padding: 6px 2px; background-color: transparent; outline: none; }
+  .year .input { width: 38px; text-align: left; }
+  .year label { margin-right: 0; }
+  .month .input { margin-left: 2px; width: 25px;}
+  .open-calendar > span { background: url(/images/sprite.png) no-repeat 4px -109px;  }
+}
+.date-field.error div { background-color: #FDE2E4; }
+
+
+.time-field { border:none;
+  div { height: 26px; -webkit-appearance: textfield; -moz-appearance:textfield; border: 1px solid #848484; border-color: #848484 #C1C1C1 #E0E0E0 #C1C1C1; background-color: #FFF; position: relative; overflow: hidden; float: left; }
+  div:after { @include clear-fix; } 
+  .control { float: left; margin: 0;  white-space: nowrap; }
+  .control-label { display: none; }
+  .minute label, .hour label { margin-right: 0; }
+  .hour:after { content: ":"; line-height: 27px;  font-size: 16px; color: #b7b9be; background-color: transparent;  }
+  .input { @include text-type-input; float: left; text-align: right; position: relative; width: 24px; border: none; padding: 6px 2px; background-color: transparent; outline: none; } 
+  .meridiem { line-height: 25px; background-color:$blue-lightest; border-left: 1px solid #C3C3C3; border-top: 1px solid #C3C3C3; padding: 0 2px; }
+  .hour .input { margin-left: 2px; }
+  .minute .input { text-align: left; margin: 0 6px 0 4px; }
+}
+
+/* @extends .field */
+.search-field {
+  > div { position: relative; top: -3px; padding: 2px; background-color: #f0f0ee; border: 1px solid #DBDAC8; border-radius: 3px; margin-right: 10px; }
+  > div:after,
+  .tokens:after { @include clear-fix; }
+  .tokens { min-height: 21px; position: relative; -webkit-appearance: textfield; -moz-appearance:textfield; border: 1px solid #848484; border-color: #848484 #C1C1C1 #E0E0E0 #C1C1C1; background-color: #FFF; padding: 3px 0; position: relative; }
+  .field-label { margin: 0; }
+  .autocomplete-results { top: 100%; left: 0; }
+  .search { display: block; position: relative; }
+  .input { z-index: 1; background-color: transparent; -webkit-appearance: none; padding: 1px 0; border-width: 0; outline: none; outline-width: initial; outline-color: initial; width: 100%; }
+  .query { margin-left: 2px; min-width: 125px; height: 20px; line-height: 20px; }
+  .query .search-action { visibility: hidden; position: absolute; }
+  .token { margin: 0 2px; padding: 0 5px; line-height: 18px; font-size: 11.5px; background-color: #e6f0fd; border-radius: 3px; border: 1px solid #b4caee; }
+  .token input { margin: 0; }
+  .token + .query { display: none; /* this is default as most searches are singleton */ }
+}
+
+.color-field {
+  .input { @include text-type-input; width: auto; float: left; }
+	.field-label { display: block; }
+  .open-color-picker span { height: 17px !important; width: 16px !important; padding: 0; top: 4px; border: 1px solid #7C7C7C; background-color: #FFF; }
+}
+
+
+/* @extends .search-field */
+.screened-search {
+  > div { padding-right: 97px;  }
+  .screens { position: absolute; top: 2px; right: 2px; width: 88px;  float: left; height: 27px; padding: 0 3px; line-height: 27px; background-color: $blue-lightest; border: 1px solid #848484; border-color: #848484 #C1C1C1 #E0E0E0 #C1C1C1; border-left: none; }
+  select { width: 100%; font-size: 12px; } 
+}
+
+/* @extends .search-field */
+.search-multiple {
+  .token,
+  .query { float: left; margin: 2px; }
+  .token + .query { display: block; }
+}
+
+.file-field { position: relative;
+	.field-label { display: block; }
+  .action { float: right !important; width: 75px !important;}
+  .action span { width: 75px !important; }
+  .input { position: absolute; opacity: 0; top: 0; bottom: 0; right: 0; z-index: 9999; cursor: pointer;}
+  .control {  text-align: right; height: 24px; line-height: 24px; background-color: #fff; border: 1px solid #DADCE0; position: relative; overflow: hidden; cursor: pointer; }
+  .control-label { border-radius: 0; border-width: 0 0 0 1px; cursor: pointer; z-index: 1; position: relative;}
+  .file-label { position: absolute; left: 4px; top: 0; font-size: 12px; }
+  .file-label.empty { color: #B7B9BE; }
+}

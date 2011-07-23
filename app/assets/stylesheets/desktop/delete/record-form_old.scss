@@ -1,0 +1,16 @@
+@import "../shared";
+
+/******************************************************************************************************
+* Record Form
+* @extends .form
+*
+* A record form is used to create/edit an existing record (e.g. Advisor, Agency, Policy, Contract,..)
+******************************************************************************************************/
+.record-form { padding: 1em; background-color: $gray-lightest; border: 1px solid $gray-light; }
+.record-form .field-group { border: 0 dotted $gray-light; border-top-width: 1px; padding: 10px 0 0 0; }
+.record-form .field-group-head .action { margin:0  .5em; }
+
+.field-group-index { width: 21%; }
+.field-group-index ~ .field-group { width: 77%; }
+
+.record-form .note { width: 100%; }

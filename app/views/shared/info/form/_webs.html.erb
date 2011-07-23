@@ -1,0 +1,52 @@
+<fieldset class="field-group entity-webs" id="websitesFieldsGroup">
+  <legend class="field-group-head"><span>Web Sites</span><span class="action"><input type="submit" name="add" value="Add" /></span></legend>
+  <% webs = entity.webs %>
+  <% added_webs = webs.select{|w| !w.marked_for_destruction?} %>
+  <% removed_webs = webs.select{|w| w.marked_for_destruction? && !w.new_record?} %>
+  <% removed_webs.each_with_index do |web, i| %>
+  <% prefix = "#{entity.class.to_s.underscore}[webs_attributes][#{i + added_webs.length}]" %>
+  <input type="hidden" name="<%= prefix %>[id]" value="<%= web.id %>" />
+  <input type="hidden" name="<%= prefix %>[remove]" value="remove" />
+  <% end %>
+  <table class="field-list">
+    <thead>
+      <tr>
+        <th class="field-label url<%= " error" if entity.webs.detect{|w| w.errors.include?(:url)} %>">URL</th>
+        <th class="field-label location<%= " error" if entity.webs.detect{|w| w.errors.include?(:location)} %>">Type</th>
+        <% if entity.is_a?(Carrier) %>
+        <th class="field-label username<%= " error" if entity.webs.detect{|w| w.errors.include?(:username)} %>">Username</th>
+        <th class="field-label password<%= " error" if entity.webs.detect{|w| w.errors.include?(:password )} %>">Password</th>
+        <% end %>
+        <th class="field-label actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% added_webs.group_by(&:location).values.flatten.each_with_index do |web,i| %>
+      <% prefix = "#{entity.class.to_s.underscore}[webs_attributes][#{i}]" %>
+      <tr class="item">
+        <td class="text-field url<%= " error" if web.errors.include?(:url) %>">
+          <input class="input" type="text" name="<%= prefix %>[url]" value="<%= web.url %>" />
+          <% unless web.new_record? %><input type="hidden" value="<%= web.id %>" name="<%= prefix %>[id]"/><% end %>
+        </td>
+        <td class="select-field location<%= " error" if web.errors.include?(:location) %>">
+          <select class="input" name="<%= prefix %>[location]">
+            <option<% if web.location.nil? %> selected="selected"<% end %>></option>
+            <%= options_for_select(locations, web.location) %>
+          </select>
+        </td>
+        <% if entity.is_a?(Carrier) %>
+        <td class="text-field username<%= " error" if web.errors.include?(:username) %>">
+          <input class="input" type="text" name="<%= prefix %>[username]" value="<%= web.username %>" />
+        </td>
+        <td class="text-field password<%= " error" if web.errors.include?(:password) %>">
+          <input class="input" type="text" name="<%= prefix %>[password]" value="<%= web.password %>" />
+        </td>
+        <% end %>
+        <td class="actions">
+          <span class="action"><input type="submit" name="<%= prefix %>[remove]" value="remove" /></span>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</fieldset>

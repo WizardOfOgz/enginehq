@@ -1,0 +1,48 @@
+@import "../shared";
+
+/***************************************
+* Programs Search Form Skin
+* @extends .records-form
+***************************************/
+.programs-form .program { width: 49%; float: left; }
+.programs-form .user { width: 49%; float: right; }
+.programs-form .user .search-field { width: 100%; }
+.programs-form .user .search-field .field-label { visibility: hidden;  }
+
+.programs-form .program .name { width: 100%; }
+
+
+/***************************************
+* Carrier Record Form Skin
+* @extends .record-form
+***************************************/
+.program-form .program .name { width: 100%; }
+.program-form .partners .search { width: 100%; }
+.program-form .partners .field-list { clear: left; }
+
+.program-form .program { width: 49%; float: left; }
+.program-form .partners { width: 49%; float: right; margin-bottom: 2em; }
+.program-form .partners th { visibility: hidden; position: absolute; }
+.program-form .partners .name { width: 75%; }
+/***************************************
+* Carrier Record Skin
+* @extends .record
+***************************************/
+.program-record .program .name { width: 100% }
+.program-record .program { width: 49%; float: left; }
+.program-record .partners { width: 49%; float: right; margin-top: 8px;  margin-bottom: 2em; }
+.program-record .partners th { visibility: hidden; position: absolute; }
+
+.program-advisors-record { background: #FFF; border: none; }
+.program-advisors-record .search { width: 250px; }
+
+.program-advisors-list .name {  }
+.program-advisors-list .participation-date {width: 225px }
+.program-advisors-list .override { width: 100px; }
+.program-advisors-list .marketing { width: 100px; }
+
+.program-advisors-list .program-advisor-form .actions { float: left; }
+.program-advisor-form .date .field-label { position: absolute; visibility: hidden; }
+.program-advisor-form  .field { margin: 0; padding: 0; }
+.program-advisor-form  .checkbox { margin-top: 5px; }
+.program-advisor-form  .checkbox .field-label { display: inline; }

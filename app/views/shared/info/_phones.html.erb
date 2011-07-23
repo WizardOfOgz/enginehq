@@ -1,0 +1,27 @@
+<div class="field-group entity-phones" id="phoneNumbersFieldsGroup">
+  <h5 class="field-group-head"><span>Phones</span></h5>
+  <% if entity.phones.empty? %>
+  <p class="field label empty"><span>No phone numbers have been added.</span></p>
+  <% else %>
+  <table class="field-list">
+    <thead>
+      <tr>
+        <th class="field-label number">Number</th>
+        <th class="field-label extension">Extension</th>
+        <th class="field-label type">Type</th>
+        <th class="field-label favorite-field">Favorite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% entity.phones.group_by(&:location).values.flatten.each do |phone| %>
+      <tr class="item">
+        <td class="number"><span class="value"><%= phone.display_number %></span></td>
+        <td class="number"><span class="value"><%= phone.extension %></span></td>
+        <td class="type"><span class="value"><%= format_field(phone.location) %></span></td>
+        <td class="favorite<%= " checked" if phone.is_favorite? %>"<%= raw(" title=\"Preferred Phone\"") if phone.is_favorite? %>><%= "Yes" if phone.is_favorite? %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

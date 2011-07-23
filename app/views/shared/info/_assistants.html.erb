@@ -1,0 +1,23 @@
+<div class="field-group assistant" id="assistantsFieldsGroup">
+  <h5 class="field-group-head"><span>Assistants</span></h5>
+  <% if entity.assistants.empty? %>
+  <p class="field label empty"><span>No assistants have been added.</span></p>
+  <% else %>
+  <table class="field-list">
+    <thead>
+      <tr>
+        <th class="field-label">Name</th>
+        <th class="field-label">Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% entity.assistants.each do |assistant| %>
+      <tr class="item">
+        <td><span class="value"><%= assistant.name %></span></td>
+        <td><span class="value"><%= assistant.position %></span></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

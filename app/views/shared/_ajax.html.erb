@@ -1,0 +1,4 @@
+<% if request.xhr? && @ajax %>
+<% @ajax = false %>
+<script type="text/javascript">[{"selector" : "<%=raw(selector)%>", "insertion" : "<%=raw(insertion)%>"}]</script>
+<% end %>

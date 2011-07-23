@@ -1,0 +1,53 @@
+<fieldset class="field-group entity-phones" id="phoneNumbersFieldsGroup">
+  <legend class="field-group-head"><span>Phone Numbers</span><span class="action"><input type="submit" name="add" value="Add" /></span></legend>
+  <a name="phoneNumbers"> </a>
+  <% phones = entity.phones %>
+  <% added_phones = phones.select{|p| !p.marked_for_destruction?} %>
+  <% removed_phones = phones.select{|p| p.marked_for_destruction? && !p.new_record?} %>
+  <% removed_phones.each_with_index do |phone, i| %>
+  <% prefix = "#{entity.class.to_s.underscore}[phones_attributes][#{i + added_phones.length}]" %>
+  <input type="hidden" name="<%= prefix %>[id]" value="<%= phone.id %>" />
+  <input type="hidden" name="<%= prefix %>[remove]" value="remove" />
+  <% end %>
+  <table class="field-list">
+    <thead>
+      <tr>
+        <th class="field-label number<%= " error" if entity.phones.detect{|p| p.errors.include?(:number)} %>">Number</th>
+        <th class="field-label extension<%= " error" if entity.phones.detect{|p| p.errors.include?(:extension)} %>">Extension</th>
+        <th class="field-label type<%= " error" if entity.phones.detect{|p| p.errors.include?(:location)} %>">Type</th>
+        <th class="field-label favorite-field<%= " error" if entity.phones.detect{|p| p.errors.include?(:is_favorite)} %>">Favorite</th>
+        <th class="field-label actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% added_phones.group_by(&:location).values.flatten.each_with_index do |phone,i| %>
+      <% prefix = "#{entity.class.to_s.underscore}[phones_attributes][#{i}]" %>
+      <tr class="item">
+        <td class="text-field number<%= " error" if phone.errors.include?(:number) %>">
+          <input class="input" type="tel" name="<%= prefix %>[number]" value="<%= phone.number %>" size="14" maxlength="14" />
+          <% if !phone.new_record? %><input type="hidden" value="<%= phone.id %>" name="<%= prefix %>[id]"/><% end %>
+        </td>
+        <td class="text-field extension<%= " error" if phone.errors.include?(:extension) %>">
+          <input class="input" type="text" name="<%= prefix %>[extension]" value="<%= phone.extension %>" size="8" maxlength="8" />
+        </td>
+        <td class="select-field type<%= " error" if phone.errors.include?(:location) %>">
+          <select class="input" name="<%= prefix %>[location]">
+            <option<% if phone.location.nil? %> selected="selected"<% end %>></option>
+            <%= options_for_select(locations, phone.location) %>
+          </select>
+        </td>
+        <td class="radio-field favorite-field<%= " checked" if phone.is_favorite %><%= " error" if phone.errors.include?(:is_favorite) %>" title="Is Preferred Phone?">
+          <span class="action">
+            <span>
+              <input class="input" type="radio" value="<%= i %>" name="<%= entity.class.to_s.underscore %>[favorite_phone]" <% if phone.is_favorite %> checked="checked"<% end %> />
+            </span>
+          </span>
+        </td>
+        <td class="actions">
+          <span class="action"><input type="submit" name="<%= prefix %>[remove]" value="remove" /></span>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</fieldset>

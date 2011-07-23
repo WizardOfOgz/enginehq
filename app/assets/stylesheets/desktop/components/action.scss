@@ -1,0 +1,109 @@
+@import "../shared";
+
+/***************************************
+*  Action Core Style 
+****************************************/
+.action { 
+  margin: 0;
+  padding:  2px 0; 
+  display: inline-block;
+  border: 1px solid #bdbdbd; 
+  -moz-border-radius: 7px; 
+  border-radius: 7px; 
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#EEE));
+  background: -moz-linear-gradient(19% 75% 90deg,#FFFFFF, #EEE);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#EEEEEE'); /* IE6,IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#EEEEEE')";
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+  position: relative;
+  cursor: pointer;
+  line-height: 0;
+  zoom: 1;
+}
+
+.action > * { 
+    border: none; 
+    cursor: pointer;
+    font-size: 12px; 
+    line-height: 24px;
+    font-weight: bold; 
+    text-decoration: none; 
+    color: #696966; 
+    text-transform: uppercase;
+    text-shadow:1px 1px 0 #fff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background: transparent url(/images/sprite.png) no-repeat -9999px 0;
+    padding: 0 9px;
+    margin: 0;
+    letter-spacing:0.02em;
+    height: 24px;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+.action > input { 
+    overflow: visible; /* IE7 hack for input width */
+}
+
+.action:hover { border: 1px solid #999999; }
+.action:hover > * { color: #000; }
+
+/* Thick Action Padding 
+.add-action,
+.find-action,
+.save-action,
+.edit-tags-action,
+.delete-action,
+.disable-action,
+.cancel-action { padding: 2px 0; max-width: 200px; }
+*/
+
+.favorite .action,
+.contact .action { padding: 0; }
+
+/* Action Icons & Colors */
+.email-action > * { padding-left: 30px; background-position: 7px -248px; }
+.add-action > * { padding-left: 20px; background-position: 0 4px; margin-left: 9px; }
+.csv-action > * { padding-left: 15px; background-position: 0 -948px; margin-left: 9px; }
+.pdf-action > * { padding-left: 20px; background-image: url(/images/pdf-icon.png); background-position: left; margin-left: 5px; }
+.columns-action > * { padding-left: 18px; background-position: 0 -894px; margin-left: 9px; }
+.ical-action > * { padding-left: 18px; background-position:  0 -107px; margin-left: 9px; }
+.find-action > * { padding-left: 20px; background-image: url(/images/zoom.png); background-position: left; margin-left: 9px; }
+.sum-action > * { background: transparent url(/images/sum.png) no-repeat center 1px; }
+.add-tag-action > * { background-image: url(/images/tag_16x16.png); background-position: 50% 30%;  }
+
+.clone-action > *,
+.select-all-action > * { display: inline; }
+
+
+/* Custom Action Skins 
+.action.add > span { background-image: url(/images/add.png); padding-left: 20px; }
+.csv-action > span { background-image: url(/images/xls.png); padding-left: 20px; }
+.columns-action > span { background: transparent url(/images/swap.png) no-repeat scroll left; padding-left: 20px; }
+.save-action { color: #096A04; }
+.remove-action,
+.remove-action:hover { padding: .3em .5em; }
+.edit-search { position: absolute; top: 10px; right: 10px; }
+*/
+
+/* Action Group Styles */
+.action-group { position: relative; z-index: 100; height: 22px; zoom: 1; 
+	.action { display: inline-block; margin: 0; }
+	.action-options { display: block; position: absolute; visibility: hidden; padding-top: 8px; background: transparent url(/images/upArrow.png) no-repeat scroll 10px top; top: 48px; left: 0; z-index: 100; border-bottom: 5px solid #7FA3D9; }
+	.option:first-child { border-top: 5px solid #7FA3D9; }
+	.option { background-color: #EDF0F7; display: block; border-color: #7FA3D9; border-style: solid; border-width: 0 5px; line-height: 30px; }
+	.option > * { display: block; -webkit-appearance: none;  @include border-box; text-align: left; height: 30px; cursor: pointer; background-color: transparent; background-repeat: no-repeat; white-space: nowrap; border: none; border-top: 1px solid #FFFFFF; border-bottom: 1px solid #8FAAD0; color: #122A3C; font-size: 14px; font-weight: normal; margin: 0; padding: 0 0.5em; text-decoration: none; }
+	.option > a > span { border-bottom: none; color: #000; }
+	.option > *:hover { background-color: #fcfeff; }
+	
+	.pdf-option > * { padding-left: 25px; background-image: url(/images/pdf-icon.png); background-position: 1px; }
+	.csv-option > * { padding-left: 25px; background-position: 6px -946px; background-image: url(/images/sprite.png);}
+	.email-option > * { padding-left: 25px; background-position: 4px center; background-image: url(/images/email.png);}
+}
+.action-group.active .action-options { visibility: visible;  top: 29px; }

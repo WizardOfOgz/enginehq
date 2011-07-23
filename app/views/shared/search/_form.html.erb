@@ -1,0 +1,33 @@
+<% screens = false if !defined?(screens) %>
+<% is_multiple = false if !defined?(is_multiple) %>
+<% skin = prefix if !defined?(skin) || skin.nil? %>
+<% search_label = is_multiple ? skin.titleize.pluralize : skin.titleize.singularize %>
+<div class="field search-field<%= " screened-search" if screens %><%= " error" if error %><%= " search-multiple" if is_multiple %> <%= skin %>">
+  <h4 class="field-label"><label for="<%= prefix %>EntitySearch"><%= search_label %></label></h4>
+  <div>
+    <% if screens %>
+    <p class="screens">
+      <select name="search_<%= prefix %>_screen">
+        <%= options_for_select(screens.collect{|s| [s, s.sub(" ","").tableize]}, screen.sub(" ","").tableize) %> 
+      </select>
+    </p>
+    <% end %>
+    <ul class="tokens">
+      <% if defined?(entities) %>
+      <% entities.each do |entity,name| %>
+      <% next if entity.nil? %>
+      <li class="token">
+        <label>
+          <input type="checkbox" checked="checked" name="<%= name %>" value="<%= entity.id %>" />
+          <span><%= entity.name %></span>
+        </label>
+      </li>
+      <% end %>
+      <% end %>
+      <li class="query">
+        <input placeholder="Find <%= screens ? "..." : "#{screen.titleize}" %>" id="<%= prefix %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= prefix %>_query"<%= " autofocus " if prefix == "global" %>autocomplete="off" />
+        <input type="submit" name="search_<%= prefix %>" value="Search" class="search-action" />
+      </li>
+    </ul>
+  </div>
+</div>

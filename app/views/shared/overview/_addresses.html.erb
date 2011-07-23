@@ -1,0 +1,26 @@
+<div class="field-group">
+  <h5 class="field-group-head">Addresses</h5>
+  <% primaries = entity.addresses.primaries %>
+  <% if primaries.empty? %>
+  <p class="field empty"><span class="value">--</span></p>
+  <% else %>
+  <ul class="field-list">
+    <% primaries.group_by(&:location).each do |location, addresses| %>
+    <li class="item">
+      <dl class="field">
+        <dt class="field-label"><% location %></dt>
+        <% addresses.each do |address| %>
+        <dd class="value<%= " favorite" if address.is_favorite %>">
+          <address>
+            <span><%= format_field(address.line_one) %></span><br/>
+            <% if address.line_two %><span><%= format_field(address.line_two) %></span><br/><% end %>
+            <span><% if address.city.present? %><%= address.city %>,&nbsp;<% end %><%= address.state %>&nbsp;<%= address.display_zipcode %></span>
+          </address>
+        </dd>
+        <% end %>
+      </dl>
+    </li>
+    <% end %>
+  </ul>  
+  <% end %>
+</div>

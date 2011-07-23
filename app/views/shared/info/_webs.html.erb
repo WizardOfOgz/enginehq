@@ -1,0 +1,40 @@
+<div class="field-group entity-webs" id="websitesFieldsGroup">
+  <h5 class="field-group-head"><span>Web Sites</span></h5>
+  <a name="websites"> </a>
+  <% if entity.webs.empty? %>
+  <p class="field label empty"><span>No websites have been added.</span></p>  
+  <% else %>
+  <table class="field-list" id="websList">
+    <thead>
+      <tr>
+        <th class="field-label url"><abbr title="Website Address URL">URL</abbr></th>
+        <th class="field-label location">Location</th>
+        <% if entity.is_a?(Carrier) %>
+        <th class="field-label username">Username</th>
+        <th class="field-label password">Password</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% entity.webs.group_by(&:location).values.flatten.each do |web| %>
+      <tr class="item">
+        <td class="url">
+          <span class="value">
+            <% if !web.url.nil? %>
+            <a rel="external" href="<%= web.url %>"><span><%= web.url %></span></a>
+            <% else %>
+            <% format_field(nil) %>
+            <% end %>
+          </span>
+        </td>
+        <td class="location"><span class="value"><%= web.location %></span></td>
+        <% if entity.is_a?(Carrier) %>
+        <td class="username"><span class="value"><%= format_field(web.username) %></span></td>
+        <td class="password"><span class="value"><%= format_field(web.password) %></span></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

@@ -1,0 +1,31 @@
+@import "../shared";
+
+* { font-family: arial; }
+html { background-color: $app-background; overflow-y: scroll;  }
+html, body, dl, p, dt, dd, ul, li { padding: 0; margin: 0; }
+.app-wrap { position: relative; width: 1000px; padding-top: 24px; margin: 0 auto 30px; background-color: #FFF; border: 1px solid $gray-light; border-top: none; } 
+hr { display: none; }
+pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; }
+abbr { border-bottom: none; }
+ul { list-style: none; }
+address { line-height: 1.5em; }
+address, dfn { font-style: normal; }
+
+iframe { background-color: #FFF; }
+
+#infoArea { display: none; }
+textarea { -webkit-appearance: textfield; -moz-appearance: textfield; }
+
+a { text-decoration: none; }
+a > span,
+a > address > span  { color: #16355B; border-bottom: 1px solid $gray-lighter;  }
+form { height: auto; /* IE7 bug */ }
+
+td.numerical-value { text-align: right; }
+
+input, select { font-size: 12px; }
+
+/* Title Style */
+.logo { padding: 0; margin: 0; }
+.logo a { color: #000;  font-weight: normal; font-family: georgia; letter-spacing: 0; font-size: 20px; text-decoration: none; border: none; }
+.logo a  em { font-style: normal; font-family: georgia; color: #FFB200; }

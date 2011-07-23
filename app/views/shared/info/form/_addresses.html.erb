@@ -1,0 +1,65 @@
+<fieldset class="field-group entity-addresses" id="addressesFieldsGroup">
+  <legend class="field-group-head"><span>Addresses</span><span class="action"><input type="submit" name="add" value="Add" /></span></legend>
+  <% addresses = entity.addresses %>
+  <% added_addresses = addresses.select{|a| !a.marked_for_destruction?} %>
+  <% removed_addresses = addresses.select{|a| a.marked_for_destruction? && !a.new_record?} %>
+  <% removed_addresses.each_with_index do |address, i| %>
+  <% prefix = "#{entity.class.to_s.underscore}[addresses_attributes][#{i + added_addresses.length}]" %>
+  <input type="hidden" name="<%= prefix %>[id]" value="<%= address.id %>" />
+  <input type="hidden" name="<%= prefix %>[remove]" value="remove" />
+  <% end %>
+  <ul class="field-list">
+    <% added_addresses.group_by(&:location).values.flatten.each_with_index do |address, i| %>
+    <% prefix = "#{entity.class.to_s.underscore}[addresses_attributes][#{i}]" %>
+    <li class="item address">
+      <% if !address.new_record? %><input type="hidden" value="<%= address.id %>" name="<%= prefix %>[id]"/><% end %>
+      <p class="field select-field type">
+        <label>
+          <span class="field-label">Type</span>
+          <select class="input" name="<%= prefix %>[location]">
+            <option<% if address.location.nil? %> selected="selected"<% end %>></option>
+            <%= options_for_select(locations, address.location) %>
+          </select>
+        </label>
+      </p>
+      <p class="field text-field street<%= " error" if address.errors.include?(:line_one) %>">
+        <label>
+          <span class="field-label">Street</span>
+          <input class="input" type="text" name="<%= prefix %>[line_one]" value="<%= address.line_one %>" /></label>
+      </p>
+      <p class="field text-field street<%= " error" if address.errors.include?(:line_two) %>">
+        <label>
+          <span class="field-label">Street 2</span>
+          <input class="input" type="text" name="<%= prefix %>[line_two]" value="<%= address.line_two %>" /></label>
+      </p>
+      <p class="field text-field city<%= " error" if address.errors.include?(:city) %>">
+        <label><span class="field-label">City</span>
+          <input class="input" type="text" name="<%= prefix %>[city]" value="<%= address.city %>" />
+        </label>
+      </p>
+      <p class="field select-field state<%= " error" if address.errors.include?(:state) %>">
+        <label>
+          <span class="field-label">State</span>
+          <select class="input" name="<%= prefix %>[state]">
+            <option<% if address.state.nil? %> selected="selected"<% end %>></option>
+            <%= options_for_select(Constantations::ABBR_STATES, address.state) %>
+          </select>
+        </label>
+      </p>
+      <p class="field text-field zip<%= " error" if address.errors.include?(:zipcode) %>">
+        <label>
+          <span class="field-label">Zipcode </span>
+          <input class="input" type="text" name="<%= prefix %>[zipcode]" value="<%= address.zipcode %>" size="10" maxlength="10" />
+        </label>
+      </p>
+      <p class="favorite-field<%= " checked" if address.is_favorite %><%= " error" if address.errors.include?(:is_favorite) %>" title="Is Preferred Address?">
+        <label class="action">
+          <input class="input" type="radio" value="<%= i %>" name="<%= entity.class.to_s.underscore %>[favorite_address]" <% if address.is_favorite %> checked="checked"<% end %> />  
+          <span class="control-label">Favorite</span>
+        </label>
+      </p>
+      <span class="action remove-address"><input type="submit" name="<%= prefix %>[remove]" value="remove" /></span>
+    </li>
+    <% end %>
+  </ul>
+</fieldset>

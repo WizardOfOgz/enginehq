@@ -1,0 +1,32 @@
+<div class="field-group entity-emails" id="emailAddressesFieldsGroup">
+  <h5 class="field-group-head"><span>Emails</span></h5>
+  <% if entity.emails.empty? %>
+  <p class="field label empty"><span>No email addresses have been added.</span></p>
+  <% else %>
+  <table class="field-list">
+    <thead>
+      <tr>
+        <th class="field-label address">Address</th>
+        <th class="field-label type">Type</th>
+        <th class="field-label favorite">Favorite</th>
+        <th class="field-label contact">Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% entity.emails.group_by(&:location).values.flatten.each do |email| %>
+      <tr class="item">
+        <td class="address"><a href="mailto:<%= email.address %>" class="value"><span><%= email.address %></span></a></td>
+        <td class="location"><span class="value"><%= format_field(email.location) %></span></td>
+        <td class="favorite<%= " checked" if email.is_favorite? %>"<%= raw(" title=\"Preferred Email Address\"") if email.is_favorite? %>><%= "Yes" if email.is_favorite? %></td>
+        <td class="contact<%= " checked" if email.is_admin? %>"<% if email.is_admin? %> title="This email is used for administration"<% end %>>
+          <%= "Yes" if email.is_admin? %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+
+
+

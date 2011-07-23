@@ -1,0 +1,6 @@
+<p class="field text-field note<%= " error" if entity.errors.include?(:note) %>">
+  <label>
+    <span class="field-label">Note</span>
+    <textarea class="input" rows="2" cols="10" name="<%= entity.class.to_s.underscore %>[note]"><%= entity.note %></textarea>
+  </label>
+</p>

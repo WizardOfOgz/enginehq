@@ -1,0 +1,82 @@
+<% today = [User, Organization].include?(entity.class) %>
+<div class="field-group-overview premium-overview">
+  <h5 class="field-group-overview-head">Premium</h5>
+  <% current_user.organization.channels.each_with_index do |channel, i| %>
+  <% if !channel.new_record? %>
+  <% case channel.channel_type %>
+  <% when Channel::LIFE_CHANNEL_TYPE %>
+  <% channel_displays = {:Target => ["Target"], :Single => ["Single"]} %>
+  <% when Channel::ANNUITY_CHANNEL_TYPE %>
+  <% channel_displays = {:Annuity => ["Initial", "Additional"]} %>
+  <% end %>
+  <% channel_displays.each do |title, premium_types| %>
+  <div class="sub-field-group-overview channel<%= " selected" if i == 0 && channel_displays.keys.first == title %>">
+    <h6 class="sub-field-group-overview-head"><%= title %> Premium </h6>
+    <a name="<%= channel.channel_type %>Premium" class="bounce"> </a>
+    <table class="premium-table">
+      <caption></caption>
+      <thead>
+        <tr>
+          <th class="date">Date</th>
+          <th class="submitted">Submitted</th>
+          <th class="paid">Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if today %>
+        <tr>
+          <th class="date">Today</th>
+          <td class="submitted numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::SUBMITTED.name, channel.channel_type, premium_types, Date.today.beginning_of_day, Date.today.end_of_day)) %>
+          </td>
+          <td class="paid numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::PAID.name, channel.channel_type, premium_types, Date.today.beginning_of_day, Date.today.end_of_day)) %>
+          </td>
+        </tr>
+        <% end %>
+        <tr>
+          <th class="date"><abbr title="<%= Date.today.strftime('%B') %>"><%= Date.today.strftime('%b') %></abbr></th>
+          <td class="submitted numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::SUBMITTED.name, channel.channel_type, premium_types, Date.today.beginning_of_month, Date.today.end_of_month)) %>
+          </td>
+          <td class="paid numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::PAID.name, channel.channel_type, premium_types, Date.today.beginning_of_month, Date.today.end_of_month)) %>
+          </td>
+        </tr>
+        <tr>
+          <th class="date"><abbr title="<%= (Date.today - 1.month).strftime('%B') %>"><%= (Date.today - 1.month).strftime('%b') %></abbr></th>
+          <td class="submitted numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::SUBMITTED.name, channel.channel_type, premium_types, (Date.today - 1.month).beginning_of_month, (Date.today - 1.month).end_of_month)) %>
+          </td>
+          <td class="paid numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::PAID.name, channel.channel_type, premium_types, (Date.today - 1.month).beginning_of_month, (Date.today - 1.month).end_of_month)) %>
+          </td>
+        </tr>
+        <tr>
+          <th class="date"><abbr title="<%= Date.today.year %>">'<%= Date.today.strftime('%y') %></abbr></th>
+          <td class="submitted numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::SUBMITTED.name, channel.channel_type, premium_types, Date.today.beginning_of_year, Date.today.end_of_year)) %>
+          </td>
+          <td class="paid numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::PAID.name, channel.channel_type, premium_types, Date.today.beginning_of_year, Date.today.end_of_year)) %>
+          </td>
+        </tr>
+        <tr>
+          <th class="date"><abbr title="<%= (Date.today - 1.year).year %>">'<%= (Date.today - 1.year).strftime('%y') %></abbr></th>
+          <td class="submitted numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::SUBMITTED.name, channel.channel_type, premium_types, (Date.today - 1.year).beginning_of_year, (Date.today - 1.year).end_of_year)) %>
+          </td>
+          <td class="paid numerical-value">
+            <%= raw(premium_link(entity, PolicyStatus::PAID.name, channel.channel_type, premium_types, (Date.today - 1.year).beginning_of_year, (Date.today - 1.year).end_of_year)) %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+  <% end %>
+  <% end %>
+  <span class="page next">Next Channel</span>
+  <span class="page previous">Previous Channel</span>
+</div>
+

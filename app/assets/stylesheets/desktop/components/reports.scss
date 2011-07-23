@@ -1,0 +1,36 @@
+@import "../shared";
+
+
+/* No Results Messages */
+.no-results { clear: both; }
+.empty-report { clear: both; color: $gray-lighter; padding: 4px; text-align: center; font-size: 2em; text-transform: lowercase; margin-top: 2em; }
+
+.download-report { position: absolute; top: 15px; right: 1px; }
+.download-report li { display: inline; }
+
+/*********************************************************** 
+* Specialized Report Styles
+***********************************************************/
+.report-wrap { overflow-x: auto; position: relative; float: left; max-width: 100%; }
+
+/* Individual Report Section */
+.individual .entities { float: left; width: 49%; }
+.individual .entity { float: none; clear: both; }
+.individual .information { float: right; width: 49%;  }
+.individual .time-period { clear: both; width: 100%; }
+.individual .organization { padding: 8px 0 2px; }
+
+/* Year End Premium Section */
+.year-premium .entity { float: left; }
+.year-premium .channel {float: left; }
+.year-premium .status { float: left; }
+.year-premium .report-year { float: left; }
+
+/* Itemized Reports */
+.itemized .field { margin-right: 1em; }
+.itemized .entity { float: left; }
+.itemized .status { float: left; }
+.itemized .time-period { float: left; width: 220px; }
+.itemized .style { float: left; }
+.itemized .channel { float: left; }
+

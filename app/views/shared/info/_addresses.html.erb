@@ -1,0 +1,37 @@
+<div class="field-group entity-addresses" id="addressesFieldsGroup">
+  <h5 class="field-group-head"><span>Addresses</span></h5>
+  <% if entity.addresses.empty? %>
+  <p class="field label empty"><span>No addresses have been added.</span></p>
+  <% else %>
+  <ul class="field-list">
+    <% entity.addresses.group_by(&:location).values.flatten.each do |address| %>
+    <li class="item address">
+      <p class="field type">
+        <span class="field-label">Type</span> <span class="value"><%= format_field(address.location) %></span>
+      </p>
+      <p class="field favorite<%= " checked" if address.is_favorite? %>"<%= raw(" title=\"Preferred Address\"") if address.is_favorite? %>>
+        <span class="field-label">Favorite</span> <span class="value"><%= "Yes" if address.is_favorite? %></span>
+      </p>
+      <p class="field street">
+        <span class="field-label">Street</span> <span class="value"><%= address.line_one %><% if address.line_two %><br /><%= address.line_two %><% end %></span>
+      </p>
+      <p class="field city">
+        <span class="field-label">City</span> <span class="value"><%= address.city %></span>
+      </p>
+      <p class="field state">
+        <span class="field-label">State</span> <span class="value"><%= address.state %></span>
+      </p>
+      <p class="field zip">
+        <span class="field-label">Zip</span> <span class="value"><%= address.display_zipcode %></span>
+      </p>
+      <% if map_url = format_map_url(address) %>
+      <a class="open-map" title="Open Map" rel="external" href="<%= map_url %>"><span>View Map</span></a>
+      <% else %>
+      <span class="open-map disabled" title="No map available"><span>No Map Available</span></span>
+      <% end %>
+      <span class="print address-print">Print Address</span>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>

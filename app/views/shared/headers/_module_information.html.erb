@@ -1,0 +1,1 @@
+<div id="infoArea" class="module-information<% if flash.empty? %>"><span>&nbsp;</span><% else %><% flash.each_pair do |key, value| %> <%= key %>"><h3><span><%= key %></span></h3><span><%= value %></span><% end %><% end %></div><% flash.clear %>

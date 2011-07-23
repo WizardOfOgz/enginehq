@@ -1,0 +1,16 @@
+@import "../shared";
+
+/******************************************************************************************************
+* Records Form
+* @extends .form
+*
+* A records form is used to search for a list of records (e.g. Advisors, Agencies, Policies, Contracts
+******************************************************************************************************/
+
+.records-form { padding: 1em; background-color: $gray-lightest; border: 1px solid #cbcac8; zoom: 1;  }
+.records-form .form-actions:first-child { position: absolute; visibility: hidden; }
+.records-form .field-group { border-top: 1px dotted #B7B9BE; }
+
+.records-form .entity-search { width: 49%; margin-bottom: 0; }
+
+.records-form .empty { font-weight: normal; }

@@ -1,0 +1,49 @@
+<% phones =  entity.phones.primaries.group_by(&:location).values.flatten  %>
+<% emails = ["Advisor", "User"].include?(entity.class.to_s) && entity.emails.primaries.group_by(&:location).values.flatten || [] %>
+<% time_zone = entity.class.to_s == "Advisor" ? entity.time_zone : nil %>
+<% addresses = entity.addresses.primaries.group_by(&:location).values.flatten %>
+<div class="field-group-overview contact-overview">
+  <h5 class="field-group-overview-head">Contact<% if time_zone %><span class="time-zone"><%= time_zone %></span><% end %></h5>
+  <% if phones.empty? && emails.empty? && addresses.empty? %>
+  <p class="empty">None</p>
+  <% else %>
+  <table class="overview-listing">
+    <thead>
+      <tr><th class="favorite">Favorite</th><th class="info">Info</th><th>Location</th></tr>
+    </thead>
+    <tbody>
+    <% phones.each do |phone| %>
+    <tr class="item">
+      <td class="favorite"><%= raw("<span title=\"Preferred Phone\"  class=\"yes\">Yes</span>") if phone.is_favorite %></td>
+      <td><%= phone.display_phone %></td>
+      <th><%= phone.location %></th>
+    </tr>
+    <% end %> 
+    <% emails.each do |email| %>
+    <tr class="item">
+      <td class="favorite"><%= raw("<span title=\"Preferred Email Address\" class=\"yes\">Yes</span>") if email.is_favorite %></td>
+      <td><a href="mailto:<%= email.address %>"><span><%= email.address %></span></a></td>
+      <th><%= email.location %></th>
+    </tr>
+    <% end %>
+    <% addresses.each do |address| %>
+    <tr class="item">
+      <td class="favorite">
+        <%= raw("<span title=\"Preferred Address\"  class=\"yes\">Yes</span>") if address.is_favorite %>
+      </td>
+      <td>
+        <% if map_url = format_map_url(address) %><a title="Open Map" rel="external" href="<%= map_url %>"><% end %>          
+        <address>
+          <span><%= format_field(address.line_one) %></span><br/>
+          <% if address.line_two %><span><%= format_field(address.line_two) %></span><br/><% end %>
+          <span><% if address.city.present? %><%= address.city %>,&nbsp;<% end %><%= address.state %>&nbsp;<%= address.display_zipcode %></span>
+        </address>
+        <% if map_url %></a><% end %>
+      </td>
+      <th><%= address.location %></th>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

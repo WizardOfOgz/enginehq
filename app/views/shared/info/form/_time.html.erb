@@ -1,0 +1,22 @@
+<fieldset class="field time-field <%= skin %>">
+  <legend class="field-label"><%= raw(label) %></legend>
+  <div title="Enter a date as mm/dd/yyyy">
+    <p class="control hour">
+      <label>
+        <span class="control-label">Hour</span>
+        <input placeholder="hh" class="input" size="2" maxlength="2" type="text" name="<%= prefix ? (prefix + "[" + name + "(4i)]") : name + "(4i)" %>" value="<%= time.strftime("%I") if time %>" />
+      </label>
+    </p>
+    <p class="control minute">
+      <label>
+        <span class="control-label">Minute</span>
+        <input placeholder="mm" class="input" size="2" maxlength="2" type="text" name="<%= prefix ? (prefix + "[" + name + "(5i)]") : name + "(5i)" %>" value="<%= time.strftime("%M") if time %>" />
+      </label>
+    </p>
+    <p class="control select meridiem">
+      <select name="<%= prefix %>[meridiem]">
+        <%= options_for_select(["AM", "PM"], meridiem || (time && time.hour > 12 ? "PM" : "AM")) %>
+      </select>
+    </p>
+  </div>
+</fieldset>

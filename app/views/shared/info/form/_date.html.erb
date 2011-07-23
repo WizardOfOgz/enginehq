@@ -1,0 +1,25 @@
+<% disabled = false unless disabled %>
+<fieldset class="field date-field <%= skin %>">
+  <legend class="field-label"><%= raw(label) %></legend>
+  <div title="Enter a date as mm/dd/yyyy">
+    <p class="control month">
+      <label>
+        <span class="control-label">Month</span>
+        <input placeholder="mm" class="input" <% if disabled %> disabled="disabled"<% end %> value="<%= date.month if date %>" type="text" name="<%= prefix ? (prefix + "[" + name + "(2i)]") : name + "(2i)" %>" size="2" maxlength="2" autocomplete="off" />
+      </label>
+    </p>
+    <p class="control day">
+      <label>
+        <span class="control-label">Day</span>
+        <input placeholder="dd"class="input"<% if disabled %> disabled="disabled"<% end %> value="<%= date.day if date %>" type="text" name="<%= prefix ? (prefix + "[" + name + "(3i)]") : name + "(3i)" %>" size="2" maxlength="2" autocomplete="off" />
+      </label>
+    </p>
+    <p class="control year">
+      <label>
+        <span class="control-label">Year</span>
+        <input placeholder="yyyy" class="input" <% if disabled %> disabled="disabled"<% end %> value="<%= date.year if date %>" type="text" name="<%= prefix ? (prefix + "[" + name + "(1i)]") : name + "(1i)" %>" size="4" maxlength="4" autocomplete="off" />
+      </label>
+    </p>
+  </div>
+  <% if !disabled %><span class="action open-calendar"><span>Open Calendar</span></span><% end %>
+</fieldset>

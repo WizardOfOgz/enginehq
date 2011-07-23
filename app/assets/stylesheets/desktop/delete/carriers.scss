@@ -1,0 +1,19 @@
+@import "../shared";
+
+/***************************************
+* Carriers Search Form Skin
+* @extends .records-form
+***************************************/
+.carriers-form .carrier .name { width: 100%; }
+
+/***************************************
+* Carrier Record Form Skin
+* @extends .record-form
+***************************************/
+.carrier-form .carrier .name { width: 100%; }
+
+/***************************************
+* Carrier Record Skin
+* @extends .record
+***************************************/
+.carrier-record .carrier .name { width: 100% }

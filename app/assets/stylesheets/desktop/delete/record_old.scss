@@ -1,0 +1,37 @@
+@import "../shared";
+
+/*************************************
+* Record Styles
+************************************/
+.record { margin: 0; padding: 0; }
+.record .field-group { position: relative; border: 0 dotted $gray-light; }
+.record .field-group:after { content: "."; display: block; visibility: hidden; clear: both; }
+.record .field-group ~ .field-group {  border-top-width: 1px; padding-top: 1em; }
+.record .field-group:first-child { padding-bottom: 1em; }
+.record .field-group:first-child .field-group-head { visibility: hidden; position: absolute; }
+.record .field-group-head { position: absolute; top: -.75em; left: 0; padding-right: .5em; letter-spacing: -0.015em; line-height: 1em; margin: 0 0 1em; color: #162231; font-size: 14px; font-weight: bold;  background-color: #FFF; }
+.record .field { float: left; margin: 0 0 1em; }
+.record .field-label { color: #696969; font-style: normal; font-weight: normal; text-align: left; }
+.record span.field-label,
+.record dfn.field-label { display: block;  padding: 6px 0; }
+.record th.field-label { padding: 6px 0; }
+.record .value { display: block; min-height: 14px; padding: 0; margin: 0; border-bottom: 1px solid #E9EBEE; background-color: $gray-lightest; padding: 6px 0 6px 4px; }
+.record pre.value { white-space: pre-wrap; word-wrap: break-word; }
+.record .label { clear: both; font-size: 13px; line-height: 16px; padding: .5em 0; }
+.record .empty { clear: both; color: #60656C; border-bottom: none; }
+.record .field .value,
+.record .field > .field-label { margin-right: 10px; }
+
+.record dl.field-list .favorite { display: block; width: 20px; height: 20px; background: url(/images/starFilled.png) no-repeat 50% 50%;  text-indent: -99px;  overflow: hidden; }
+
+/* Favorite */
+.record .favorite {  width: 20px; overflow: hidden; text-indent: -99px !important;  background: transparent url(/images/star.png) no-repeat 50% 50%; }
+.record .favorite.checked { background-image: url(/images/starFilled.png); }
+
+.record .email .contact { cursor: pointer; width: 20px; overflow: hidden; text-indent: -99px !important;  background: transparent url(/images/email.png) no-repeat 50% 50%; cursor: pointer; }
+.record .email .contact.checked { background-image: url(/images/emailFilled.png); }
+
+.record .sub-field-group { width: 50%; float: left; position: relative; padding-top: 1em; border-top: 1px dotted #B7B9BE; }
+.record .sub-field-group-head { margin: 0; top: -.75em; position: absolute; left: 0; background-color: #FFF; padding-right: .25em; }
+
+.record .note { width: 100%; clear: both; }

@@ -1,0 +1,80 @@
+@import "../shared";
+
+.record-overview { width: 36%; float: right; position: relative;  background-color: $blue-gray-lightest; 
+  & ~ * { width: 62%; float: left; }
+}
+
+/* Field Group Overview  */
+.field-group-overview { margin: 10px; width: auto; float: none; 
+  & ~ .field-group-overview { margin-top: 0; }
+  .field-group-overview-head { margin: 0; padding: .5em .75em; border: 1px solid #B4CCEE; border-bottom-color: #D5DFEF; color: #406BA3; text-transform: uppercase; background-color: $blue-gray; letter-spacing: .05em; display: block; text-align: left; font-size: 12px; text-shadow: 1px 1px #FFF; font-weight: normal; }
+  .empty { background-color: #FFF; padding: .5em;  border: 1px solid #D5DFEF; border-top: none; color:#858993; }
+  dt { color: #858993; }
+}
+
+/* Field Group Overview Listing  */
+table.overview-listing { border-spacing: 0; border-collapse: collapse; width: 100%; }
+.overview-listing {  border: 1px solid #D5DFEF; border-top: none; background-color: #FFF;
+  thead { visibility: hidden; position: absolute; }
+  th { font-weight: normal; color: #858993; text-align: right; vertical-align: top; }
+  th:first-child { text-align: left; }
+  tr.item > *, li.item { padding: .5em; border-top: 1px dotted $gray-lighter;  }
+  tr.item:first-child > *, li.item:first-child {  border-top: none; }
+  li:after { content: "."; display: block; visibility: hidden; clear: both; height: 0; }
+  .favorite { width: 11px; overflow: hidden; position: relative; vertical-align: top; padding-right: 0; }
+  .favorite .yes { text-indent: -999px; display: block; width: 11px; height: 11px; background: transparent url(/images/favorite.png) no-repeat; overflow: hidden; }
+  tr.total:first-child > * { border-top: 1px solid #DADCE0; color: #000; font-weight: bold; }
+  .number { text-align: right;  width: 1px; white-space: nowrap; }
+  a { word-break: break-word; }
+}
+
+.overview-sub-listing { width: 100%; margin-top: .5em; border-spacing: 3px; 
+  caption { text-align: left; color: #858993; text-indent: 3px; padding: 0; }
+  td, th { background-color: $blue-gray-lightest; padding: .25em; text-align: left; color: #000; }
+}
+
+/* Premium Overview */
+.premium-overview { border: none; padding: 0; background-color: #F5F8FB;  position: relative; overflow: hidden; 
+  .field-group-overview-head { display: none; }
+  .channel { position: absolute; visibility: hidden; overflow: hidden; }
+  .channel.selected { position: relative; visibility: visible; }
+  .sub-field-group-overview-head { margin: 0; padding: .5em 0; border: 1px solid #B4C7E0; border-bottom: none; font-weight: normal; font-size: 12.5px; color: #3D6395; letter-spacing:0.02em; font-weight: bold; text-shadow:1px 1px #EFF6FE;  background-color: #CDDDF4; text-align: center; text-transform:  uppercase; font-family: "Lucida Sans"; }
+  img { display:none; background-color: #FFF; width: 100%; overflow: hidden; margin: 0; padding: 0; }
+  .premium-table { width: 100%; border: 1px solid #B4D3F5; border-spacing: 0; border-collapse: collapse; font-family: "Lucida Sans"; }
+  .premium-table > caption { text-align: center; }
+  .premium-table tr > * { border: 1px solid #E5E9F1; padding: .5em; }
+  .premium-table td { background-color: #FFF; }
+  .premium-table th { background-color: $blue-gray; border-color: #B4CCEE; color: #3D6395; text-shadow: 1px 1px #EFF6FE;}
+  .premium-table td a { color: #16355B; text-decoration: none; border-bottom: 1px solid $gray-lighter; }
+  .premium-table thead .date { text-indent: -9999px; }
+  .premium-table .date { width: 1px; }
+}
+
+.premium-overview { 
+  .page { position: absolute; top: 4px; width: 22px; height: 20px; text-indent: -99999px; z-index: 99; cursor: pointer; }
+  .next { right: 12px; background: url(/images/sprite.png) 0 -730px; }
+  .previous { left: 12px; background: url(/images/sprite.png) 0 -695px; }
+}
+
+/* Tags Overview */
+.tag-listing { padding: .5em .5em .2em; 
+  &:after { @include clear-fix; }
+  .tag { float: left; border: 1px solid #C1C1C1 !important; margin: 0 3px 3px 0; color: #60656C; background-color: #F3F3F3; }
+}
+
+/* Policy Holders Overview */
+.policy-holders-overview { 
+  .name { float: left; }
+  .relation-type { float: right; color: #858993; }
+  dl {  width: 50%; padding: .5em 0 0;  }
+  dl > * { display: inline; }
+  .age { float: left; clear: left; }
+  .ssn { float: right; text-align: right; }
+}
+.policy-advisors-overview {
+  .name { font-weight: bold; }
+  .commission-percent { float: right; color: #858993; }
+}
+
+.messages-overview { background-color: #FFF; }
+.contact-overview .field-group-overview-head span { float: right; font-size: 10px; line-height: 16px; letter-spacing: 0; }

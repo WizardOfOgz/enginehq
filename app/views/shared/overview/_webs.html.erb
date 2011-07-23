@@ -1,0 +1,23 @@
+<div class="field-group-overview">
+  <h5 class="field-group-overview-head">Web Sites</h5>
+  <% webs = entity.webs %>
+  <% if webs.empty? %>
+  <p class="empty">None</p>
+  <% else %>
+  <table class="overview-listing">
+    <thead>
+      <tr>
+        <th>URL</th><th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% entity.webs.group_by(&:location).values.flatten.each do |web| %>
+      <tr class="item">
+        <td><a rel="external" title="<%= web.url %>" href="<%= web.url %>"><span><%= web.url %></span></a></td>
+        <th><%= web.location %></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

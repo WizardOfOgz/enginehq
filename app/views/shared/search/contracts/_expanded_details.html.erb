@@ -1,0 +1,16 @@
+<div class="details">
+  <dl class="field">
+    <dt class="field-label">Advisor</dt>
+    <dd class="value"><%= entity.advisor.name %></dd>
+  </dl>
+  <% if entity.agency %>
+  <dl class="field">
+    <dt class="field-label">Agency</dt>
+    <dd class="value"><%= entity.agency.name %></dd>
+  </dl>
+  <% end %>
+  <dl class="field">
+    <dt class="field-label">Carrier</dt>
+    <dd class="value"><%= entity.carrier.name %></dd>
+  </dl>
+</div>

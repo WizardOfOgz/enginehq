@@ -1,0 +1,18 @@
+<% if results && results.size > 0 %>
+<% results.each do |result| %>
+<li class="item result">
+  <h4 class="result-title" tabIndex="0"><% if params[:search_global].nil? %><%= result.full_name %><% else %><a href="/<%= result.class.to_s.tableize %>/<%= result.id %>/overview"><%= result.full_name %></a><% end %></h4>
+  <% if params[:search_global].nil? %><input class="add" type="submit" value="add" name="search_add[<%= result.class.to_s.underscore %>][<%= result.id %>]" /><% end %>
+  <% if [Advisor,PolicyHolder,Policy,Contract,License,Product].include?(result.class) %>
+  <%= render :partial => "/shared/search/#{result.class.to_s.tableize}/expanded_details", :locals => {:entity => result} %>
+  <% end %>
+</li>
+<% end %>
+<% if @policy_holders && controller_name == "policies" && action_name != "index" %>
+<li class="item">No Results Found <span class="action"><input type="submit" name="add_policy_holder" value="Add" /></span></li>
+<% end %>
+<% elsif @policy_holders && controller_name == "policies" && action_name != "index" %>
+<li class="item">No Results Found <span class="action"><input type="submit" name="add_policy_holder" value="Add" /></span></li>
+<% else %>
+<li class="item"><h4 class="result-title">No Results Found</h4></li>
+<% end %>

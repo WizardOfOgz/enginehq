@@ -1,0 +1,38 @@
+@import "../shared";
+
+/***************************************
+* Policy Holder Record Search Form Skin
+* @extends .records-form
+***************************************/
+.policy-holders-form .policy-holders { width: 49%; float: left; }
+.policy-holders-form .policy-holders .first-name { width: 49.9%; }
+.policy-holders-form .policy-holders .last-name { width: 50%; }
+
+.policy-holders-form .policies-written-with { width: 49%; float: right; }
+.policy-holders-form .policies-written-with .search-field { width: 100%; }
+.policy-holders-form .policies-written-with .search-field .field-label { visibility: hidden; }
+
+
+/***************************************
+* Policy Holder Record  Skin
+* @extends .record
+***************************************/
+.policy-holder-record .policy-holder .field { width: 24.9%; }
+
+/***************************************
+* Policy Holder Record Form  Skin
+* @extends .record-form
+***************************************/
+.policy-holder-form .policy-holder { margin-bottom: 1.5em; }
+
+.policy-holder-form .policy-holder .first-name,
+.policy-holder-form .policy-holder .middle-name,
+.policy-holder-form .policy-holder .last-name { width: 30%; }
+.policy-holder-form .policy-holder .name-suffix { width: 10%; }
+
+.policy-holder-form .policy-holder .gender { width: 10%; }
+.policy-holder-form .policy-holder .ssn { width: 15%; }
+.policy-holder-form .policy-holder .dob,
+.policy-holder-form .policy-holder .date-of-death { width: 30%; }
+.policy-holder-form .policy-holder .gender .control { float: left; margin-right: 1em; }
+

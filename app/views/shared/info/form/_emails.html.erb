@@ -1,0 +1,58 @@
+<fieldset class="field-group entity-emails" id="emailAddressesFieldsGroup">
+  <legend class="field-group-head"><span>Email Addresses</span><span class="action"><input type="submit" name="add" value="Add" /></span></legend>
+  <a name="emailAddresses"> </a>
+  <% emails = entity.emails %>
+  <% added_emails = emails.select{|e| !e.marked_for_destruction?} %>
+  <% removed_emails = emails.select{|e| e.marked_for_destruction? && !e.new_record?} %>
+  <% removed_emails.each_with_index do |email, i| %>
+  <% prefix = "#{entity.class.to_s.underscore}[emails_attributes][#{i + added_emails.length}]" %>
+  <input type="hidden" name="<%= prefix %>[id]" value="<%= email.id %>" />
+  <input type="hidden" name="<%= prefix %>[remove]" value="remove" />
+  <% end %>
+  <table class="field-list">
+    <thead>
+      <tr>
+        <th class="field-label address<%= " error" if entity.emails.detect{|e| e.errors.include?(:address)} %>">Address</th>
+        <th class="field-label type<%= " error" if entity.emails.detect{|e| e.errors.include?(:location)} %>">Type</th>
+        <th class="field-label favorite-field<%= " error" if entity.emails.detect{|e| e.errors.include?(:is_favorite)} %>">Favorite</th>
+        <th class="field-labeL contact<%= " error" if entity.emails.detect{|e| e.errors.include?(:is_admin)} %>">Contact</th>
+        <th class="field-label actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% added_emails.group_by(&:location).values.flatten.each_with_index do |email, i| %>
+      <% prefix = "#{entity.class.to_s.underscore}[emails_attributes][#{i}]" %>
+      <tr class="item">
+        <td class="address text-field<%= " error" if email.errors.include?(:address) %>">
+          <input class="input" type="email" name="<%= prefix %>[address]" value="<%= email.address %>" />
+          <% unless email.new_record? %><input type="hidden" value="<%= email.id %>" name="<%= prefix %>[id]"/><% end %>
+        </td>
+        <td class="type<%= " error" if email.errors.include?(:location) %>">
+          <select class="input" name="<%= prefix %>[location]">
+            <option<% if email.location.nil? %> selected="selected"<% end %>></option>
+            <%= options_for_select(locations, email.location) %>
+          </select>
+        </td>
+        <td class="favorite-field<%= " checked" if email.is_favorite %><%= " error" if email.errors.include?(:is_favorite) %>" title="Is Preferred Email Address?">
+          <span class="action">
+            <span>
+              <input class="input" type="radio" value="<%= i %>" name="<%= entity.class.to_s.underscore %>[favorite_email]"<% if email.is_favorite %> checked="checked"<% end %> />
+            </span>
+          </span>
+        </td>
+        <td class="contact-field<%= " checked" if email.is_admin? %><%= " error" if email.errors.include?(:is_admin) %>">
+          <input type="hidden" value="" name="<%= prefix %>[is_admin]" />
+          <span class="action">
+            <span>
+              <input class="input" type="checkbox" value="true" name="<%= prefix %>[is_admin]"<% if email.is_admin %> checked="checked"<% end %> />
+            </span>
+          </span>
+        </td>
+        <td class="actions">
+          <span class="action"><input type="submit" name="<%= prefix %>[remove]" value="remove" /></span>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</fieldset>

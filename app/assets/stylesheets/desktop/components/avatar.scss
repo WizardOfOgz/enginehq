@@ -1,0 +1,18 @@
+@import "../shared";
+
+.avatar-current{ width: 29%; float: left; background-color: #F6F6F6; border: 1px solid #E9EBEE; height: 265px; text-align: center;
+  .remove img { display: block; margin: 0 auto 10px; max-width: 100%; }
+  .remove {  float: none; padding: 10px; text-align: center;  }
+}
+
+.avatar-upload { width: 68%; float: right; border-top: 1px dotted #B7B9BE; 
+  .avatar { float: none; margin: 1em 0; padding: 10px; position: relative;  background-color: #F6F6F6; border: 1px solid #E9EBEE; }
+  .avatar:after { @include clear-fix; }
+  .avatar label { width: 65%; float: left; }
+  .avatar .field-label { position: absolute; visibility: hidden; }
+  .avatar .upload-action { float: right; margin-right: 0; }
+  .preview {  clear: both; position: relative; top: 10px; margin: 0 auto 10px !important; text-align: center; background-color: #FFF; padding: 5px; border: 1px solid #E9E9E9; display: block; }
+  .preview img, .preview canvas { max-width: 100%; }
+  .upload-action { position: absolute; top: 10px; right: 10px; }
+  .avatar-wrap { position: relative; }
+}

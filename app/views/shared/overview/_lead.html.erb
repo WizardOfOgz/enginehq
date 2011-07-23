@@ -1,0 +1,34 @@
+<div class="field-group-overview estimated-premium-overview">
+  <h5 class="field-group-overview-head">Estimated Premium</h5>
+  <% estimated_premiums = entity.estimated_premiums.reject{|estimated_premium| estimated_premium.new_record?} %>
+  <% if estimated_premiums.empty? %>
+  <p class="empty">None</p>
+  <% else %>
+  <table class="overview-listing">
+    <thead>
+      <tr>
+        <th>Channel></th>
+        <th>Estimated Premium</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% estimated_premiums.each do |estimated_premium| %>
+      <tr class="item">
+        <th><%= estimated_premium.channel.channel_type %></th>
+        <td class="number"><%= format_dollar(estimated_premium.estimated_premium) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+<div class="field-group-overview lead-overview">
+  <h5 class="field-group-overview-head">Lead</h5>
+  <table class="overview-listing">
+    <tbody>
+      <tr class="item"><th>Marketing Organization</th><td><%= format_field(@advisor.marketing_organization) %></td></tr>
+      <tr class="item"><th>Interest Level</th><td><%= format_field(@advisor.interest_level) %></td></tr>
+      <tr class="item"><th>Response Method</th><td><%= format_field(@advisor.response_method) %></td></tr>
+    </tbody>
+  </table>
+</div>

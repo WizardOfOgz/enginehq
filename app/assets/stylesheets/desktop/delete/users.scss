@@ -1,0 +1,39 @@
+@import "../shared";
+
+/***************************************
+* User Search Form Skin
+* @extends .records-form
+***************************************/
+.users-form .user .field { width: 25%; }
+
+/***************************************
+* User Form Skin
+* @extends .record-form
+***************************************/
+.user-form .employee .first-name { width: 35%; }
+.user-form .employee .middle-name { width: 20%; }
+.user-form .employee .last-name { width: 35%; }
+.user-form .employee .name-suffix { width: 10%; }
+.user-form .employee .title { width: 34%; clear: left; }
+.user-form .employee .ssn,
+.user-form .employee .dob { width: 33%; } 
+
+.user-form .account .username { width: 50%; }
+.user-form .account .identifier { width: 50%; }
+.user-form .account .password { width: 50%; clear: left; }
+.user-form .account .password-confirm { width: 50%; }
+.user-form .account .roles .control { float: left; margin-right: 1.5em; }
+
+.user-form .employee-channels .field-list .item + .item .field-label { visibility: hidden; position: absolute; }
+
+/***************************************
+* User Form Skin
+* @extends .record
+***************************************/
+.user-record .employee .title { width: 34%; }
+.user-record .employee .dob,
+.user-record .employee .ssn { width: 33%; }
+
+.user-record .account .username { width: 50%; clear: left; }
+.user-record .account .reset-password { width: 50%; padding-top: 26px; }
+.user-record .account .roles { width: 100%; clear: left; }

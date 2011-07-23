@@ -1,0 +1,33 @@
+<div class="content-section" id="avatarSection">
+  <h4 class="content-section-head"><span>Avatar</span></h4>
+  <div class="form" id="avatarForm">
+    <form action="/<%= entity.class.to_s.tableize %>/<%= entity.id %>" enctype="multipart/form-data" method="post">
+      <fieldset class="field-group avatar-current">
+        <p class="field remove">
+          <input name="<%= entity.class.to_s.underscore %>[avatar]" size="30" type="hidden" />
+          <img alt="<%= entity.name %>" src="<%= entity.avatar.url %>" />
+        </p>
+        <% if !entity.avatar.url.match("images/advisors-missing.png") %>
+        <span class="action clear-photo-action"><input type="submit" name="save" value="Delete" /></span>
+        <% end %>
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+        <input name="_method" type="hidden" value="put" />
+      </fieldset>
+      <fieldset class="field-group avatar-upload">
+        <legend class="field-group-head">Add a Photo</legend>
+        <p>You may upload a photo (GIF, JPG, or PNG), which will be displayed as 64&times;64 pixels (if it is not already that size) on this profile page.  Files must be smaller than 1 megabyte to upload.
+        </p>
+        <div class="avatar-wrap">
+        <p class="field file-field avatar">
+          <span class="field-label">Profile Picture</span>
+          <label class="control">
+            <input class="input" name="<%= entity.class.to_s.underscore %>[avatar]" size="30" type="file">
+            <span class="control-label action"><span>Browse</span></span>
+          </label>
+        </p>
+        <span class="action upload-action"><input type="submit" name="save" value="Upload New Photo" /></span>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
