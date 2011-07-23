@@ -1,0 +1,7 @@
+ls -s source dest
+
+rm -f symlink
+
+ln -s /Users/kylejginavan/Workspaces/HQ/enginehq/app/assets/javascripts/desktop/* /users/kylejginavan/Workspaces/HQ/administratorshq/public/javascripts/desktop
+
+ln -s /Users/kylejginavan/Workspaces/HQ/enginehq/app/assets/javascripts/desktop/* /users/kylejginavan/Workspaces/HQ/marketinghq/public/javascripts/desktop

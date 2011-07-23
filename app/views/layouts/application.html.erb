@@ -16,34 +16,42 @@
   <body data-form-authenticity-token="<%= form_authenticity_token %>">
     <div class="app-wrap" id="appWrap">
       <div class="main-header" id="mainHeader">
-        <h1 class="logo"><a href="/clipboard" title="<%= ENV_NAME %>">Agencies<em>HQ</em></a></h1>
+        <h1 class="logo <%= ENV_NAME.downcase %>"><a href="/clipboard" title="<%= ENV_NAME %>"><%= ENV_NAME.gsub("HQ","") %><em>HQ</em></a></h1>
         <ul class="main-account user-identity">
           <li class="link name"><a href="/users/<%= current_user.id %>/overview"><span><%= current_user.person.first_name %></span></a></li>
-          <% if current_user.is_super? %>
           <li class="link organization">
+            <% if current_user.is_super %>
             <a href="/organizations/<%= current_user.organization.id %>/overview">
               <img src="<%= current_user.organization.avatar.url(:thumbnail) %>" alt="<%= current_user.organization.name %>" width="16" height="16" />
               <span><%= current_user.organization.name %></span>
             </a>
-          </li>
-          <% else %>
-          <li class="link organization">
+            <% else %>
             <img src="<%= current_user.organization.avatar.url(:thumbnail) %>" alt="<%= current_user.organization.name %>" width="14" height="14" />
             <span><%= current_user.organization.name %></span>
+            <% end %>
           </li>
-          <% end %>
           <li class="link menu-link">
             <span>Applications</span>
             <ul class="sub-links">
               <li class="sub-link"><a href="/agencieshq">AgenciesHQ</a></li>
               <li class="sub-link"><a href="/marketinghq">MarketingHQ</a></li>
-              <% if current_user.is_super? %>
-              <li class="sub-link"><a href="/singlesignonhq">SingleSignOnHQ</a></li>
+              <% if current_user.is_super %>
+              <li class="sub-link"><a href="/administratorshq">AdministratorsHQ</a></li>
               <% end %>
             </ul>
           </li>
           <li class="link logout"><a href="/<%= destroy_user_session_path %>"><span>Logout</span></a></li>
         </ul>
+        <% if !ENV_TABS.empty? %>
+        <ul class="main-navigation">
+          <% active = controller.resource.nil? ? controller_name.titleize : controller.resource.class.to_s.pluralize %>
+          <% ENV_TABS.each do |tab| %>
+          <li class="link<%= " active" if active == tab %>">
+            <a title="<%= tab %>" href="/<%= tab.downcase %>"><%= tab %></a>
+          </li>
+          <% end %>
+        </ul>
+        <% end %>
       </div>
       <div class="main-content" id="mainContent">
         <h2 class="main-content-head"><%= controller_name.titleize %></h2>

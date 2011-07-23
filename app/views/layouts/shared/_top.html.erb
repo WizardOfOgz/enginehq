@@ -5,6 +5,10 @@
         <%= render :partial => "/shared/search/form", :locals => {:query => @global_query, :screen => screen, :screens => screens, :prefix => "global", :error => false } %>
         <p class="field actions"><!--[if IE]><input type="text" style="display: none;" disabled="disabled" size="1" /><![endif]--><input type="submit" value="Find" name="search_global" class="input" /></p>
       </form>
+      
+      
+      
+      
       <ul class="main-navigation">
         <% active = [controller_name,@global_filter,@context] %>
         <li class="link<%= " active" if active.include?("advisors") %>"><a title="Advisors" href="/advisors">Advisors</a></li>
