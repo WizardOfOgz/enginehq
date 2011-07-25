@@ -30,6 +30,7 @@ namespace :start do
   
   task :sass do
     system "sass --watch app/assets/stylesheets:public/stylesheets"
+    puts "sass --watch #{Gem.loaded_specs['enginehq'].full_gem_path}/app/assets/stylesheets:public/stylesheets"
     system "sass --watch #{Gem.loaded_specs['enginehq'].full_gem_path}/app/assets/stylesheets:public/stylesheets"
   end
 end

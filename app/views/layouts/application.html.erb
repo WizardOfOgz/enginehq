@@ -22,11 +22,11 @@
           <li class="link organization">
             <% if current_user.is_super %>
             <a href="/organizations/<%= current_user.organization.id %>/overview">
-              <img src="<%= current_user.organization.avatar_url %>" alt="<%= current_user.organization.name %>" width="16" height="16" />
+              <img src="<%= "" || current_user.organization.avatar_url %>" alt="<%= "" || current_user.organization.name %>" width="16" height="16" />
               <span><%= current_user.organization.name %></span>
             </a>
             <% else %>
-            <img src="<%= current_user.organization.avatar_url %>" alt="<%= current_user.organization.name %>" width="14" height="14" />
+            <img src="<%= "" || current_user.organization.avatar_url %>" alt="<%= "" || current_user.organization.name %>" width="14" height="14" />
             <span><%= current_user.organization.name %></span>
             <% end %>
           </li>
