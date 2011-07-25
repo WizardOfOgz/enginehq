@@ -22,11 +22,11 @@
           <li class="link organization">
             <% if current_user.is_super %>
             <a href="/organizations/<%= current_user.organization.id %>/overview">
-              <img src="<%= current_user.organization.avatar.url(:thumbnail) %>" alt="<%= current_user.organization.name %>" width="16" height="16" />
+              <img src="<%= current_user.organization.avatar_url %>" alt="<%= current_user.organization.name %>" width="16" height="16" />
               <span><%= current_user.organization.name %></span>
             </a>
             <% else %>
-            <img src="<%= current_user.organization.avatar.url(:thumbnail) %>" alt="<%= current_user.organization.name %>" width="14" height="14" />
+            <img src="<%= current_user.organization.avatar_url %>" alt="<%= current_user.organization.name %>" width="14" height="14" />
             <span><%= current_user.organization.name %></span>
             <% end %>
           </li>
@@ -40,7 +40,7 @@
               <% end %>
             </ul>
           </li>
-          <li class="link logout"><a href="/<%= destroy_user_session_path %>"><span>Logout</span></a></li>
+          <li class="link logout"><a href="/user/sign_out"><span>Logout</span></a></li>
         </ul>
         <% if !ENV_TABS.empty? %>
         <ul class="main-navigation">

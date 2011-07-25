@@ -5,7 +5,7 @@ Devise.setup do |config|
   if Rails.env == "production"
     config.cas_base_url = "http://singlesignonhq.agencieshq.com" 
   else
-   config.cas_base_url = "http://localhost:33000" 
+    config.cas_base_url = "http://localhost:33000" 
   end
   config.cas_login_url = "#{config.cas_base_url}/cas/login"
   config.cas_logout_url = "#{config.cas_base_url}/cas/logout"
