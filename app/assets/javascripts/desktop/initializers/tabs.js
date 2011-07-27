@@ -1,6 +1,8 @@
 (function() {
   $(document).delegate(".content-links a", "click", tab);
   $(document).delegate(".field-group-index a", "click", tab);
+  $(document).delegate(".field-group-navigation a", "click", tab);
+  
   
   function tab(e) { 
     var group = $(this).closest("ul"),
