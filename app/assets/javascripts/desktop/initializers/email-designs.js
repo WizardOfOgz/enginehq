@@ -20,29 +20,34 @@
       theme_advanced_buttons2 : "",
       theme_advanced_buttons3 : "",
       theme_advanced_toolbar_location : "top",
+      fullpage_hide_in_source_view: false,
 			preformatted : true,
 			dialog_type : "inline",
 			inlinepopups_skin : "agencieshq",
-      plugins : "autolink,style,agencieshq,inlinepopups",
+      plugins : "autolink,style,agencieshq,inlinepopups,fullpage",
 			height : "550px",
 			width : "100%",
       setup : function(ed) {
         ed.onInit.add(function(ed, e) {
 	
-					$(".email-template-fields").each(function(index, section) {
-						var id = $("input[name$='[id]']", section).val();
-						tinymce.activeEditor.$("#emailTemplate" + id).bind("click", openTab(index));
+					var fields = $(".template-section-fields").each(function(index, section) {
+						var id = $("input[name$='[name]']", section).val();
+						tinymce.activeEditor.$('*[data-email-section="' + id + '"]').bind("click", openTab(index));
 					});
-					//tinymce.activeEditor.$("body").bind("click", openTab(0)); TODO
+					tinymce.activeEditor.$("body").bind("click", openTab(0)); 
 	
 					// Update the form when save is pressed
 					form.bind({
-			      keyup : updateStyle,
 			      change : updateStyle,
 			      submit : function() {
+			        // Nasty hack to enforce background color
+			        var bgColor = tinymce.activeEditor.$("body").css("backgroundColor");
 			      	htmlEditor.tinymce().save();
-							html = docTemplate.replace("{{background_color}}", pageBackground).replace("{{yield}}", htmlEditor.val())
-							htmlEditor.get(0).value = html;
+			      	var html = htmlEditor.val().replace("<body>", '<body style="background-color:' + bgColor + '">');
+			      	htmlEditor.get(0).value = html;
+						//	html = docTemplate.replace("{{background_color}}", pageBackground).replace("{{yield}}", htmlEditor.val());
+						//	console.log(html);
+						//	htmlEditor.get(0).value = html;
 			      }
 			    });
         });
@@ -50,9 +55,9 @@
     });
   }
 
-	function openTab(index) {
+	function openTab(id) {
 		return function(e) {
-			console.log("todo");
+			$("a[href='#templateSection" + id + "']").trigger("click");
 			return false;
 		}
 	}
@@ -62,23 +67,28 @@
 			return;
 		}
 		
-		$(".email-template-fields").each(function(index, section) {
-			var id = $("input[name$='[id]']", section).val();
+		$(".template-section-fields").each(function(index, section) {
+			var id = $("input[name$='[name]']", section).val();
 			var props = {
 				'background-color': $("input[name$='[background_color]']", section).val(),
 				'padding': $("input[name$='[padding]']", section).val() + "px",
 				'border-color': $("input[name$='[border_color]']", section).val(),
 				'border-width' : getBorderWidth($("select[name$='[border_position]']", section).val(), $("input[name$='[border_width]']", section).val()),
-				'border-style': $("select[name$='[border_style]']", section).val(),
-				'width': $("input[name$='[width]']", section).val() + "px"
+				'border-style': $("select[name$='[border_style]']", section).val()
 			};	
+			
+			var width = $("input[name$='[width]']", section);
+			if (width.length > 0) {
+			  console.log(width);
+			  props.width = width.val() + "px";
+			}
 
 			for (var name in props) {
 				if (index == 0 && name == "background-color") {
-					pageBackground = props[name]
+					pageBackground = props[name];
 					htmlEditor.tinymce().dom.getRoot().style.backgroundColor = pageBackground;
-				} else {
-					htmlEditor.tinymce().dom.setStyle("emailTemplate" + id, name, props[name]);
+				} else if (props[name]){
+					tinymce.activeEditor.$('[data-email-section=' + id + ']').css(name, props[name])
 				}
 			}			
 		});

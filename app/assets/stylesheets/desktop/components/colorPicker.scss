@@ -4,7 +4,7 @@
   span { }
 }
 
-.color-picker { border: 5px solid #7FA3D9; padding: 4px; background: #FFF; position: absolute; padding-right: 29px; display: none; margin: -45px 0 0 38px;
+.color-picker { border: 5px solid #7FA3D9; padding: 4px; background: #FFF; position: absolute; padding-right: 29px; display: none; margin: -45px 0 0 38px; z-index: 1;
   .header {  background-image: url(/images/leftArrow.png); position: absolute; left: -14px; top: 50%; width: 9px; height: 18px; margin-top: -9px; text-indent: -9999px; }
   .brightness-screen { width: 181px; height: 101px; background-color: #000; opacity: 0; }
   .brightness { width: 20px; height: 101px;  background-repeat: repeat-x; border: 1px solid #333; position: absolute; top: 4px; right: 4px; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABlCAYAAACMcInFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAANdJREFUKFMVxE1EA2AAANCvHyVJMpPJyEhEIpGImB0SHbJDOmSH2SEiOkyHDumQDukQERExosN0SIdEOiQmEpFIJBlFibKUUu/wXgghVP0L1apRrepUrwY1qknNalFEUbUqpjbF1a6EOtSpLnWrR73qU78GNKghJZXSsEY0qjGlNa4JTSqjrHKa0rRmNKu85jSvBS1qScta0arWtK4NbWpL2ypoR7sqak/7OtChjnSsE53qTCWd60KXutK1bnSrO93rQY8q60nPetGr3vSuD1X0qS9960e/f/WiMhwclNgJAAAAAElFTkSuQmCC); }
