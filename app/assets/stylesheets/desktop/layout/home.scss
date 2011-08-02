@@ -19,7 +19,7 @@ html { background-color: #F5F5F2; }
 .main-header { background-color: #393D43; padding: 0 50px;  height: 75px; text-align: center; /* IE6 hack */ }
 .main-header .main-header-wrap { width: 900px; margin: 0 auto; text-align: center; /* IE6 hack */ }
 .main-header > .main-header-wrap:after { content: "."; display: block; visibility: hidden; clear: both; }
-.main-header .login-action { float: right; margin-top: 22.5px; margin-right: 10px; }
+.main-header .username-action { float: right; margin-top: 22.5px; margin-right: 10px; }
 
 /* Main Navigation */
 .main-navigation { float: right; height: 75px; margin-right: 25px; }

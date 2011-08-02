@@ -1,11 +1,11 @@
 module Validation
-  mattr_accessor :login, :login_msg, :name, :name_msg, :email_name, :domain_head, :domain_tld, :email, :email_msg,
+  mattr_accessor :username, :username_msg, :name, :name_msg, :email_name, :domain_head, :domain_tld, :email, :email_msg,
   :zipcode, :zipcode_msg, :phone_msg, :taxid_msg, :age_msg, :dollar, :dollar_msg, :percent, :percent_msg,
   :positive_percent, :positive_percent_msg, :middle_initial, :middle_initial_msg, :url, :url_msg,
   :rails_name, :rails_name_msg, :ssn_msg, :positive_dollar, :positive_dollar_msg, :number_msg, :domain, :domain_msg
   
-  self.login                    = /\A\w[\w\.\-_@]+\z/
-  self.login_msg                = "use only letters, numbers, and .-_@ please.".freeze
+  self.username                    = /\A\w[\w\.\-_@]+\z/
+  self.username_msg                = "use only letters, numbers, and .-_@ please.".freeze
   
   self.name                     = /\A[^[:cntrl:]\\<>]*\z/
   self.name_msg                 = "avoid non-printing characters and \\&gt;&lt;/ please.".freeze
