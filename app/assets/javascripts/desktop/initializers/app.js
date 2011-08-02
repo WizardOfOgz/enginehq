@@ -7,7 +7,7 @@ $(document).delegate("a[rel=external]", "click", function openExternalLink(e) {
 $(document).delegate(".action-group", "click", function openActionGroup(e) {
   var action = $(this).toggleClass("active");
   
-  document.one("click", function() {
+  $(document).one("click", function() {
     action.removeClass("active");
   });
 });
