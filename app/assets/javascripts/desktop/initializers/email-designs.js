@@ -11,7 +11,7 @@
     var form = $(".new-template-form");
     var toolbarWrap = $("<div class=\"toolbar-wrap\"></div>").prependTo("#emailDesignPreview");
      
-    htmlEditor = $("textarea").tinymce({
+    htmlEditor = $("textarea[name$='[html]']").tinymce({
       script_url : '/javascripts/desktop/lib/tiny_mce/tiny_mce.js',
       mode : "textareas",
       theme : "advanced",
