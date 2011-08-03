@@ -18,13 +18,6 @@ module Enginehq
       load "#{root}/lib/tasks/start.rake"
     end
 
-    # include in application controller
-    # initializer 'enginehq.app_controller' do |app|
-    #   ActiveSupport.on_load(:action_controller) do
-    #     include MyModule::InstanceMethods
-    #   end
-    # end
-
     initializer "static assets" do |app|
       app.middleware.use ::ActionDispatch::Static, "#{root}/public"
     end
