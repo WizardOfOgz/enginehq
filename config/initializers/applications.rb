@@ -7,7 +7,7 @@ module Applications
     :name => "MarketingHQ", :tabs => ["Campaigns", "Lists", "Newsletters", "Templates"],
     :more => []}
 
-  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "localhost:3002",
+  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "https://administrators.agencieshq.com" : "localhost:3002",
     :name => "AdministratorsHQ", :tabs => ["Organizations", "Users"],
     :more => []}
   
