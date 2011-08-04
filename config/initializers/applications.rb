@@ -1,29 +1,23 @@
 module Applications
-  AGENCIESHQ_URL = "https://agencieshq.com"
-  AGENCIESHQ_NAME = "AgenciesHQ"
-  AGENCIESHQ_TABS = ["Advisors", "Policies", "Contracts", "Licenses"]
-  AGENCIESHQ_MORE = ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Co.", "Programs", "Premium Reports", "Activity Reports"]
+  AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "localhost:3000",
+    :name => "AgenciesHQ", :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
+    :more => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Co.", "Programs", "Premium Reports", "Activity Reports"]}
   
-  ADMINISTRATORSHQ_URL = "https://administratorshq.com"
-  ADMINISTRATORSHQ_NAME = "AdministratorsHQ"
-  ADMINISTRATORSHQ_TABS = ["Organizations", "Users"]
-  ADMINISTRATORSHQ_MORE = []
+  MARKETINGHQ = {:url => Rails.env.production? ? "https://marketinghq.agencieshq.com" : "localhost:3001",
+    :name => "MarketingHQ", :tabs => ["Campaigns", "Lists", "Newsletters", "Templates"],
+    :more => []}
+
+  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "localhost:3002",
+    :name => "AdministratorsHQ", :tabs => ["Organizations", "Users"],
+    :more => []}
   
-  MARKETINGHQ_URL = "https://marketinghq.com"
-  MARKETINGHQ_NAME = "MarketingHQ"
-  MARKETINGHQ_TABS = ["Campaigns", "Lists", "Newsletters", "Templates"]
-  MARKETINGHQ_MORE = []
+  REPORTINGHQ = {:url => Rails.env.production? ? "https://reportinghq.agencieshq.com" : "localhost:3003",
+    :name => "ReportingingHQ", :tabs => [""],
+    :more => []}
   
-  REPORTINGHQ_URL = "https://reportinghq.com"
-  REPORTINGHQ_NAME = "ReportingingHQ"
-  REPORTINGHQ_TABS = [""]
-  REPORTINGHQ_MORE = []
+  APPLICATIONS = [AGENCIESHQ, MARKETINGHQ, ADMINISTRATORSHQ, REPORTINGHQ]
   
   def self.get_application_option(option)
-    eval("Applications::#{Rails.application.class.parent_name.upcase}_#{option}")
-  end
-
-  def self.hello
-    puts "hello"
+    eval("Applications::#{Rails.application.class.parent_name.upcase}[:#{option}]")
   end
 end

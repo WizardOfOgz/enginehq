@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title><%= Applications.hello %> - <%= controller_name.titleize %></title>
+    <title><%= Applications.get_application_option("name") %> - <%= controller_name.titleize %></title>
 <% if !user_signed_in? %>
     <%= include_stylesheets "desktop", :media => "all" %>
   </head>
@@ -16,7 +16,7 @@
   <body data-form-authenticity-token="<%= form_authenticity_token %>">
     <div class="app-wrap" id="appWrap">
       <div class="main-header" id="mainHeader">
-        <h1 class="logo <%= ENV_NAME.downcase %>"><a href="/clipboard" title="<%= get_application_option("NAME") %>"><%= Applications.get_application_option("NAME").gsub("HQ","") %><em>HQ</em></a></h1>
+        <h1 class="logo <%= Applications.get_application_option("name").downcase %>"><a href="/clipboard" title="<%= Applications.get_application_option("name") %>"><%= Applications.get_application_option("name").gsub("HQ","") %><em>HQ</em></a></h1>
         <ul class="main-account user-identity">
           <li class="link name"><a href="/users/<%= current_user.id %>/overview"><span><%= current_user.person.first_name %></span></a></li>
           <li class="link organization">
@@ -33,19 +33,17 @@
           <li class="link menu-link">
             <span>Applications</span>
             <ul class="sub-links">
-              <li class="sub-link"><a href="/agencieshq">AgenciesHQ</a></li>
-              <li class="sub-link"><a href="/marketinghq">MarketingHQ</a></li>
-              <% if current_user.is_super %>
-              <li class="sub-link"><a href="/administratorshq">AdministratorsHQ</a></li>
+              <% Applications::APPLICATIONS.each do |application| %>
+              <li class="sub-link"><a href="http://<%= application[:url] %>/users/service"><%= application[:name] %></a></li>
               <% end %>
             </ul>
           </li>
-          <li class="link logout"><a href="/user/sign_out"><span>Logout</span></a></li>
+          <li class="link logout"><a href="/users/sign_out"><span>Logout</span></a></li>
         </ul>
-        <% if !get_application_option("TABS").empty? %>
+        <% if !Applications.get_application_option("tabs").empty? %>
         <ul class="main-navigation">
           <% active = controller.resource.nil? ? controller_name.titleize : controller.resource.class.to_s.pluralize %>
-          <% ENV_TABS.each do |tab| %>
+          <% Applications.get_application_option("tabs").each do |tab| %>
           <li class="link<%= " active" if active == tab %>">
             <a title="<%= tab %>" href="/<%= tab.downcase %>"><%= tab %></a>
           </li>
@@ -68,7 +66,7 @@
       </div>
       <div class="footer">
         <h2 class="footer-head">More Information</h2>
-        <p class="copyright">&copy; <%= Time.zone.now.year %> <%= get_application_option("NAME") %></p>
+        <p class="copyright">&copy; <%= Time.zone.now.year %> <%= Applications.get_application_option("name") %></p>
         <ul class="footer-links">
           <li class="link"><a href="/about"><span>About</span></a></li>
           <li class="link"><a href="/terms"><span>Terms</span></a></li>
