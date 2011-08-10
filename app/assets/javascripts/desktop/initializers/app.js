@@ -16,13 +16,12 @@ $(document).delegate(".main-account .menu-link", "click", function openAccountMe
   var menu = $(this);
   if (menu.hasClass("open")) {
     menu.removeClass("open");
-    return;
+  } else {
+    menu.addClass("open");
+    $(document).one("click", function() {
+      menu.removeClass("open");
+    });
   }
-  
-  menu.addClass("open");
-  $(document).one("click", function() {
-     menu.removeClass("open");
-   });
 });
 
 $(document).delegate("li.main-navigation-menu .title", "click", function openNavigationMenu(e) {
