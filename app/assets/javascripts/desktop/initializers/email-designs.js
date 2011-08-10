@@ -12,7 +12,7 @@
     var toolbarWrap = $("<div class=\"toolbar-wrap\"></div>").prependTo("#emailDesignPreview");
      
     htmlEditor = $("textarea[name$='[html]']").tinymce({
-      script_url : '/javascripts/desktop/lib/tiny_mce/tiny_mce.js',
+      script_url : '/javascripts/desktop/tiny_mce/tiny_mce.js',
       mode : "textareas",
       theme : "advanced",
 			skin : "agencieshq",
