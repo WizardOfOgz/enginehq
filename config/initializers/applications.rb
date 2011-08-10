@@ -1,17 +1,17 @@
 module Applications
-  AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "localhost:3000",
+  AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "http://localhost:3000",
     :name => "AgenciesHQ", :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
     :more => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Co.", "Programs", "Premium Reports", "Activity Reports"]}
 
-  MARKETINGHQ = {:url => Rails.env.production? ? "http://marketinghq.agencieshq.com" : "localhost:3001",
+  MARKETINGHQ = {:url => Rails.env.production? ? "http://marketinghq.agencieshq.com" : "http://localhost:3001",
     :name => "MarketingHQ", :tabs => ["Campaigns", "Lists", "Newsletters", "Templates"],
     :more => []}
 
-  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "http://administratorshq.agencieshq.com" : "localhost:3002",
+  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "http://administratorshq.agencieshq.com" : "http://localhost:3002",
     :name => "AdministratorsHQ", :tabs => ["Organizations", "Users"],
     :more => []}
   
-  REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "localhost:3003",
+  REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "http://localhost:3003",
     :name => "ReportingingHQ", :tabs => [""],
     :more => []}
 
