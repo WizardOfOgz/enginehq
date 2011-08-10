@@ -1,4 +1,3 @@
-<% saveable = false unless saveable %>
 <div class="records-actions">
   <input type="hidden" name="sort" value="<%= sort %>" />
   <input type="hidden" name="page" value="<%= page %>" />
@@ -22,16 +21,6 @@
     </label>
     <span class="action screen-action"><input type="submit" name="screen_records" value="Screen" /></span>
   </fieldset>
-  <% end %>
-  <% if saveable && false %>
-  <div class="save-list-field">
-    <p class="field text-field">
-      <label>
-        <input placeholder="Name this list" class="input" type="text" name="" value="" />
-      </label>
-    </p>
-    <span class="action save-action"><input type="submit" name="" value="Save" /></span>
-  </div>
   <% end %>
   <div class="action-group">
     <h3 class="action export-action"><span>Export</span></h3>
