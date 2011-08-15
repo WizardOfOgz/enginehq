@@ -1,5 +1,15 @@
 @import "../shared";
 
+.cancel-link {
+  margin: 8px;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  text-transform: capitalize;
+  color: #696966;
+  border-bottom: 1px solid #BDBDBD;
+  font-size: 12px; 
+}
+
 /***************************************
 *  Action Core Style 
 ****************************************/
@@ -61,7 +71,6 @@
 .edit-tags-action,
 .delete-action,
 .disable-action,
-.cancel-action { padding: 2px 0; max-width: 200px; }
 */
 
 .favorite .action,
