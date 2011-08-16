@@ -1,4 +1,8 @@
 module Applications
+  SINGLESIGNONHQ = {:url => Rails.env.production? ? "http://singlesignonhq.agencieshq.com" : "http://localhost:33000",
+    :name => "SingleSignOnHQ", :tabs => [""],
+    :more => []}
+
   AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "http://localhost:3000",
     :name => "AgenciesHQ", :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
     :more => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Co.", "Programs", "Premium Reports", "Activity Reports"]}
@@ -12,7 +16,7 @@ module Applications
     :more => []}
   
   REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "http://localhost:3003",
-    :name => "ReportingingHQ", :tabs => [""],
+    :name => "ReportingHQ", :tabs => [""],
     :more => []}
 
   APPLICATIONS = [AGENCIESHQ, MARKETINGHQ, ADMINISTRATORSHQ, REPORTINGHQ]
