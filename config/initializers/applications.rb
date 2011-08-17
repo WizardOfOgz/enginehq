@@ -1,3 +1,4 @@
+RailsDevelopmentBoost.debug!
 module Applications
   SINGLESIGNONHQ = {:url => Rails.env.production? ? "http://singlesignonhq.agencieshq.com" : "http://localhost:33000",
     :name => "SingleSignOnHQ", :tabs => [""],
