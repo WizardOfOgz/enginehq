@@ -1,4 +1,4 @@
-RailsDevelopmentBoost.debug!
+RailsDevelopmentBoost.debug! if !Rails.env.production?
 module Applications
   #SINGLESIGNONHQ = {:url => Rails.env.production? ? "http://singlesignonhq.agencieshq.com" : "http://localhost:33000",
   SINGLESIGNONHQ = {:url => "http://singlesignonhq.agencieshq.com",
