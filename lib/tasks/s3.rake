@@ -1,14 +1,14 @@
 namespace :app do
   desc "Make all objects in S3 public_read"
   task :s3 => :environment do
-    aws_account = YAML::load_file("/Users/kylejginavan/Workspaces/HQ/marketinghq/config/s3.yml")[Rails.env]
+    aws_account = YAML::load_file("#{Rails.root}/config/s3.yml")[Rails.env]
     AWS::S3::Base.establish_connection!(:access_key_id => aws_account["access_key_id"], :secret_access_key => aws_account["secret_access_key"])
-    bucket = AWS::S3::Bucket.find("#{Applications::MARKETINGHQ[:name].downcase}-#{Rails.env}")
+    bucket = AWS::S3::Bucket.find("#{Applications.get_application_option("name").downcase}-#{Rails.env}")
     bucket.acl.grants << AWS::S3::ACL::Grant.grant(:authenticated_read)
 
     marker = ""
     loop do
-      objects = AWS::S3::Bucket.objects("#{Applications::MARKETINGHQ[:name].downcase}-#{Rails.env}", :marker => marker, :max_keys => 100)
+      objects = AWS::S3::Bucket.objects("#{Applications.get_application_option("name").downcase}-#{Rails.env}", :marker => marker, :max_keys => 100)
       puts "found #{objects.size} objects"
 
       break if objects.size == 0
