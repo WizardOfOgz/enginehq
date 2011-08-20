@@ -3,6 +3,7 @@ namespace :app do
   task :s3 => :environment do
     aws_account = YAML::load_file("#{Rails.root}/config/s3.yml")[Rails.env]
     AWS::S3::Base.establish_connection!(:access_key_id => aws_account["access_key_id"], :secret_access_key => aws_account["secret_access_key"])
+    puts "#{Applications.get_application_option("name").downcase}-#{Rails.env}"
     bucket = AWS::S3::Bucket.find("#{Applications.get_application_option("name").downcase}-#{Rails.env}")
     bucket.acl.grants << AWS::S3::ACL::Grant.grant(:authenticated_read)
 
