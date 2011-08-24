@@ -14,47 +14,12 @@
 /***************************************
 *  Action Core Style 
 ****************************************/
-.action {  margin: 0; padding:  2px 0;  display: inline-block; border: 1px solid #bdbdbd;  border-radius: 7px;  @include background(linear-gradient(top, #FFF, #EEE)); box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px; position: relative; cursor: pointer; line-height: 0; }
-
-.action > * { 
-    border: none; 
-    cursor: pointer;
-    font-size: 12px; 
-    line-height: 24px;
-    font-weight: bold; 
-    text-decoration: none; 
-    color: #696966; 
-    text-transform: uppercase;
-    text-shadow:1px 1px 0 #fff;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    background: transparent url(/images/sprite.png) no-repeat -9999px 0;
-    padding: 0 9px;
-    margin: 0;
-    letter-spacing:0.02em;
-    height: 24px;
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box; 
-    box-sizing: border-box;
+.action {  margin: 0; padding:  2px 0;  display: inline-block; border: 1px solid #bdbdbd;  border-radius: 7px;  @include background(linear-gradient(top, #FFF, #EEE)); box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px; position: relative; cursor: pointer; line-height: 0; 
+  > * { border: none; cursor: pointer; font-size: 12px; line-height: 24px; font-weight: bold; text-decoration: none; color: #696966; text-transform: uppercase; text-shadow:1px 1px 0 #fff; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; background: transparent url(/images/sprite.png) no-repeat -9999px 0; padding: 0 9px; margin: 0; letter-spacing:0.02em; height: 24px; display: inline-block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;   box-sizing: border-box; }
+  > input {  overflow: visible; }
+  &:hover { border: 1px solid #999999; }
+  &:hover > * { color: #000; }
 }
-
-.action > input { 
-    overflow: visible; /* IE7 hack for input width */
-}
-
-.action:hover { border: 1px solid #999999; }
-.action:hover > * { color: #000; }
-
-/* Thick Action Padding 
-.add-action,
-.find-action,
-.save-action,
-.edit-tags-action,
-.delete-action,
-.disable-action,
-*/
 
 .favorite .action,
 .contact .action { padding: 0; }
@@ -73,16 +38,6 @@
 .clone-action > *,
 .select-all-action > * { display: inline; }
 
-
-/* Custom Action Skins 
-.action.add > span { background-image: url(/images/add.png); padding-left: 20px; }
-.csv-action > span { background-image: url(/images/xls.png); padding-left: 20px; }
-.columns-action > span { background: transparent url(/images/swap.png) no-repeat scroll left; padding-left: 20px; }
-.save-action { color: #096A04; }
-.remove-action,
-.remove-action:hover { padding: .3em .5em; }
-.edit-search { position: absolute; top: 10px; right: 10px; }
-*/
 
 /* Action Group Styles */
 .action-group { position: relative; z-index: 100; height: 22px; zoom: 1; 

@@ -1,3 +1,5 @@
+@import "../shared";
+
 /*****************************
 * Core Layout Styles
 *****************************/
@@ -5,26 +7,29 @@ html { background-color: #F5F5F2; }
 .logo { float: left; height: 75px; line-height: 75px; }
 .logo a { color: #FFF; font-size: 32px;  }
 
-.action { background: transparent url(/images/home_blue_grad.png) repeat-x;  height: 30px; line-height: 30px; display: inline-block; padding: 0 10px; border-radius: 7px; }
-.action * { border-bottom: none; color: #FFF; font-family: "Georgia"; border: none; background: none; letter-spacing: .05em; text-shadow: 1px 1px #666; }
+.action { background: transparent url(/images/home_blue_grad.png) repeat-x;  height: 30px; line-height: 30px; display: inline-block; padding: 0 10px; border-radius: 7px; 
+  * { border-bottom: none; color: #FFF; font-family: "Georgia"; border: none; background: none; letter-spacing: .05em; text-shadow: 1px 1px #666; }
+}
 
-.content-summary{ display: block; white-space: nowrap; position: relative; margin: 20px 0; text-align: left; border: 1px solid #FFF; padding: 10px; background-color: #E6E6E1; height: 30px; line-height: 30px; color: #696969; font-style: italic; font-family: Georgia; font-size: 20px; }
-.content-summary .action { position: absolute; right: 10px; top: 10px; font-style: normal; text-indent: 0; font-size: 16px; }
-
+.content-summary{ display: block; white-space: nowrap; position: relative; margin: 20px 0; text-align: left; border: 1px solid #FFF; padding: 10px; background-color: #E6E6E1; height: 30px; line-height: 30px; color: #696969; font-style: italic; font-family: Georgia; font-size: 20px; 
+  .action { position: absolute; right: 10px; top: 10px; font-style: normal; text-indent: 0; font-size: 16px; }
+}
 
 /*****************************
 * Home Layout Styles
 *****************************/
 /* Main Header */
-.main-header { background-color: #393D43; padding: 0 50px;  height: 75px; text-align: center; /* IE6 hack */ }
-.main-header .main-header-wrap { width: 900px; margin: 0 auto; text-align: center; /* IE6 hack */ }
-.main-header > .main-header-wrap:after { content: "."; display: block; visibility: hidden; clear: both; }
-.main-header .username-action { float: right; margin-top: 22.5px; margin-right: 10px; }
+.main-header { background-color: #393D43; padding: 0 50px;  height: 75px; text-align: center; /* IE6 hack */ 
+  .main-header-wrap { width: 900px; margin: 0 auto; text-align: center; /* IE6 hack */ }
+  > .main-header-wrap:after { content: "."; display: block; visibility: hidden; clear: both; }
+  .username-action { float: right; margin-top: 22.5px; margin-right: 10px; }
+}
 
 /* Main Navigation */
-.main-navigation { float: right; height: 75px; margin-right: 25px; }
-.main-navigation .link { float: left; height: 75px; line-height: 75px; margin-left: 1.5em; }
-.main-navigation .link a { color: #fff; text-transform: uppercase; text-shadow: 1px 1px #000; font-size: 15px; }
+.main-navigation { float: right; height: 75px; margin-right: 25px; 
+  .link { float: left; height: 75px; line-height: 75px; margin-left: 1.5em; }
+  .link a { color: #fff; text-transform: uppercase; text-shadow: 1px 1px #000; font-size: 15px; }
+}
 
 /* Main Content */
 .main-content { position: relative; zoom: 1; min-height: 332px; padding: 25px 0 0 0; text-align: center; }
@@ -32,5 +37,7 @@ html { background-color: #F5F5F2; }
 .content-section-head { margin: 25px 0; border-bottom: 2px solid #C6C4C1; padding-bottom: 25px; font-size: 32px; text-align: center;  line-height: 32px; color: #292e34; font-family: Georgia; font-weight: normal; }
 .tag-line { margin: 0 0 10px -50px; width: 1000px; padding-bottom: 25px; text-shadow: 1px 1px #F3F3F3; font-family: Georgia; text-align: center; font-style: italic; color: #6d6d6a; font-size: 20px; }
 
-.content-section { padding-bottom: 100px; }
-.content-section:after { content: "."; display: block; visibility: hidden; clear: both; }
+.content-section { padding-bottom: 100px; 
+  &:after { @include clear-fix; }
+}
+

@@ -4,10 +4,12 @@
 /************************************
 * Common Forms
 ************************************/
-.form { position: relative; }
-.form:after { @include clear-fix; }
+.form { position: relative; 
+  &:after { @include clear-fix; }
+}
 
-form.form, .inline-form { padding: 10px; background-color: $gray-lightest; border: 1px solid #cbcac8;
+form.form { padding: 10px; background-color: $gray-lightest; border: 1px solid #cbcac8; }
+form.form, .inline-form { 
   .field-group, .sub-field-group { border-top: 1px dotted #B7B9BE; margin-top: 0; }
   .field-group-head, .sub-field-group-head {background-color: #F6F6F6; color: #696966;  text-transform: uppercase; font-weight: normal; position: static; }
   .field-group-head .action { margin-left: 1em; }
@@ -28,7 +30,11 @@ div.form {
 /************************************
 *  Form Action Section
 ************************************/
-.inline-form .inline-form-head { visibility: hidden; position: absolute; }
+.inline-form { z-index: 10000; position: fixed; top: 50px; width: 750px; margin: 0 0 0 -375px; border: none; padding: 0; left: 50%;
+  &:before { content: ""; z-index: -1; position: absolute; top: -30px; right: -30px; left: -30px; bottom: -30px;  background-color: rgba(0,0,0,.3);  border-radius: 12px;}
+  &:after { content: ""; z-index: -1; position: absolute; top: -10px; right: -10px; bottom: -10px; left: -10px; background-color: $gray-lightest;  box-shadow: 0 0 5px rgba(0,0,0,0.4); border-radius: 6px;}
+  .inline-form-head { visibility: hidden; position: absolute; }
+}
 
 /************************************
 *  Form Action Section
@@ -86,31 +92,29 @@ ul.field-list, ol.field-list { list-style: none;
   .selected a { position: relative; padding-right: 8px; background: transparent url(/images/sub_tab_arrow.png) no-repeat right 50%; color: #D07C02; }
 }
 
-/*************************************
-* Inline Add Form
-*************************************/
-.overlay { position: fixed; top: 0; right: 0; left: 0; bottom: 0;  background-color: rgba(0,0,0,.2); z-index: 99999;
-	.overlay-wrap { padding: 20px; background-color: #FFF; max-height: 80%; overflow-y: auto; border-radius: 5px;  margin: 5% auto 0; width: 760px; -webkit-box-shadow: 0 0 10px #353535; -moz-box-shadow: 0 0 10px #353535; box-shadow: 0 0 10px #353535; }
-	.overlay-wrap:after { @include clear-fix; }
-}
 
 /**************************************
 *  Validation Errors
 **************************************/
-.content-alerts { margin-bottom: 1em;  padding: 1em; border-style: solid; border-width: 1px 0; }
-.content-alerts .title { font-family: Georgia; font-size: 21px; font-weight: normal; margin: 0; }
-.content-alerts .alerts { margin-top: .5em; }
-.content-alerts .alert { background-color: transparent; background-repeat: no-repeat;  font-size: 12.5px; padding: 0 0 5px 25px; margin: 0; }
-.content-alerts .alert-actions { margin-top: 10px; }
-.content-alerts .alert-actions .cancel-link { float: right; }
+.content-alerts { margin-bottom: 1em;  padding: 1em; border-style: solid; border-width: 1px 0; 
+  .title { font-family: Georgia; font-size: 21px; font-weight: normal; margin: 0; }
+  .alerts { margin-top: .5em; }
+  .alert { background-color: transparent; background-repeat: no-repeat;  font-size: 12.5px; padding: 0 0 5px 25px; margin: 0; }
+  .alert-actions { margin-top: 10px; }
+  .alert-actions .cancel-link { float: right; }
+}
 
-.content-errors {  background: #FDE2E4; border-color: #E3A2A5; color: #BC180F; }
-.content-errors .title { color: #BC180F; }
-.content-errors .error { background-image: url(/images/exclamation.png); color: #BC180F;  }
+.content-errors {  background: #FDE2E4; border-color: #E3A2A5; color: #BC180F; 
+  .title { color: #BC180F; }
+  .error { background-image: url(/images/exclamation.png); color: #BC180F;  }
+}
 
-.content-warnings { background-color: #F7E6A1; border-color: #E1A63C;  color: #AD370D; }
-.content-warnings .title {  color: #AD370D; }
-.content-warnings .warning { background-image: url(/images/warning.png); background-position: 0 -2px;  color: #AD370D; }
+.content-warnings { background-color: #F7E6A1; border-color: #E1A63C;  color: #AD370D; 
+  .title {  color: #AD370D; }
+  .warning { background-image: url(/images/warning.png); background-position: 0 -2px;  color: #AD370D; }
+}
 
-.validation-errors .validation-actions { margin: 1em 0 0; zoom: 1; }
-.validation-errors .validation-actions .delete-action { float: right; }
+.validation-errors {
+ .validation-actions { margin: 1em 0 0; zoom: 1; }
+ .validation-actions .delete-action { float: right; }
+}
