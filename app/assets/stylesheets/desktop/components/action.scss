@@ -1,4 +1,5 @@
 @import "../shared";
+@import "compass/css3/images";
 
 .cancel-link {
   margin: 8px;
@@ -13,25 +14,7 @@
 /***************************************
 *  Action Core Style 
 ****************************************/
-.action { 
-  margin: 0;
-  padding:  2px 0; 
-  display: inline-block;
-  border: 1px solid #bdbdbd; 
-  -moz-border-radius: 7px; 
-  border-radius: 7px; 
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#EEE));
-  background: -moz-linear-gradient(19% 75% 90deg,#FFFFFF, #EEE);
-  filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#EEEEEE'); /* IE6,IE7 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#EEEEEE')";
-  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
-  position: relative;
-  cursor: pointer;
-  line-height: 0;
-  zoom: 1;
-}
+.action {  margin: 0; padding:  2px 0;  display: inline-block; border: 1px solid #bdbdbd;  border-radius: 7px;  @include background(linear-gradient(top, #FFF, #EEE)); box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px; position: relative; cursor: pointer; line-height: 0; }
 
 .action > * { 
     border: none; 

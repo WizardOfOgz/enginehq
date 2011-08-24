@@ -1,4 +1,5 @@
 @import "../shared";
+@import "compass/css3/images";
 
 /************************************
 * Common Forms
@@ -75,13 +76,13 @@ ul.field-list, ol.field-list { list-style: none;
 .field-group-index ~ .selected { display: block; margin-bottom: 1.5em; }
 .field-group-index + .field-group { display: block; }
 .field-group-index { position: relative; width: 20%; float: left; clear: both; margin-bottom: 1.5em; overflow: visible;
-  .index { display: block; margin: 0; border: 1px solid #D6D6D6;  position: relative; background: #FFF; @include linear-gradient(top, #FAFAFA, #E2E3E6); }
+  .index { display: block; margin: 0; border: 1px solid #D6D6D6;  position: relative; background: #FFF; @include background(linear-gradient(top, #FAFAFA, #E2E3E6)); }
   .index + .index { border-top: none; }
   .index:first-child { border-top: 1px solid #C4C4C4;  border-radius: 3px 3px 0 0; }
   .index:last-child { border-radius: 0 0 3px 3px; }
   a { padding: .75em 0; text-indent: 1.5em; color: #494C51; width: 100%; display: block; text-decoration: none; color: #494C51; font-size: 12px; font-weight: normal; border-bottom: none; }
   a:focus { outline: none; }
-  .selected { border: 1px solid #B0B0B0 !important; @include linear-gradient(top, #FAFAFA, #F4F4F5); }
+  .selected { border: 1px solid #B0B0B0 !important; @include background(linear-gradient(top, #FAFAFA, #F4F4F5)); }
   .selected a { position: relative; padding-right: 8px; background: transparent url(/images/sub_tab_arrow.png) no-repeat right 50%; color: #D07C02; }
 }
 
