@@ -57,11 +57,12 @@
         <div class="content-index">
           <a class="action add-action" href="/<%= controller_name %>/new"><span>Add</span></a>
           <a class="find<%= " active" if action_name == "index" %>" href="/<%= controller_name %>"><span>Find</span></a>
-          <%= render :partial => "/layouts/shared/sidebar.html" %>
+          <%= render :partial => "/layouts/shared/recently_viewed.html" %>
         </div>
         <% end %>
         <div class="content-sections" id="contentSections">
-        <%= render :partial => "/#{controller_name}/layout.html" %>
+          <h3 class="content-sections-head"><%= controller.heading %></h3>
+          <%= render :partial => "/#{controller_name}/layout.html" %>
         </div>
       </div>
       <div class="footer">

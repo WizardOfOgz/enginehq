@@ -1,4 +1,4 @@
-<% lasts = current_user.last_viewed(controller_name) %>
+<% lasts = current_user.last_viewed(controller_name.singularize) %>
 <%- if lasts.count > 0 -%>
 <div class="listing last-viewed">
   <h3 class="listing-head"><span>Recently Viewed</span></h3>
