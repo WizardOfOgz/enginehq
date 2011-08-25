@@ -35,7 +35,7 @@
 .open-calendar  { background-position: 3px -106px, top; height: 26px; }
 
 
-.sum-action { background: transparent url(/images/sum.png) no-repeat center 1px; }
+.sum-action {  @include background(url(/images/sum.png) no-repeat center 5px, linear-gradient(top, #EEE, #FFF)); }
 .add-tag-action { background-image: url(/images/tag_16x16.png); background-position: 50% 30%;  }
 
 .clone-action > *,
