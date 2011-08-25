@@ -15,9 +15,12 @@
   	AdvisorsHQ.setSelectedTab(group.get(0).className, this.hash);
 
     if (container.length < 1) {
-      return;
-    }
-  	e.stopPropagation();
-  	e.preventDefault();
+      $.get(this.href, function(html) {
+        $(html).show().insertAfter(group);
+      });
+    } 
+    
+    e.stopPropagation();
+    e.preventDefault();
   }
 }());
