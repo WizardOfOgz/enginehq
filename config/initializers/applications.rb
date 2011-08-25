@@ -9,7 +9,7 @@ module Applications
   AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "http://localhost:3000",
     :name => "AgenciesHQ", 
     :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
-    :mores => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Co.", "Programs", "Premium Reports", "Activity Reports"],
+    :mores => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Companies", "Programs", "Premium Reports", "Activity Reports"],
     :screens => ["Advisors", "Agencies", "Carriers", "Contracts", "Licenses", "Policy Holders", "Policies", "Programs", "Products", 
       "Transfer Companies"]}
 

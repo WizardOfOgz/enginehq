@@ -55,7 +55,7 @@
           <% active = controller.resource.nil? ? controller_name.titleize : controller.resource.class.to_s.pluralize %>
           <% Applications.get_application_option("tabs").each do |tab| %>
           <li class="link<%= " active" if active == tab %>">
-            <a title="<%= tab %>" href="/<%= tab.downcase %>"><%= tab %></a>
+            <a title="<%= tab %>" href="/<%= tab.gsub(" ","").tableize %>"><%= tab %></a>
           </li>
           <% end %>
           <% if mores = Applications.get_application_option("mores") %>
@@ -63,7 +63,7 @@
             <span class="title">More&hellip;</span>
             <ul class="links">
               <% mores.each do |more| %>
-              <li class="link"><a title="<%= more %>" href="/<%= more.downcase %>"><%= more %></a></li>
+              <li class="link"><a title="<%= more %>" href="/<%= more.gsub(" ","").tableize %>"><%= more %></a></li>
               <% end %>
             </ul>
           </li>
