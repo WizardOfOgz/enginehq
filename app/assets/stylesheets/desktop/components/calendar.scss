@@ -1,25 +1,25 @@
 @import "../shared";
 
-.calendar-control { position: absolute; margin-top: 35px; margin-left: -85px; padding: 3px;  border: 5px solid #7FA3D9; z-index: 999999; background-color: #FFF; top: 0; left: -9999px;}
+.calendar-control { position: absolute; margin-top: 35px; margin-left: -85px; padding: 3px;  border: 5px solid #7FA3D9; z-index: 999999; background-color: #FFF; top: 0; left: -9999px;
+  .header { width: 20px; height: 11px; margin: 0; padding: 0; position: absolute; top: -14px; left: 50%; margin-left: -10px; text-indent: -9999px; background: transparent url(/images/upArrow.png) no-repeat; }
+  .date-control.year { display: none; }
+  .date-control .link > a { display: block; width: 8px; height: 11px; }
+  .date-control .link { position: absolute; top: 8px; width: 8px; height: 11px; text-indent: -99999px; z-index: 100; }
+  .date-control .next { right: 8px; background: url(/images/nextArrow.png); }
+  .date-control .previous { left: 8px; background: url(/images/previousArrow.png); }
 
-.calendar-control .header { width: 20px; height: 11px; margin: 0; padding: 0; position: absolute; top: -14px; left: 50%; margin-left: -10px; text-indent: -9999px; background: transparent url(/images/upArrow.png) no-repeat; }
-.calendar-control .date-control.year { display: none; }
-.calendar-control .date-control .link > a { display: block; width: 8px; height: 11px; }
-.calendar-control .date-control .link { position: absolute; top: 8px; width: 8px; height: 11px; text-indent: -99999px; z-index: 100; }
-.calendar-control .date-control .next { right: 8px; background: url(/images/nextArrow.png); }
-.calendar-control .date-control .previous { left: 8px; background: url(/images/previousArrow.png); }
+  .dates { border-spacing: 0; border-collapse: collapse; background-color: #F2F2F3; }
+  th, td { width: 24px; height: 24px; text-align: center; font-size: 12px; line-height: 24px; }
+  .dates .title { padding: .4em 0; line-height: 14px; font-size: 12px;  background-color: #122A3C; color: #CDDDF4; text-transform: uppercase; }
 
-.calendar-control .dates { border-spacing: 0; border-collapse: collapse; background-color: #F2F2F3; }
-.calendar-control th, .calendar-control td { width: 24px; height: 24px; text-align: center; font-size: 12px; line-height: 24px; }
-.calendar-control .dates .title { padding: .4em 0; line-height: 14px; font-size: 12px;  background-color: #122A3C; color: #CDDDF4; text-transform: uppercase; }
+  .weekdays { background-color: #E6EFFE; color: #122A3C; }
+  .weekdays > th { border-bottom: 1px solid #9BB8D1; border-top: 1px solid #28415A; text-align: center; font-weight: normal; }
 
-.calendar-control .weekdays { background-color: #E6EFFE; color: #122A3C; }
-.calendar-control .weekdays > th { border-bottom: 1px solid #9BB8D1; border-top: 1px solid #28415A; text-align: center; font-weight: normal; }
-
-.calendar-control .day { background-color: #FFF; border-top: 1px solid #F2F2F3; cursor: pointer; }
-.calendar-control .today { background-color: #4E6E9D; color: #FFF; }
-.calendar-control .day.selected,
-.calendar-control .day:hover { background-color: $blue-gray; color: #000; }
+  .day { background-color: #FFF; border-top: 1px solid #F2F2F3; cursor: pointer; }
+  .today { background-color: #4E6E9D; color: #FFF; }
+  .day.selected,
+  .day:hover { background-color: $blue-gray; color: #000; }
+}
 
 /* Open Calendar Style */
 .open-calendar > span { background: url(/images/sprite.png) no-repeat 4px -109px; height: 26px; }
