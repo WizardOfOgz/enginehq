@@ -15,8 +15,11 @@
   	AdvisorsHQ.setSelectedTab(group.get(0).className, this.hash);
 
     if (container.length < 1) {
+      container = $("<div></div>").attr("id", this.hash.substr(1)).insertAfter(group);
       $.get(this.href, function(html) {
-        $(html).show().insertAfter(group);
+        html = $(html);
+        container.replaceWith(html);
+        html.show();
       });
     } 
     
