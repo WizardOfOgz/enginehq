@@ -39,9 +39,9 @@ div.form {
 /************************************
 *  Form Action Section
 ************************************/
-.form-actions:after { @include clear-fix; }
-.form-actions:first-child { visibility: hidden; position: absolute; }
 .form-actions { clear: both; padding: .5em; text-align: right; background-color: #f0f0ee; border: 1px solid #cbcac8; border-top-style: dashed; 
+  &:after { @include clear-fix; }
+  &:first-child { visibility: hidden; position: absolute; }
   .action { float: right; margin-left: 5px; }
   .cancel-link, .cancel-action { float: left; }
   .delete-action, .disable-action { float: left; }
@@ -78,10 +78,11 @@ ul.field-list, ol.field-list { list-style: none;
 /************************************
 *  Common Field Group Index
 ************************************/
-.field-group-index ~ .field-group { display: none; position: relative; float: right; width: 78%; clear: none; }
-.field-group-index ~ .selected { display: block; margin-bottom: 1.5em; }
-.field-group-index + .field-group { display: block; }
 .field-group-index { position: relative; width: 20%; float: left; clear: both; margin-bottom: 1.5em; overflow: visible;
+  ~ .field-group { display: none; position: relative; float: right; width: 78%; clear: none; }
+  ~ .selected { display: block; margin-bottom: 1.5em; }
+  + .field-group { display: block; }
+  
   .index { display: block; margin: 0; border: 1px solid #D6D6D6;  position: relative; background: #FFF; @include background(linear-gradient(top, #FAFAFA, #E2E3E6)); }
   .index + .index { border-top: none; }
   .index:first-child { border-top: 1px solid #C4C4C4;  border-radius: 3px 3px 0 0; }
@@ -115,6 +116,7 @@ ul.field-list, ol.field-list { list-style: none;
 }
 
 .validation-errors {
- .validation-actions { margin: 1em 0 0; zoom: 1; }
- .validation-actions .delete-action { float: right; }
+ .validation-actions { margin: 1em 0 0;
+    .delete-action { float: right; }
+  }
 }

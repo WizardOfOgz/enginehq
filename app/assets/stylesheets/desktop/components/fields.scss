@@ -16,9 +16,7 @@
   label { display: block; margin-right: 10px; }
   .value { display: block; margin: 0 10px 0 0; padding: 5px;  min-height: 14px; }
   .input { font-size: 12px; }
-  > .action,  label .action, .action-group .action { display: block; float: left; padding: 0; height: 26px; width: 24px; border-left-style: none !important;  border-radius: 0 3px 3px 0;
-  	span { display: block;  width: 24px; height: 26px; position :relative; top: 3px; margin: 0 auto; text-indent: -9999px; overflow: hidden; }
-  }
+  > .action,  label .action, .action-group .action { display: block; float: left; padding: 0; height: 28px; width: 24px; text-indent: -9999px; overflow: hidden; border-left-style: none !important;  border-radius: 0 3px 3px 0; }
 	.action-group { position: absolute; top: 24px; right: 10px;  }
 }
 

@@ -14,26 +14,29 @@
 /***************************************
 *  Action Core Style 
 ****************************************/
-.action {  margin: 0; padding:  2px 0;  display: inline-block; border: 1px solid #bdbdbd;  border-radius: 7px;  @include background(linear-gradient(top, #FFF, #EEE)); box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px; position: relative; cursor: pointer; line-height: 0; 
-  > * { border: none; cursor: pointer; font-size: 12px; line-height: 24px; font-weight: bold; text-decoration: none; color: #696966; text-transform: uppercase; text-shadow:1px 1px 0 #fff; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; background: transparent url(/images/sprite.png) no-repeat -9999px 0; padding: 0 9px; margin: 0; letter-spacing:0.02em; height: 24px; display: inline-block; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;   box-sizing: border-box; }
-  > input {  overflow: visible; }
-  &:hover { border: 1px solid #999999; }
-  &:hover > * { color: #000; }
+.action { position: relative; z-index: 1; margin: 0; display: inline-block; cursor: pointer; 
+  font-size: 12px; line-height: 30px; font-weight: bold; text-decoration: none; color: #696966; text-transform: uppercase; text-shadow: 1px 1px 0 #fff;
+  text-overflow: ellipsis; white-space: nowrap;  padding: 0 9px; margin: 0; letter-spacing:0.02em; height: 30px; -moz-box-sizing: border-box;   box-sizing: border-box;
+   border: 1px solid #bdbdbd; border-radius: 7px;  @include background(url(/images/sprite.png) no-repeat -9999px 0, linear-gradient(top, #EEE, #FFF)); box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+  &:hover { color: #000; border-color: #999; }
 }
 
-.favorite .action,
-.contact .action { padding: 0; }
-
 /* Action Icons & Colors */
-.email-action > * { padding-left: 30px; background-position: 7px -248px; }
-.add-action > * { padding-left: 20px; background-position: 0 4px; margin-left: 9px; }
-.csv-action > * { padding-left: 15px; background-position: 0 -948px; margin-left: 9px; }
-.pdf-action > * { padding-left: 20px; background-image: url(/images/pdf-icon.png); background-position: left; margin-left: 5px; }
-.columns-action > * { padding-left: 18px; background-position: 0 -894px; margin-left: 9px; }
-.ical-action > * { padding-left: 18px; background-position:  0 -107px; margin-left: 9px; }
-.find-action > * { padding-left: 20px; background-image: url(/images/zoom.png); background-position: left; margin-left: 9px; }
-.sum-action > * { background: transparent url(/images/sum.png) no-repeat center 1px; }
-.add-tag-action > * { background-image: url(/images/tag_16x16.png); background-position: 50% 30%;  }
+.email-action { padding-left: 30px;  background-position: 7px -248px, top; }
+
+.ical-action { padding-left: 27px; margin-left: 9px;  background-position:  7px -105px, top; }
+.csv-action { padding-left: 15px; background-position: 0 -948px, top;  }
+.add-action { padding-left: 29px; background-position: 9px 6px, top; }
+.csv-action { padding-left: 24px; background-position: 8px -946px, top;  }
+
+.pdf-action { padding-left: 20px; background-image: url(/images/pdf-icon.png); background-position: left; }
+.columns-action { padding-left: 18px; background-position: 0 -894px; margin-left: 9px; }
+.find-action { padding-left: 29px;   @include background(url(/images/zoom.png) no-repeat 9px, linear-gradient(top, #EEE, #FFF)); }
+.open-calendar  { background-position: 3px -106px, top; height: 26px; }
+
+
+.sum-action { background: transparent url(/images/sum.png) no-repeat center 1px; }
+.add-tag-action { background-image: url(/images/tag_16x16.png); background-position: 50% 30%;  }
 
 .clone-action > *,
 .select-all-action > * { display: inline; }
