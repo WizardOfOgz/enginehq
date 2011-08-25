@@ -1,8 +1,6 @@
 @import "../shared";
 
 /* Favorite Field Component */
-.favorite { width: 20px; text-indent: 20px;  background: transparent url(/images/star.png) no-repeat 50% 50%; cursor: pointer; }
-.favorite.checked { background-image: url(/images/starFilled.png); }
 
 .field-list { border-bottom: 1px dotted #DADCE0; }
 .field-list .item { border-top: 1px dotted #DADCE0; }
