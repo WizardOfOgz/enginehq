@@ -5,9 +5,35 @@
       downloads = 0,
       tabs = {};
   
+  
+  function process(html) {
+    html = $(html);
+     
+    var winY = $(window).scrollTop()
+      , container =  $("#" + html.attr("id"))
+      , tabs = AdvisorsHQ.getSelectedTabs();
+    
+    html.attr("style", container.attr("style"));
+    container.replaceWith(html);
+    
+    for (group in tabs) {  
+      var className = "." + group.replace(/\s/, ".");
+       var tab = $(className).find("a[href='" + tabs[group] + "']");
+       if (tab.length > 0) {
+         tab.trigger("click");
+       } else {
+         delete tabs[group];
+       }
+    }
+    
+    $(window).scrollTop(winY);
+  }
+  
+  
+  
   /**
   * Proceses the given HTML fragment.
-  */
+  
   function process(html) {
     var insertionObject = jQuery.parseJSON($(html).filter("script").html())[0],
         selector = insertionObject.selector,
@@ -39,7 +65,7 @@
     $(window).scrollTop(winY);
     
     init(html);
-  }
+  }*/
   
   /**
   * Applies all attached initializers using the given context.
@@ -140,6 +166,7 @@
         }
       }
       
+      options = options || {};
       options.method = options.method || "get";
       data = data || "";
       
