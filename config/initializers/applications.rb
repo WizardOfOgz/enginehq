@@ -1,24 +1,35 @@
 module Applications
   #SINGLESIGNONHQ = {:url => Rails.env.production? ? "http://singlesignonhq.agencieshq.com" : "http://localhost:33000",
   SINGLESIGNONHQ = {:url => "http://singlesignonhq.agencieshq.com",
-    :name => "SingleSignOnHQ", :tabs => [""],
-    :more => []}
+    :name => "SingleSignOnHQ", 
+    :tabs => nil,
+    :mores => nil,
+    :screens => nil}
 
   AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "http://localhost:3000",
-    :name => "AgenciesHQ", :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
-    :more => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Co.", "Programs", "Premium Reports", "Activity Reports"]}
+    :name => "AgenciesHQ", 
+    :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
+    :mores => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Co.", "Programs", "Premium Reports", "Activity Reports"],
+    :screens => ["Advisors", "Agencies", "Carriers", "Contracts", "Licenses", "Policy Holders", "Policies", "Programs", "Products", 
+      "Transfer Companies"]}
 
   MARKETINGHQ = {:url => Rails.env.production? ? "http://marketinghq.agencieshq.com" : "http://localhost:3001",
-    :name => "MarketingHQ", :tabs => ["Campaigns", "Lists", "Newsletters", "Templates"],
-    :more => []}
+    :name => "MarketingHQ", 
+    :tabs => ["Campaigns", "Lists", "Newsletters", "Templates"],
+    :mores => nil,
+    :screens => nil}
 
   ADMINISTRATORSHQ = {:url => Rails.env.production? ? "http://administratorshq.agencieshq.com" : "http://localhost:3002",
-    :name => "AdministratorsHQ", :tabs => ["Organizations", "Users"],
-    :more => []}
+    :name => "AdministratorsHQ", 
+    :tabs => ["Organizations", "Users"],
+    :mores => nil,
+    :screens => nil}
   
   REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "http://localhost:3003",
-    :name => "ReportingHQ", :tabs => [""],
-    :more => []}
+    :name => "ReportingHQ", 
+    :tabs => nil,
+    :mores => nil,
+    :screens => nil}
 
   APPLICATIONS = [AGENCIESHQ, MARKETINGHQ, ADMINISTRATORSHQ, REPORTINGHQ]
 

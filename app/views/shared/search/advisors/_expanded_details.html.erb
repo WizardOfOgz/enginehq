@@ -1,5 +1,0 @@
-<% states = entity.addresses.collect{|a| a.state}.uniq %>
-<% managers = entity.users.uniq %>
-<% if !managers.empty? || !states.empty? %>
-<div class="details"><% if !managers.empty? %><dl class="field"><dt class="field-label">Managers</dt><% managers.each do |user| %><dd class="value"><%= user.name %></dd><% end %></dl><% end %><% if !states.empty? %><dl class="field"><dt class="field-label">States</dt><dd class="value"><%= states.join(" - ") %></dd></dl><% end %></div>
-<% end %>

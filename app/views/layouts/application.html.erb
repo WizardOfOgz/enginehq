@@ -40,12 +40,32 @@
           </li>
           <li class="link logout"><a href="/users/sign_out"><span>Logout</span></a></li>
         </ul>
+        <% if screens = Applications.get_application_option("screens") %>
+        <% screen = screens.detect{|s| s == controller_name.titleize} || screens.first %>
+        <form class="global-search" action="/search_global" method="get" autocomplete="off" novalidate="novalidate">
+          <%= render :partial => "/shared/search/form", :locals => {:query => @global_query, :screen => screen, :screens => screens, :prefix => "global", :error => false } %>
+          <p class="field actions">
+            <!--[if IE]><input type="text" style="display: none;" disabled="disabled" size="1" /><![endif]-->
+            <input type="submit" value="Find" name="search_global" class="input" />
+          </p>
+        </form>
+        <% end %>
         <% if !Applications.get_application_option("tabs").empty? %>
         <ul class="main-navigation">
           <% active = controller.resource.nil? ? controller_name.titleize : controller.resource.class.to_s.pluralize %>
           <% Applications.get_application_option("tabs").each do |tab| %>
           <li class="link<%= " active" if active == tab %>">
             <a title="<%= tab %>" href="/<%= tab.downcase %>"><%= tab %></a>
+          </li>
+          <% end %>
+          <% if mores = Applications.get_application_option("mores") %>
+          <li class="main-navigation-menu">
+            <span class="title">More&hellip;</span>
+            <ul class="links">
+              <% mores.each do |more| %>
+              <li class="link"><a title="<%= more %>" href="/<%= more.downcase %>"><%= more %></a></li>
+              <% end %>
+            </ul>
           </li>
           <% end %>
         </ul>
