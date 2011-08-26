@@ -73,7 +73,7 @@
       </div>
       <div class="main-content" id="mainContent">
         <h2 class="main-content-head"><%= controller_name.titleize %></h2>
-        <% if controller.sidebar %>
+        <% if controller.recently_vieweds %>
         <div class="content-index">
           <a class="action add-action" href="/<%= controller_name %>/new">Add</a>
           <a class="find<%= " active" if action_name == "index" %>" href="/<%= controller_name %>"><span>Find</span></a>
@@ -81,7 +81,6 @@
         </div>
         <% end %>
         <div class="content-sections" id="contentSections">
-          <h3 class="content-sections-head"><%= controller.heading %></h3>
           <%= render :partial => "/#{controller_name}/layout.html" %>
         </div>
       </div>
