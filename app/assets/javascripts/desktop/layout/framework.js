@@ -112,7 +112,7 @@
       data.userAgent = navigator.userAgent;
       data.platform = navigator.platform;
       data.location = document.location.href;
-      data.authenticity_token = $("body").data("auth-token");
+      data.authenticity_token = $("body").data("form-authenticity-token");
       
       console.error(data);
      $.ajax({

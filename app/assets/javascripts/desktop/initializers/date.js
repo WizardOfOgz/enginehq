@@ -16,7 +16,7 @@ $(document).delegate(".date-field input", "keyup", function autoFocusDateInput(e
   }
 });
   
-$(document.body).delegate(".date-field span.open-calendar", "click", function openCalendar(e) {
+$(document.body).delegate(".date-field span.calendar-action", "click", function openCalendar(e) {
   var dateField = $(this).closest(".date-field");
   var inputs = dateField.find("input");
   $(this).trigger("openCalendar", [dateField, {
