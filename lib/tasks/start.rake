@@ -33,4 +33,11 @@ namespace :start do
     puts "sass --watch #{Gem.loaded_specs['enginehq'].full_gem_path}/app/assets/stylesheets:public/stylesheets"
     system "sass --watch #{Gem.loaded_specs['enginehq'].full_gem_path}/app/assets/stylesheets:public/stylesheets"
   end
+  
+  task :images do
+    system "rm -rf public/images/common"
+    system "mkdir public/images/common"
+    system "cp -rf #{Gem.loaded_specs['enginehq'].full_gem_path}/public/images/* public/images/common"
+  end
+  
 end

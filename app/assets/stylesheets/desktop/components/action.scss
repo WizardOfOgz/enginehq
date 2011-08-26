@@ -1,5 +1,8 @@
 @import "../shared";
-@import "compass/css3/images";
+@import "/common/sprites/actions/*.png";
+
+$actions-sprite: sprite-map("common/sprites/actions/*.png", $spacing: 20px);
+@mixin action { @include background($actions-sprite -9999px 0, linear-gradient(top, #EEE, #FFF)); }
 
 .cancel-link {
   margin: 8px;
@@ -14,32 +17,38 @@
 /***************************************
 *  Action Core Style 
 ****************************************/
-.action { position: relative; z-index: 1; margin: 0; display: inline-block; cursor: pointer; 
+.action { @include action; position: relative; z-index: 1; margin: 0; display: inline-block; cursor: pointer; 
   font-size: 12px; line-height: 30px; font-weight: bold; text-decoration: none; color: #696966; text-transform: uppercase; text-shadow: 1px 1px 0 #fff;
-  text-overflow: ellipsis; white-space: nowrap;  padding: 0 9px; margin: 0; letter-spacing:0.02em; height: 30px; -moz-box-sizing: border-box;   box-sizing: border-box;
-   border: 1px solid #bdbdbd; border-radius: 7px;  @include background(url(/images/sprite.png) no-repeat -9999px 0, linear-gradient(top, #EEE, #FFF)); box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+   white-space: nowrap;  padding: 0 9px; margin: 0; letter-spacing:0.02em; height: 30px; -moz-box-sizing: border-box;   box-sizing: border-box;
+   border: 1px solid #bdbdbd; border-radius: 7px;  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px; background-repeat: no-repeat;
   &:hover { color: #000; border-color: #999; }
 }
 
-/* Action Icons & Colors */
+.ical-action, 
+.add-action,
+.find-action,
+.sum-action,
+.pdf-action,
+.add-tag-action,
+.csv-action { padding-left: 27px; }
+
+.ical-action { background-position: sprite-position($actions-sprite, ical, 8px, 5px), top;  }
+.csv-action { background-position: sprite-position($actions-sprite, csv, 8px, 5px), top;  }
+.add-action { background-position: sprite-position($actions-sprite, add, 8px, 5px), top; }
+.find-action { background-position: sprite-position($actions-sprite, find, 8px, 5px), top; }
+.pdf-action { background-position: sprite-position($actions-sprite, pdf, 8px, 5px), top; }
+.add-tag-action { background-position: sprite-position($actions-sprite, tag, 8px, 5px), top; } 
+
+.sum-action { background-position: sprite-position($actions-sprite, sum, 3px, 5px), top; }
+.calendar-action { background-position: sprite-position($actions-sprite, ical, 3px, 5px), top; }
+
+/*
 .email-action { padding-left: 30px;  background-position: 7px -248px, top; }
-
-.ical-action { padding-left: 27px; margin-left: 9px;  background-position:  7px -105px, top; }
-.csv-action { padding-left: 15px; background-position: 0 -948px, top;  }
-.add-action { padding-left: 29px; background-position: 9px 6px, top; }
-.csv-action { padding-left: 24px; background-position: 8px -946px, top;  }
-
-.pdf-action { padding-left: 20px; background-image: url(/images/pdf-icon.png); background-position: left; }
-.columns-action { padding-left: 18px; background-position: 0 -894px; margin-left: 9px; }
-.find-action { padding-left: 29px;   @include background(url(/images/zoom.png) no-repeat 9px, linear-gradient(top, #EEE, #FFF)); }
-.open-calendar  { background-position: 3px -106px, top; height: 26px; }
-
-
-.sum-action {  @include background(url(/images/sum.png) no-repeat center 5px, linear-gradient(top, #EEE, #FFF)); }
 .add-tag-action { background-image: url(/images/tag_16x16.png); background-position: 50% 30%;  }
-
-.clone-action > *,
-.select-all-action > * { display: inline; }
+*/
+.clone-action, .select-all-action { 
+  > * { display: inline; }
+}
 
 
 /* Action Group Styles */
