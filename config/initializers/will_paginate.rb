@@ -79,6 +79,10 @@ module ControllerLogic
   def recently_vieweds
     false
   end
+  
+  def add_by_channel
+    false
+  end
 
   def resource
     instance_variable_get("@#{controller_name.singularize}")
