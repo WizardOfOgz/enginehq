@@ -35,9 +35,9 @@ namespace :start do
   end
   
   task :images do
-    system "rm -rf public/images/common"
-    system "mkdir public/images/common"
-    system "cp -rf #{Gem.loaded_specs['enginehq'].full_gem_path}/public/images/* public/images/common"
+    system "rm -rf public/images/sprite"
+    system "mkdir public/images/sprite"
+    system "cp -rf #{Gem.loaded_specs['enginehq'].full_gem_path}/public/images/sprite/* public/images/sprite"
   end
   
 end
