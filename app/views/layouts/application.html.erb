@@ -76,7 +76,7 @@
         <% if controller.recently_vieweds %>
         <div class="content-index">
           <a class="action add-action" href="/<%= controller_name %>/new">Add</a>
-          <a class="find<%= " active" if action_name == "index" %>" href="/<%= controller_name %>"><span>Find</span></a>
+          <a class="find<%= " active" if controller.resource.nil? %>" href="/<%= controller_name %>"><span>Find</span></a>
           <%= render :partial => "/layouts/shared/recently_viewed.html" %>
         </div>
         <% end %>

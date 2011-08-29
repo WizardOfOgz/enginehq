@@ -2,7 +2,7 @@
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
   #cas config
-  # if Rails.env == "production"
+  #if Rails.env == "production"
     config.cas_base_url = "http://singlesignonhq.agencieshq.com" 
   # else
   #   config.cas_base_url = "http://localhost:33000" 

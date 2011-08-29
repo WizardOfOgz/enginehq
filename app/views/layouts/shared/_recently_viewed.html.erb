@@ -1,11 +1,11 @@
-<% lasts = current_user.last_viewed(controller_name.singularize) %>
-<%- if lasts.count > 0 -%>
+<% recently_vieweds = current_user.recently_vieweds(controller.resource.class.to_s.underscore) %>
+<%- if recently_vieweds.count > 0 -%>
 <div class="listing last-viewed">
   <h3 class="listing-head"><span>Recently Viewed</span></h3>
   <ul class="listing-items">
-    <%- lasts.each do |last| -%>
-    <li class="link<%= " selected" if controller.resource == last %>">
-      <a title="<%= last.full_name %>" href="/<%= controller_name %>/<%= last.id %>/overview"><%= last.name %></a>
+    <%- recently_vieweds.each do |recently_viewed| -%>
+    <li class="link<%= " selected" if controller.resource == recently_viewed %>">
+      <a title="<%= recently_viewed.full_name %>" href="/<%= recently_viewed.class.table_name %>/<%= recently_viewed.id %>/overview"><%= recently_viewed.name %></a>
     </li>
     <%- end -%>
   </ul>

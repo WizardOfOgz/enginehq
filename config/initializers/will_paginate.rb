@@ -1,9 +1,8 @@
 class PaginationListLinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
   def to_html
     @options[:outer_window] = 0; links = windowed_links
-
-    links.unshift(page_control("previous", "previous_page", "control previous")) if @collection.previous_page
-    links.push(page_control("next", "next_page", "control next")) if @collection.next_page
+    links.unshift(page_control("previous", "previous_page[#{@collection.current_page - 1}]", "control previous")) if @collection.previous_page
+    links.push(page_control("next", "next_page[#{@collection.current_page + 1}]", "control next")) if @collection.next_page
 
     html = "<ul class=\"page-control\">#{links.join("")}</ul>"
   end
@@ -24,12 +23,12 @@ end
 
 module ControllerLogic
   def list_logic(prefix, sort)
-    instance_variable_set("@#{prefix}_page", params[:page].to_i > 0 ? params[:page].to_i : 1)
-
     if params[:next_page]
-      instance_variable_set("@#{prefix}_page", instance_variable_get("@#{prefix}_page") + 1)
+      instance_variable_set("@#{prefix}_page", params[:next_page].keys.first.to_i)
     elsif params[:previous_page]
-      instance_variable_set("@#{prefix}_page", instance_variable_get("@#{prefix}_page") - 1)
+      instance_variable_set("@#{prefix}_page", params[:previous_page].keys.first.to_i)
+    else
+      instance_variable_set("@#{prefix}_page", params[:page].to_i > 0 ? params[:page].to_i : 1)
     end
 
     instance_variable_set("@#{prefix}_sort", params[:sort] ? params[:sort] : sort)
@@ -62,7 +61,7 @@ module ControllerLogic
       Time.zone = current_user.organization.time_zone
     end
   end
-  
+
   def load(entity_route = nil)
     entity_route = controller_name if entity_route.nil?
     entity_name = entity_route.singularize
@@ -70,7 +69,7 @@ module ControllerLogic
       flash[:error] = "The requested #{entity_name} could not be located."
       return(redirect_to(eval("#{entity_route}_path")))
     end
-    current_user.recently_vieweds(instance_variable_get("@#{entity_name}")) if recently_vieweds
+    current_user.add_recently_viewed(instance_variable_get("@#{entity_name}")) if recently_vieweds
   end
   
   def recently_vieweds
