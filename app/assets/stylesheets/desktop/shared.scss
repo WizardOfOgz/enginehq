@@ -1,5 +1,6 @@
 @import "compass/css3";
 @import "compass/css3/images";
+@import "compass/utilities/sprites";
 
 @mixin clear-fix { content: ".";  visibility: hidden; clear: both; height: 0; display: block; }
 @mixin border-box { box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; -khtml-box-sizing: border-box; }
@@ -27,3 +28,6 @@ $gray-lightest: #F6F6F6;
 
 $blue-gray-lightest: #F5F7FA;
 $blue-gray: #E6F0FD;
+
+
+$icons: sprite-map("common/sprite/*.png", $spacing: 20px);
