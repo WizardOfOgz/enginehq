@@ -61,6 +61,10 @@ module ControllerLogic
       Time.zone = current_user.organization.time_zone
     end
   end
+  
+  def get_entity_route
+    request.fullpath.split('/')[1]
+  end
 
   def load(entity_route = nil)
     entity_route = controller_name if entity_route.nil?
