@@ -26,13 +26,15 @@
 
 .main-navigation-menu { float: left; position: relative; z-index: 100; cursor: pointer; border-right:1px solid #97abc9; 
   .title { display: block; height: 44px; color: $blue-darker; padding: 0 1.2em; @include user-select; font-size: 14.5px; letter-spacing: .01em; text-shadow:1px 1px 0px #D6E0EE;}
-  .links { opacity: 0; visibility: hidden; width: 180px; left: 0; margin-left: -50px; position: absolute; top: 35px;  border-bottom: 5px solid #7FA3D9; z-index: 1000; padding-top: 9px; background: transparent url(/images/upArrow.png) no-repeat scroll 50% top; }
+  .links { opacity: 0; visibility: hidden; width: 180px; left: 0; margin-left: -50px; position: absolute; top: 35px;  border-bottom: 5px solid #7FA3D9; z-index: 1000; padding-top: 9px; 
+    &:before { content: ""; position: absolute; height: 0; width: 0; left: 50%; top: -7px; margin-left: -5px; border: 8px solid #8AAED3; border-color: rgba(0,0,0,0) rgba(0,0,0,0) #7BA4D5; }
+  }
   .link { cursor: pointer; position: relative;  border: 5px solid #7FA3D9; border-width: 0 5px; height: 30px; line-height: 28px; position: relative;  }
   .link > a { padding: 0 .5em; display: block;  margin: 0; border-top: 1px solid #FFF; border-bottom: 1px solid #4E6E9D; font-weight: normal; display: block; font-size: 14px; color: #122A3C; text-decoration: none; zoom: 1; text-shadow: none; }
   .link > a:hover { background-color: #FCFEFF; }
   .link:first-child { border-top-width: 5px; }
-  &.application-cascade .title {  background:url("/images/application-cascade.png") no-repeat scroll center center transparent; }
-  &.application-go .title {  background:url("/images/application-go.png") no-repeat scroll center center transparent; }
+  &.application-cascade .title {   @include background($icons no-repeat); background-position: sprite-position($icons, applicationCascade, 0, 0);}
+  &.application-go .title {   @include background($icons no-repeat); background-position: sprite-position($icons, openApplication, 0, 0); }
 }
 .main-navigation-menu.open .links { opacity: 1; visibility: visible; }
 
@@ -62,10 +64,12 @@
   .organization img { float: left; margin-right: .25em; overflow: hidden; border: none; text-indent: -9999px; }
   
   .menu-link { padding: 0; position: relative; z-index: 100000;
-    span { cursor: pointer; border: 1px solid transparent; border-bottom: none; display: block; color: #858993; padding: 0 .5em 0 2em; background: transparent url(/images/application-go.png) no-repeat .5em 49%; margin-bottom: -1px; z-index: 1; position: relative; }
+    span { cursor: pointer; border: 1px solid transparent; border-bottom: none; display: block; color: #858993; padding: 0 .5em 0 2em; @include background($icons no-repeat); background-position: sprite-position($icons, openApplication, 4px, -2px); ; margin-bottom: -1px; z-index: 1; position: relative; }
   }
 
-  .sub-links { z-index: 10000; visibility: hidden; width: 180px; left: 0; margin-left: -53px; position: absolute; top: 20px;  border-bottom: 5px solid #7FA3D9; z-index: 1000; padding-top: 9px; background: transparent url(/images/upArrow.png) no-repeat scroll 50% top; }
+  .sub-links { z-index: 10000; visibility: hidden; width: 180px; left: 0; margin-left: -53px; position: absolute; top: 20px;  border-bottom: 5px solid #7FA3D9; z-index: 1000; padding-top: 9px; 
+    &:before { content: ""; position: absolute; height: 0; width: 0; left: 50%; top: -7px; margin-left: -5px; border: 8px solid #8AAED3; border-color: rgba(0,0,0,0) rgba(0,0,0,0) #7BA4D5; }
+   }
   .sub-link { cursor: pointer; position: relative;  border: 5px solid #7FA3D9; border-width: 0 5px; height: 30px; line-height: 28px; position: relative;  
     > a { padding: 0 .5em; display: block; background-color: #EDF0F7; margin: 0; border-top: 1px solid #FFF; border-bottom: 1px solid #4E6E9D; font-weight: normal; display: block; font-size: 14px; color: #122A3C; text-decoration: none; zoom: 1; text-shadow: none; }
     > a:hover { background-color: #FCFEFF; }

@@ -1,4 +1,6 @@
 @import "../shared";
+@import "compass/utilities/sprites";
+@import "compass/css3/images";
 
 .record-overview { width: 36%; float: right; position: relative;  background-color: $blue-gray-lightest; 
   & ~ * { width: 62%; float: left; }
@@ -22,7 +24,7 @@ table.overview-listing { border-spacing: 0; border-collapse: collapse; width: 10
   tr.item:first-child > *, li.item:first-child {  border-top: none; }
   li:after { content: "."; display: block; visibility: hidden; clear: both; height: 0; }
   .favorite { width: 11px; overflow: hidden; position: relative; vertical-align: top; padding-right: 0; }
-  .favorite .yes { text-indent: -999px; display: block; width: 11px; height: 11px; background: transparent url(/images/favorite.png) no-repeat; overflow: hidden; }
+  .favorite .yes { text-indent: -999px; display: block; width: 11px; height: 11px; @include background($icons no-repeat); background-position: sprite-position($icons, favorite, 0, 0); overflow: hidden; }
   tr.total:first-child > * { border-top: 1px solid #DADCE0; color: #000; font-weight: bold; }
   .number { text-align: right;  width: 1px; white-space: nowrap; }
   a { word-break: break-word; }
@@ -51,9 +53,9 @@ table.overview-listing { border-spacing: 0; border-collapse: collapse; width: 10
 }
 
 .premium-overview { 
-  .page { position: absolute; top: 4px; width: 22px; height: 20px; text-indent: -99999px; z-index: 99; cursor: pointer; }
-  .next { right: 12px; background: url(/images/sprite.png) 0 -730px; }
-  .previous { left: 12px; background: url(/images/sprite.png) 0 -695px; }
+  .page { position: absolute; top: 4px; display: block; width: 22px; height: 20px; text-indent: -99999px; z-index: 99; cursor: pointer;  @include background($icons no-repeat);  }
+  .next { right: 12px; background-position: sprite-position($icons, sortRightSelected, 0, 0);}
+  .previous { left: 12px; background-position: sprite-position($icons, sortLeftSelected, 0, 0);}
 }
 
 /* Tags Overview */

@@ -45,10 +45,11 @@
   tr:hover td, .highlight td { background-color: #E5E6EC; }
   tr > *:first-child { border-left: none; }
   
-  .sort-control { background: transparent url(/images/sort-down.png) no-repeat; display: inline-block; width: 20px; height: 20px; border: none; margin: 0; overflow: hidden; text-indent: 20px; cursor: pointer; line-height: 0; position: absolute; top: 0; right: 5px;}
-  .sort-control:hover { background-image: url(/images/sort-down-selected.png); }
-  .ascending, .ascending:hover { background-image: url(/images/sort-up-selected.png); }
-  .descending, .descending:hover { background-image: url(/images/sort-down-selected.png); }
+
+  .sort-control { @include background($icons no-repeat); background-position: sprite-position($icons, sortDown, 1px, 0); display: inline-block; width: 20px; height: 20px; border: none; margin: 0; overflow: hidden; text-indent: 20px; cursor: pointer; line-height: 0; position: absolute; top: 0; right: 5px;}
+  .sort-control:hover { background-position: sprite-position($icons, sortDownSelected, 1px, 0); }
+  .ascending, .ascending:hover { background-position: sprite-position($icons, sortUpSelected, 1px, 0); }
+  .descending, .descending:hover { background-position: sprite-position($icons, sortDownSelected, 1px, 0); }
 
   .actions { list-style: none; float: left; margin: 0; padding: 0; }
   .actions li { float: left; }
@@ -86,29 +87,6 @@
     input { color: #FFF; }
   }
 }
-
-/*************************************
-*   Draggable
-*************************************/
-.records .moving { visibility: hidden; border-color: transparent !important; }
-
-/*************************************
-*   Column Filter
-*************************************/
-.column-filter {  position: relative; z-index: 1000; height: 28px; float: right; margin-left: 5px; 
-  .filter-options { position: absolute; top: 25px; right: 0; margin-right: -125px; width: 250px; padding-top: 9px; text-align: left; background: transparent url(/images/upArrow.png) no-repeat scroll 10px top; }
-  .filters { border: 5px solid #7C9FDB; border-top-width: 0; }
-  .filters-head { margin: 0; text-indent: 4px; line-height: 28px; border: 5px solid #7C9FDB; border-bottom: none; background-color: #B4CAEE; font-weight: normal; text-transform: uppercase; text-shadow: 0 1px #7E90B0; }
-
-  .filter { line-height: 12px;  border-top: 1px solid #FFF; border-bottom: 1px solid #8FAAD0; 
-    span { cursor: pointer; display: block; font-size: 12px; background-color: #E8EEF9; padding: .35em .5em .35em 20px; color: #122A3C; font-weight: bold; }
-    span:hover { background-color: #FCFEFF; }
-  }
-  .selected > span { background: #E8EEF9 url(/images/check.png) no-repeat scroll 5px; }
-}
-
-
-
 
 
 
