@@ -87,14 +87,13 @@ ul.field-list, ol.field-list { list-style: none;
   .index + .index { border-top: none; }
   .index:first-child { border-top: 1px solid #C4C4C4;  border-radius: 3px 3px 0 0; }
   .index:last-child { border-radius: 0 0 3px 3px; }
-  a { padding: .75em 0; text-indent: 1.5em; color: #494C51; width: 100%; display: block; text-decoration: none; color: #494C51; font-size: 12px; font-weight: normal; border-bottom: none; }
+  a { position: relative; padding: .75em 0; text-indent: 1.5em; display: block; text-decoration: none; color: #494C51; font-size: 12px; font-weight: normal; border-bottom: none; }
   a:focus { outline: none; }
-  .selected { border: 1px solid #B0B0B0 !important; @include background(linear-gradient(top, #FAFAFA, #F4F4F5)); }
-  .selected a { position: relative; padding-right: 8px; color: #D07C02; }
   
-  .selected {
-    a:before, a:after {  content: ""; border: 5px solid #F7F7F7; border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) #F7F7F7; position: absolute; right: -20px; top: 50%; margin-top: -4px;  }
-    a:before { border-width: 7px; right: -24px; margin-top: -6px; border-left-color: #B0B0B0; }
+  .selected { border: 1px solid #B0B0B0 !important; @include background(linear-gradient(top, #FAFAFA, #F4F4F5)); 
+    a { color: #D07C02; }
+    a:before, a:after {  content: ""; width: 0; height: 0; border: 5px solid #F7F7F7; border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) #F7F7F7; position: absolute; right: -10px; top: 50%; margin-top: -4px;  }
+    a:before { border-width: 7px; margin-top: -6px; border-left-color: #B0B0B0; margin-right: -4px; }
   }
   
 }
