@@ -7,10 +7,9 @@
   
   .header { position: absolute; visibility: hidden;  }
   .date-control.year { display: none; }
-  .date-control .link > a { display: block; width: 8px; height: 11px; }
-  .date-control .link { position: absolute; top: 8px;  text-indent: -99999px; z-index: 100; border: 4px solid rgba(0,0,0,0); }
-  .date-control .next { right: 8px; border-left-color: #B4CFE5; }
-  .date-control .previous { left: 8px; border-right-color: #B4CFE5; }
+  .date-control .link > a { position: absolute; top: 9px; display: block; height: 0; width: 0; text-indent: -99999px; z-index: 100; border: 6px solid rgba(0,0,0,0);}
+  .date-control .next a { right: 8px; border-left-color: #B4CFE5; }
+  .date-control .previous a { left: 8px; border-right-color: #B4CFE5; }
 
   .dates { border-spacing: 0; border-collapse: collapse; background-color: #F2F2F3; }
   th, td { width: 24px; height: 24px; text-align: center; font-size: 12px; line-height: 24px; }
