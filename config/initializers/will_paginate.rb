@@ -80,7 +80,7 @@ module ControllerLogic
     false
   end
   
-  def add_by_channel
+  def add_partial
     false
   end
 

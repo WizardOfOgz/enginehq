@@ -75,24 +75,22 @@
         <h2 class="main-content-head"><%= controller_name.titleize %></h2>
         <% if controller.recently_vieweds %>
         <div class="content-index">
-          <% if controller.add_by_channel %>
+          <% if controller.add_partial %>
           <div class="action-group">
             <h3 class="action add-action">Add</h3>
             <ul class="action-options">
-              <% current_user.organization.channels.each do |channel| %>
-              <li class="option"><a href="/<%= controller_name %>/<%= channel.id %>/new"><%= channel.channel_type %></a></li>
-              <% end %>
+              <%= render "#{controller_name}/add" %>
             </ul>
           </div>
           <% else %>
           <a class="action add-action" href="/<%= controller_name %>/new">Add</a>
           <% end %>
           <a class="find<%= " active" if controller.resource.nil? %>" href="/<%= controller_name %>"><span>Find</span></a>
-          <%= render :partial => "/layouts/shared/recently_viewed.html" %>
+          <%= render "/layouts/shared/recently_viewed.html" %>
         </div>
         <% end %>
         <div class="content-sections" id="contentSections">
-          <%= render :partial => "/#{controller_name}/layout.html" %>
+          <%= render "/#{controller_name}/layout.html" %>
         </div>
       </div>
       <div class="footer">
