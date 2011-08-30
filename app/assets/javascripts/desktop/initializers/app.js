@@ -5,11 +5,24 @@ $(document).delegate("a[rel=external]", "click", function openExternalLink(e) {
 
 // Open the action group when clicked
 $(document).delegate(".action-group", "click", function openActionGroup(e) {
-  var action = $(this).toggleClass("active");
+  /*var action = $(this).toggleClass("active");
   
   $(document).one("click", function() {
     action.removeClass("active");
+  });*/
+  
+  var self = $(this);
+  if (self.hasClass("active")) {
+    self.removeClass("active");
+    return;
+  }
+
+  self.addClass("active");
+  $(document).one("click", function() {
+    self.removeClass("active");
   });
+  
+  
 });
 
 $(document).delegate(".main-account .menu-link", "click", function openAccountMenu(e) {
