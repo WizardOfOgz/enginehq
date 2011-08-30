@@ -11,7 +11,7 @@
      
     var winY = $(window).scrollTop()
       , container =  $("#" + html.attr("id"))
-      , tabs = AdvisorsHQ.getSelectedTabs();
+      , tabs = HQApp.getSelectedTabs();
     
     html.attr("style", container.attr("style"));
     container.replaceWith(html);
@@ -29,54 +29,16 @@
     $(window).scrollTop(winY);
   }
   
-  
-  
-  /**
-  * Proceses the given HTML fragment.
-  
-  function process(html) {
-    var insertionObject = jQuery.parseJSON($(html).filter("script").html())[0],
-        selector = insertionObject.selector,
-        insertion = insertionObject.insertion,
-        box = $("<div style=\"display:none;\"></div>").appendTo(document.body),
-        winY = $(window).scrollTop();
-        
-    // Create a loading container to filter the markup to be appended
-    $(html).appendTo(box);
-    $("script", box).remove();
-    html = box.children();
-    box.remove();
-    
-    $(selector)[insertion](html);
-
-    var tabs = AdvisorsHQ.getSelectedTabs();
-    for (group in tabs) {
-      
-      var className = "." + group.replace(/\s/, ".");
-       var tab = $(className).find("a[href='" + tabs[group] + "']");
-       if (tab.length > 0) {
-         tab.trigger("click");
-       } else {
-         delete tabs[group];
-       }
-    }
-
-    // return window to original y position during AJAX swap
-    $(window).scrollTop(winY);
-    
-    init(html);
-  }*/
-  
   /**
   * Applies all attached initializers using the given context.
   * @param {Node} context The context to use for the initializers.
   */
   function init(context) {
     context = $(context);
-    for (var method in AdvisorsHQ.fn) {
+    for (var method in HQApp.fn) {
       var error = null;
       try {
-        AdvisorsHQ.fn[method].apply(context);
+        HQApp.fn[method].apply(context);
       } catch(e) { 
         error = e;
       }
@@ -125,7 +87,7 @@
   }
   
 
-  var AdvisorsHQ = {
+  var HQApp = {
     
     fn : {},
 
@@ -223,7 +185,7 @@
           return;
         }
         
-        AdvisorsHQ.submitForm($(this).parents("form"), this);
+        HQApp.submitForm($(this).parents("form"), this);
         e.preventDefault();
         return false;
       });
@@ -233,13 +195,13 @@
       form = $(form);
       submit = submit || $("input[type=submit]", form).last(); // if no submit was clicked.. get the 1st in the for
       var params = form.serializeArray().concat([{"name" : $(submit).attr("name"), "value" : $(submit).attr("value")}]);
-      AdvisorsHQ.load(form.attr("action"), $.param(params), {"method" : form.attr("method")}, $(this));
+      HQApp.load(form.attr("action"), $.param(params), {"method" : form.attr("method")}, $(this));
     }
     
   };
   
-  // Make the AdvisorsHQ object globally available
-  window.AdvisorsHQ = AdvisorsHQ;
+  // Make the HQApp object globally available
+  window.HQApp = HQApp;
   
   // Initialize the application
   $(function() {

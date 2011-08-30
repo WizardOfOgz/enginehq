@@ -80,7 +80,7 @@
 
 // When messages on the overview are saved, send the submission with AJAX
 $(document).delegate("form.message-form input[type=submit]", "click", function submitMessageForm(e) {
-  AdvisorsHQ.submitForm($(this).closest("form"), $(this));
+  HQApp.submitForm($(this).closest("form"), $(this));
   e.preventDefault();
   return false;
 });

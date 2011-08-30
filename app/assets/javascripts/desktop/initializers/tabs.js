@@ -23,7 +23,7 @@ $(document).delegate("a", "click", function tab(e) {
   if (!container || container.length < 1) {
     container = $("<div></div>").attr("id", this.hash.substr(1)).css({display: "block"});
     $("#contentSections").append(container);
-    AdvisorsHQ.load(this.href);
+    HQApp.load(this.href);
   } 
   
   group.find("a").each(function() { 
@@ -33,7 +33,7 @@ $(document).delegate("a", "click", function tab(e) {
   container.show();
   
   // save tab selection
-  AdvisorsHQ.setSelectedTab(group.get(0).className, this.hash);
+  HQApp.setSelectedTab(group.get(0).className, this.hash);
   
   
   e.stopPropagation();
