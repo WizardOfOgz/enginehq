@@ -22,7 +22,7 @@ $(function() {
       shadow: false // Whether to render a shadow
     }).spin();
     
-    $(spinner.el).css({ position: "absolute", left: "12px", top: "50%", marginTop: "-1px" })
+    $(spinner.el).css({ position: "absolute", left: "12px", top: "50%" })
     indicator.children().append(spinner.el);
     
   });

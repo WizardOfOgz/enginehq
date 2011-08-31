@@ -14,12 +14,11 @@
 
   .result-title { font-weight:normal; line-height: normal; font-size: 12px; text-indent: 0; position: relative; width: 96%;  overflow: hidden; color: #587aa2; ; margin: 0; padding: .5em 2%;  border-top: 1px solid #FFF; border-bottom: 1px solid #4e6e9d;
     &:focus { z-index: 1; }
-    > a { display: block; font-size: 13px; color: #587aa2; text-decoration: none; zoom: 1; }
+    > a { display: block; font-size: 13px; color: #587aa2; text-decoration: none; }
   }
   
   .details { text-indent: 0; display: none; position: absolute; top: 0; width: 200px; left: 0; margin-left: -215px; padding-right: 9px; 
     &:before { content: ""; position: absolute; height: 0; width: 0; right: -7px; top: 10px; border: 8px solid #7FA3D9; border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) #7FA3D9; }
-    
     
     .field { float: none; display: block; margin: 0; background-color: #7FA3D9; padding: 3px; }
     .field + .field { padding-top: 0;  }
@@ -37,7 +36,7 @@
   .title { margin: 0; }
   .title > a { color: #122A3C; font-size: 12px; text-decoration: none; }
   .result > input { display: none; }
-  .waiting { display: block; font-size: 13px; padding-left: 20px; background-image: url(/images/addingResult.gif); background-repeat: no-repeat; background-position: 5px; }
+  .waiting { display: block; font-size: 13px; padding-left: 20px; }
   .waiting .result-title { font-size: 12px; border: none; color: #587aa2;}
   .error, .error.selected { background-color: #FDE2E4; }
   .error .result-title { color: #BC180F; }
