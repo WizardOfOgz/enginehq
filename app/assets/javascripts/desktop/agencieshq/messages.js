@@ -12,3 +12,8 @@ $(document).delegate(".message-sub-forms .form-title", "click", function expandM
   }
   siblings.removeClass("active");
 });
+
+$(document).delegate("#messagesPagingForm input", "click", function(e) {
+  HQApp.submitForm($(this).closest("form"), $(this));
+  return false;
+});

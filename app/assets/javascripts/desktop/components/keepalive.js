@@ -51,7 +51,7 @@ var KeepAlive = (function() {
     }
      
    if (!banner) {
-     banner = $("<div class=\"inactivity-timer\"><span class=\"message\"></span><a class=\"action continue-action\" href=\"#\"><span>Continue Using AgenciesHQ</span></a></div>").appendTo($(".app-wrap"));
+     banner = $("<div class=\"inactivity-timer\"><span class=\"message\"></span><a class=\"action continue-action\" href=\"#\"><span>Continue Using HQ</span></a></div>").appendTo($(".app-wrap"));
      $("a", banner).click(keepAlive);
    }
    
