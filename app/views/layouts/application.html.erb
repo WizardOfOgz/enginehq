@@ -18,7 +18,9 @@
       <div class="main-header" id="mainHeader">
         <h1 class="logo <%= Applications.get_application_option("name").downcase %>"><a href="/clipboard" title="<%= Applications.get_application_option("name") %>"><%= Applications.get_application_option("name").gsub("HQ","") %><em>HQ</em></a></h1>
         <ul class="main-account user-identity">
-          <li class="link name"><a href="/users/<%= current_user.id %>/overview"><span><%= current_user.person.first_name %></span></a></li>
+          <li class="link name">
+            <a href="/users/<%= current_user.id %>/overview"><span><%= current_user.person.first_name %></span></a>
+          </li>
           <li class="link organization">
             <% if current_user.is_super %>
             <a href="/organizations/<%= current_user.organization.id %>/overview">
@@ -34,11 +36,15 @@
             <span>Applications</span>
             <ul class="sub-links">
               <% Applications::APPLICATIONS.each do |application| %>
-              <li class="sub-link"><a href="<%= application[:url] %>/users/service"><%= application[:name] %></a></li>
+              <li class="sub-link">
+                <a href="<%= application[:url] %>/users/service"><%= application[:name] %></a>
+              </li>
               <% end %>
             </ul>
           </li>
-          <li class="link logout"><a href="/users/sign_out"><span>Logout</span></a></li>
+          <li class="link logout">
+            <a href="/users/sign_out"><span>Logout</span></a>
+          </li>
         </ul>
         <% if screens = Applications.get_application_option("screens") %>
         <% screen = screens.detect{|s| s == controller_name.titleize} || screens.first %>
@@ -63,7 +69,9 @@
             <span class="title">More&hellip;</span>
             <ul class="links">
               <% mores.each do |more| %>
-              <li class="link"><a title="<%= more %>" href="/<%= more.gsub(" ","").tableize %>"><%= more %></a></li>
+              <li class="link">
+                <a title="<%= more %>" href="/<%= more.gsub(" ","").tableize %>"><%= more %></a>
+              </li>
               <% end %>
             </ul>
           </li>
@@ -90,17 +98,25 @@
         </div>
         <% end %>
         <div class="content-sections" id="contentSections">
-          <%= render "/#{controller_name}/layout.html" %>
+          <%= render "/#{controller_path}/layout.html" %>
         </div>
       </div>
       <div class="footer">
         <h2 class="footer-head">More Information</h2>
         <p class="copyright">&copy; <%= Time.zone.now.year %> <%= Applications.get_application_option("name") %></p>
         <ul class="footer-links">
-          <li class="link"><a href="/about"><span>About</span></a></li>
-          <li class="link"><a href="<%= Applications::SINGLESIGNONHQ[:url] %>/terms_license?service=<%= Applications::AGENCIESHQ[:url] %>"><span>Terms</span></a></li>
-          <li class="link"><a href="/privacy"><span>Privacy</span></a></li>
-          <li class="link"><a href="/help"><span>Help</span></a></li>
+          <li class="link">
+            <a href="/about"><span>About</span></a>
+          </li>
+          <li class="link">
+            <a href="<%= Applications::SINGLESIGNONHQ[:url] %>/terms_license?service=<%= Applications::AGENCIESHQ[:url] %>"><span>Terms</span></a>
+          </li>
+          <li class="link">
+            <a href="/privacy"><span>Privacy</span></a>
+          </li>
+          <li class="link">
+            <a href="/help"><span>Help</span></a>
+          </li>
         </ul>
       </div>
       <%= include_javascripts "desktop" %>
