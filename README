@@ -2,6 +2,8 @@ ls -s source dest
 
 rm -f symlink
 
+#DO NOT USE THIS
 ln -s /Users/kylejginavan/Workspaces/HQ/enginehq/app/assets/javascripts/desktop/* /users/kylejginavan/Workspaces/HQ/administratorshq/public/javascripts/desktop
 
+#USE THIS
 ln -s ../../../../enginehq/app/assets/javascripts/desktop/* .
