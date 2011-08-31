@@ -14,9 +14,6 @@ $(document).delegate(".message-sub-forms .form-title", "click", function expandM
 });
 
 $(document).delegate("#messagesPagingForm input", "click", function(e) {
-  var form = $(this).closest("form")
-    , params = form.serializeArray().concat({name: this.name, value: this.value });
-    
-  HQApp.load(form.attr("action"), $.param(params), { method: form.attr("method") });
+  HQApp.submitForm($(this).closest("form"), $(this));
   return false;
 });

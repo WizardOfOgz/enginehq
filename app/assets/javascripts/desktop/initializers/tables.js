@@ -12,7 +12,7 @@ $(document).delegate(".screen-records-field select", "change", function() {
 });
   
 // Ajax
-$(document).delegate(".records input[type=submit], .records-form input[type=submit]", "click", function(e) {
+$(document).delegate(".records input[type=submit], .records-form input[type=submit], .page-control input", "click", function(e) {
   // Let download (csv, pdf) resume as normal
   if ($(this).closest(".action-group").length > 0) {
     return;
