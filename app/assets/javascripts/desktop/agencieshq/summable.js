@@ -1,10 +1,9 @@
 (function($) {
   
-  var regex = new RegExp("^\\$?\\d+(\\.(\\d{1,3}))?$"),
-      methods = {
+  var regex = new RegExp("^\\$?\\d+(\\.(\\d{1,3}))?$")
+    , methods = {
         
-    init : function(options) {
-    },
+    init : function(options) {},
     
     sum : function(negatable) {
       var summables = $(this),
@@ -20,9 +19,9 @@
     },
     
     multiply : function() {
-      var summables = $(this),
-          total = null,
-          value;
+      var summables = $(this)
+        , total = null
+        , value;
             
       summables.each(function(index, summable) {
         value = $(summable).spreadsheet("parseNumber");

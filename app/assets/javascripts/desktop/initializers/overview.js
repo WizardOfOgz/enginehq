@@ -1,8 +1,8 @@
 $(document).delegate(".premium-overview .page", "click", function() {
 
-  var premiumOverview = $(this).closest(".premium-overview"),
-      channels = premiumOverview.find(".channel"),
-      selected = channels.filter(".selected");
+  var premiumOverview = $(this).closest(".premium-overview")
+    , channels = premiumOverview.find(".channel")
+    , selected = channels.filter(".selected");
 
   // next
   if ($(this).hasClass("next") && !channels.last().hasClass("selected")) {

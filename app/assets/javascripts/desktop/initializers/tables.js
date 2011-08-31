@@ -5,8 +5,8 @@ $(document).delegate(".records tr", "click", function() {
   
 // Filters
 $(document).delegate(".screen-records-field select", "change", function() {
-  var submit = $(this).closest(".screen-records-field").find("input[type=submit]"),
-      form = $(this).closest("form");
+  var submit = $(this).closest(".screen-records-field").find("input[type=submit]")
+    , form = $(this).closest("form");
     
   HQApp.load(form.attr("action"), $.param(form.serializeArray().concat([{name : submit.attr("name"), value : submit.val()}])), {"method" : "get"});
 });

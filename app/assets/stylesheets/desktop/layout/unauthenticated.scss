@@ -1,39 +1,43 @@
 @import "../shared";
 
-
 .content-section { position: absolute; width: 100%; top: 50%; margin-top: -170px; }
 
-.unauthenticated-form { width: 500px;  margin: 0 auto 0; background-color: #FFF;  border: 7px solid $gray-light; padding: 10px; }
-.unauthenticated-form .field-group { padding-bottom: 0; margin-top: 0; border-top: none; }
-.unauthenticated-form .field-group-head { background: transparent; }
-.unauthenticated-form .form-actions { background: transparent; border: none; text-align: left; padding: 10px 0; clear: both; }
-.unauthenticated-form .form-actions .action { float: left; margin: 0; }
-.unauthenticated-form .field { float: none; }
+.unauthenticated-form { width: 500px;  margin: 0 auto 0; background-color: #FFF;  border: 7px solid $gray-light; padding: 10px; 
+  .field-group { padding-bottom: 0; margin-top: 0; border-top: none; }
+  .field-group-head { background: transparent; }
+  .form-actions { background: transparent; border: none; text-align: left; padding: 10px 0; clear: both; }
+  .form-actions .action { float: left; margin: 0; }
+  .field { float: none; }
+}
 
 /* Logo Skin */
 .logo { margin: 0 auto; text-align: center; }
-.logo a { color: #000;  font-size: 24px; }
+  a { color: #000;  font-size: 24px; }
+}
 
 .footer-message { width: 500px; text-align: right; margin: 0 auto; padding: 1em 0; font-size: 12px; }
-.footer-message a span { color: #E10000; }
+  a span { color: #E10000; }
+}
 
 .chrome-frame-wrap { text-align: center; margin: 15px 0; position: relative; }
 .chrome-frame-container {  border: 7px solid #B4B2AE; background-color: #FFF; width: 800px; margin: 0 auto; }
-.chrome-frame-message { font-weight: bold; font-size: 14px; margin: 15px; padding: 0; }
-
-.chrome-frame-message { background:none repeat scroll 0 0 #F8E89F;border:1px solid #E9A438;color:#B83107; padding: 10px; }
+.chrome-frame-message { font-weight: bold; font-size: 14px; margin: 15px; padding: 0; background:none repeat scroll 0 0 #F8E89F; border:1px solid #E9A438; color:#B83107; padding: 10px; }
 
 .chrome-frame-container .logo { margin: 10px 0; }
 .chrome-frame { padding: 0; margin: 0 auto; }
 
+.session-form { 
+  > .username .field-group-head { display: none; }
+  .username .message { margin-top: 1em; }
+  .field { margin-bottom: .5em; }
+  .password { width: 68%; float: left; }
+  .forgot-password-action { float: left; width: 30%; margin-top: 22px; }
+}
 
-.session-form > .username .field-group-head { display: none; }
-.session-form .username .message { margin-top: 1em; }
-.session-form .field { margin-bottom: .5em; }
-.session-form .password { width: 68%; float: left; }
-.session-form .forgot-password-action { float: left; width: 30%; margin-top: 22px; }
+.password-reset-form { }
+  .field-group-head { visibility: hidden; position: absolute; }
+  .password { float: none; }
+  .username { margin-bottom: 0; }
+}
 
-.password-reset-form .field-group-head { visibility: hidden; position: absolute; }
-.password-reset-form .password { float: none; }
-.password-reset-form .username { margin-bottom: 0; }
 .form-actions:after { @include clear-fix; }

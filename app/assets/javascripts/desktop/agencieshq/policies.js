@@ -1,6 +1,6 @@
 $(document).delegate("#paidPremiumForm .sum-action", "click", function calculateOverride() {
-  var row = $(this).closest("tr"),
-      totalPremium = $(".paid-premium .input", row).spreadsheet("parseNumber", true);
+  var row = $(this).closest("tr")
+    , totalPremium = $(".paid-premium .input", row).spreadsheet("parseNumber", true);
 
   // update override
   totalOverride =  Math.round(totalPremium * $(".override-percent .input", row).spreadsheet("parseNumber"))/100;    
@@ -20,15 +20,15 @@ $(document).delegate("#paidPremiumForm", "keyup change", function updatePaidPrem
 });
   
 $(document).delegate("#submittedPremiumsFieldsGroup", "keyup", function sumSubmittedPremiums() {
-  var amounts = $("td.premium-amount", this),
-      total = $(".totals .total-submitted-premium", this);
+  var amounts = $("td.premium-amount", this)
+    , total = $(".totals .total-submitted-premium", this);
 
   total.html($(".input", amounts).spreadsheet("sum", true)).spreadsheet("insertCommas").spreadsheet("insertDollar");
 });
   
 $(document).delegate("#fundingFieldsGroup", "keyup", function setupFundingTable() {
-  var amounts = $("td.amount", $(this).parent()),
-      total = $(".input", amounts).spreadsheet("sum");
+  var amounts = $("td.amount", $(this).parent())
+    , total = $(".input", amounts).spreadsheet("sum");
   $("td.total-funding", $(this).closest("fieldset")).html(total).spreadsheet("insertCommas").spreadsheet("insertDollar");
 });
 

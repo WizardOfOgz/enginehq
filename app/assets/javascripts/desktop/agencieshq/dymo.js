@@ -28,9 +28,9 @@ $(function() {
   }
 
   function printLabel(address) {
-    var label = null;
-        printers = dymo.label.framework.getPrinters(),
-        printerName = null;
+    var label = null
+      ,  printers = dymo.label.framework.getPrinters()
+      ,  printerName = null;
         
     
     for (var i = 0; i < printers.length; ++i) {
@@ -51,8 +51,9 @@ $(function() {
   }
   
   $(document.body).delegate(".address-print", "click", function() {
-    var address = $(this).closest(".address");
-    var text = [];
+    var address = $(this).closest(".address")
+      , text = [];
+    
     text = pushText(text, toText($(".content-sections-head").contents(), true), "\n");
     text = pushText(text, toText($(".street .value", address).contents()), "\n");
     text = pushText(text, $(".city .value", address).text(), ", ");
