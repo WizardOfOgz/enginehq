@@ -132,7 +132,7 @@
     a:before, a:after {  content: ""; border: 5px solid #F7F7F7; border-color: #F7F7F7 rgba(0,0,0,0) rgba(0,0,0,0); position: absolute; bottom: -3px; left: 50%; margin-left: -5px;  }
     a:before { border-width: 7px; bottom: -7px; margin-left: -7px; border-top-color: #D6D6D6; }
   }
- .section-alert { position: absolute; top: -8px; right: -6px; width: 23px; height: 21px; z-index: 1; text-indent: 23px; overflow: hidden; background: transparent url(/images/warning.png) no-repeat; }
+ .section-alert { position: absolute; top: -8px; right: -6px; border: none; width: 16px; height: 16px; z-index: 1; text-indent: 23px; overflow: hidden;@include background($icons no-repeat); background-position: sprite-position($icons, warning, 0, 0); }
 }
 
 .content-sections {  padding: 10px 10px 10px 0; font-size: 12px; position: relative; min-height: 500px; background-color: #FFF; 
