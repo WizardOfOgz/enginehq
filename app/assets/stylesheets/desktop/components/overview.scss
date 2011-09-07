@@ -54,7 +54,7 @@ table.overview-listing { border-spacing: 0; border-collapse: collapse; width: 10
 
 .premium-overview { 
   .page { position: absolute; top: 4px; display: block; width: 22px; height: 20px; text-indent: -99999px; z-index: 99; cursor: pointer;  @include background($icons no-repeat);  }
-  .next { right: 12px; background-position: sprite-position($icons, sortRightSelected, 0, 0);}
+  .next { right: 12px; background-position: sprite-position($icons, sortRightSelected, 0, 0); }
   .previous { left: 12px; background-position: sprite-position($icons, sortLeftSelected, 0, 0);}
 }
 

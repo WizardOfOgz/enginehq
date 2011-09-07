@@ -105,19 +105,19 @@ ul.field-list, ol.field-list { list-style: none;
 .content-alerts { margin-bottom: 1em;  padding: 1em; border-style: solid; border-width: 1px 0; 
   .title { font-family: Georgia; font-size: 21px; font-weight: normal; margin: 0; }
   .alerts { margin-top: .5em; }
-  .alert { background-color: transparent; background-repeat: no-repeat;  font-size: 12.5px; padding: 0 0 5px 25px; margin: 0; }
+  .alert { @include background($icons no-repeat); font-size: 12.5px; padding: 0 0 5px 25px; margin: 0; }
   .alert-actions { margin-top: 10px; }
   .alert-actions .cancel-link { float: right; }
 }
 
 .content-errors {  background: #FDE2E4; border-color: #E3A2A5; color: #BC180F; 
   .title { color: #BC180F; }
-  .error { background-image: url(/images/exclamation.png); color: #BC180F;  }
+  .error { background-position: sprite-position($icons, exclamation, 0, 0); color: #BC180F;  }
 }
 
 .content-warnings { background-color: #F7E6A1; border-color: #E1A63C;  color: #AD370D; 
   .title {  color: #AD370D; }
-  .warning { background-image: url(/images/warning.png); background-position: 0 -2px;  color: #AD370D; }
+  .warning { background-position: sprite-position($icons, warning, 0, 0); color: #AD370D; }
 }
 
 .validation-errors {
