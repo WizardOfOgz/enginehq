@@ -26,6 +26,7 @@ td.numerical-value { text-align: right; }
 input, select { font-size: 12px; }
 
 /* Title Style */
-.logo { padding: 0; margin: 0; }
-.logo a { color: #000;  font-weight: normal; font-family: georgia; letter-spacing: 0; font-size: 20px; text-decoration: none; border: none; }
-.logo a  em { font-style: normal; font-family: georgia; color: #FFB200; }
+.logo { padding: 0; margin: 0; 
+  a { color: #000;  font-weight: normal; font-family: georgia; letter-spacing: 0; font-size: 20px; text-decoration: none; border: none; }
+  a em { font-style: normal; font-family: georgia; color: #FFB200; }
+}

@@ -245,24 +245,26 @@
   */
   function update() {
     
-    var month = getMonth(), 
-    year = getYear(),
-    // Retrieve Info for painting date cells
-    startIndex = new Date(year, month, 1).getDay(), 
-    dayCount = getDaysInMonth(month, year),
-    rows, 
-    totalCount = startIndex + dayCount,
-    today = new Date(), 
-    isThisMonth = (today.getMonth() === month && today.getFullYear() === year),
-    index = 0, 
-    stringBuilder = [],
-    // Variables used to build table cell 
-    row = 0, 
-    cell = 0, 
-    cells,
-    newBody,
-    dateValue,
-    selectionInMonth = (parseInt(formInputs.month.value) - 1) == month && parseInt(formInputs.year.value) == year;
+    var month = getMonth() 
+      , year = getYear()
+      
+        // Retrieve Info for painting date cells
+      , startIndex = new Date(year, month, 1).getDay()
+      , dayCount = getDaysInMonth(month, year)
+      , rows
+      , totalCount = startIndex + dayCount
+      , today = new Date()
+      , isThisMonth = (today.getMonth() === month && today.getFullYear() === year)
+      , index = 0
+      , stringBuilder = []
+    
+        // Variables used to build table cell 
+      , row = 0 
+      , cell = 0 
+      , cells
+      , newBody
+      , dateValue
+      , selectionInMonth = (parseInt(formInputs.month.value) - 1) == month && parseInt(formInputs.year.value) == year;
     
  
     // Paint new Headers
@@ -423,10 +425,10 @@
     setFormInputs(inputs);
     position();
 
-    var day = parseInt(inputs.day.value, 10), 
-        month = parseInt(inputs.month.value, 10), 
-        year = parseInt(inputs.year.value, 10), 
-        date = new Date();
+    var day = parseInt(inputs.day.value, 10)
+      , month = parseInt(inputs.month.value, 10) 
+      , year = parseInt(inputs.year.value, 10)
+      , date = new Date();
         
     day = isNaN(day) ? date.getDay() : day;
     month = isNaN(month) ? date.getMonth() : (month - 1);

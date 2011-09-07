@@ -1,6 +1,7 @@
 $(document).delegate(".favorite-field", "click", function checkFavorite(e) {
-  var field = $(this).closest(".field-group"), 
-      input = $("input", this);
+  var field = $(this).closest(".field-group")
+    , input = $("input", this);
+  
   if (input.length > 0) {
     $(".favorite-field", field).removeClass("checked");
     if (input.attr("checked")) {

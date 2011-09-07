@@ -4,10 +4,10 @@ $(function() {
     return;
   }
   
-  var actions = $('<ul class="slide-controls"><li class="prev"><a title="Displays the image of the previous slide." href="#">Previous Slide</a></li><li class="next"><a title="Displays the image of the next slide." href="#">Next Slide</a></li></ul>').appendTo(solutionListing);      
-  var slides = $(".solutions").children(),
-      index = slides.index(slides.filter(".selected")),
-      timer;
+  var actions = $('<ul class="slide-controls"><li class="prev"><a title="Displays the image of the previous slide." href="#">Previous Slide</a></li><li class="next"><a title="Displays the image of the next slide." href="#">Next Slide</a></li></ul>').appendTo(solutionListing)   
+    , slides = $(".solutions").children()
+    , index = slides.index(slides.filter(".selected"))
+    , timer;
         
   function autopage() {
     return setTimeout(
@@ -18,13 +18,11 @@ $(function() {
 
   function page(delta) {
     clearTimeout(timer);
-    var oldSlide = $(slides.get(index));
-    oldSlide.removeClass("selected");
+    var oldSlide = $(slides.get(index)).removeClass("selected");
     index = (index + delta) % slides.length;
     oldSlide.find(".image").hide();
           
-    var slide = $(slides.get(index));
-    slide.addClass("selected");
+    var slide = $(slides.get(index)).addClass("selected");
     slide.find(".image").stop().hide().fadeIn("slow");
       timer = autopage();
       return false;     

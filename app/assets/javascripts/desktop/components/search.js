@@ -52,13 +52,13 @@
         
       if (action.hasClass("action")) { // Action: Open as Overlay
         Overlay.open(href, function () {
-          AdvisorsHQ.load(form.attr("action"), form.serialize(), {"method" : method});
+          HQApp.load(form.attr("action"), form.serialize(), {"method" : method});
           search.attr("disabled", "disabled"); // disabled the search, as the form is reloading
         });
       } else if (href) { // Anchor: Full page reload
         window.location = href;
       } else if (action.attr("type") === "submit") { // Submit: AJAX Load it
-        AdvisorsHQ.load(form.attr("action"), $.param(form.serializeArray().concat([{"name" : action.attr("name"),"value" :  action.attr("value")}])), {
+        HQApp.load(form.attr("action"), $.param(form.serializeArray().concat([{"name" : action.attr("name"),"value" :  action.attr("value")}])), {
           "method" : method
         }, action);
       }
@@ -88,7 +88,19 @@
   
     function refresh(time) {
       results.empty().show();
-      $("<li class=\"item result waiting\"><h4 class=\"result-title\">Searching, please wait&hellip;</h4></li>").appendTo(results);
+      var spinner = new Spinner({
+        lines: 10, // The number of lines to draw
+        length: 3, // The length of each line
+        width: 2, // The line thickness
+        radius: 3, // The radius of the inner circle
+        color: '#16355B', // #rbg or #rrggbb
+        speed: 2, // Rounds per second
+        trail: 100, // Afterglow percentage
+        shadow: false // Whether to render a shadow
+      }).spin();
+      $(spinner.el).css({ position: "absolute", left: "12px", top: "50%" })
+      
+      $(spinner.el).appendTo($("<li class=\"item result waiting\"><h4 class=\"result-title\">Searching, please wait&hellip;</h4></li>").appendTo(results));
       if (ajaxRequest) {
         var temp = ajaxRequest;
         ajaxRequest = null;

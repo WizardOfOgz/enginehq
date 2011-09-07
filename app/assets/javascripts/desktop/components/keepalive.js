@@ -1,11 +1,11 @@
 var KeepAlive = (function() {
   
-  var duration = 7260000, // 2hrs 1min in milliseconds
-      warningPeriod = 60000, // 5min in milliseconds
-      start,
-      timeoutId,
-      API = {},
-      banner = null;
+  var duration = 7260000 // 2hrs 1min in milliseconds
+    , warningPeriod = 60000 // 5min in milliseconds
+    , start
+    , timeoutId
+    , API = {}
+    , banner = null;
   
  // duration = 65000;/* 1min timer for debuggin */
   

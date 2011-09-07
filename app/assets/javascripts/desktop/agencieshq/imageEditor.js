@@ -3,15 +3,15 @@
 * options.crop_width = max width to crop image to
 */
 function ImageEditor(canvas, options) {
-  var context = canvas.getContext("2d"),
-      image = new Image(),
-      canvasOffset,
-      canvasWidth,
-      canvasHeight,
-      imageScale = 1,
-      bbox = {},
-      croppedCanvas = $("<canvas/>").hide().appendTo($(document.body)).get(0),
-      croppedContext = croppedCanvas.getContext("2d");
+  var context = canvas.getContext("2d")
+    ,  image = new Image()
+    ,  canvasOffset
+    ,  canvasWidth
+    ,  canvasHeight
+    ,  imageScale = 1
+    ,  bbox = {}
+    ,  croppedCanvas = $("<canvas/>").hide().appendTo($(document.body)).get(0)
+    ,  croppedContext = croppedCanvas.getContext("2d");
   
   	    
 	function drawPreview() {
@@ -26,19 +26,19 @@ function ImageEditor(canvas, options) {
 	  context.fillStyle = "rgba(0,0,0,.7)";
 	  context.fillRect(0, 0, canvasWidth, canvasHeight);
 	  
-    var box = getDrawingBox(),
-        size = box.size;
-	  context.drawImage(image, box.x/imageScale, box.y/imageScale, size/imageScale, size/imageScale, box.x, box.y, size, size);
-	        
+    var box = getDrawingBox()
+      , size = box.size;
+      
+	  context.drawImage(image, box.x/imageScale, box.y/imageScale, size/imageScale, size/imageScale, box.x, box.y, size, size);    
 	  context.strokeStyle = "rgb(255,255,255)";
 	  context.lineWidth = 2;
 	  context.strokeRect(box.x, box.y, size, size);   
 	}
 	
 	function crop() {
-	  var box = getDrawingBox(),
-	      size = Math.abs(box.size)/imageScale,
-	      cropSize = size > options.crop_width ? options.crop_width : size;
+	  var box = getDrawingBox()
+	    ,  size = Math.abs(box.size)/imageScale
+	    ,  cropSize = size > options.crop_width ? options.crop_width : size;
 	      
 	  croppedContext.restore();
 	  croppedCanvas.width = cropSize;
@@ -67,21 +67,16 @@ function ImageEditor(canvas, options) {
 	* Gets the bounding box to draw relative to the canvas.
 	*/
 	function getDrawingBox() {
-	  var box = {
-	      x0 : bbox.x0 - offset.left,
-	      x1 : bbox.x1 - offset.left,
-	      y0 : bbox.y0 - offset.top,
-	      y1 : bbox.y1 - offset.top
-	    },
-	    x1 = box.x1 < 0 ? 0 : box.x1,
-	    y1 = box.y1 < 0 ? 0 : box.y1;
+	  var box = { x0 : bbox.x0 - offset.left, x1 : bbox.x1 - offset.left, y0 : bbox.y0 - offset.top, y1 : bbox.y1 - offset.top }      
+	    , x1 = box.x1 < 0 ? 0 : box.x1
+	    , y1 = box.y1 < 0 ? 0 : box.y1;
 	  
 	  x1 = x1 > canvasWidth ? canvasWidth : x1;
 	  y1 = y1 > canvasHeight ? canvasHeight : y1;
 	  
-	  var dx = Math.abs((box.x0 - x1)/(box.x0 - box.x1)), 
-	      dy = Math.abs((box.y0 - y1)/(box.y0 - box.y1)),
-	      dxy = Math.max(dx,dy);
+	  var dx = Math.abs((box.x0 - x1)/(box.x0 - box.x1))
+	    ,  dy = Math.abs((box.y0 - y1)/(box.y0 - box.y1))
+	    ,  dxy = Math.max(dx,dy);
 	
 	  size = Math.min(Math.abs(box.x1 - box.x0), Math.abs(box.y1 - box.y0)) * dxy;
 	  
