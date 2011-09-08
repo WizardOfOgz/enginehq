@@ -117,7 +117,7 @@ ul.field-list, ol.field-list { list-style: none;
 
 .content-warnings { background-color: #F7E6A1; border-color: #E1A63C;  color: #AD370D; 
   .title {  color: #AD370D; }
-  .warning { background-position: sprite-position($icons, warning, 0, 0); color: #AD370D; }
+  .warning { background-position: sprite-position($icons, exclamationWarning, 0, 0); color: #AD370D; }
 }
 
 .validation-errors {
