@@ -9,10 +9,10 @@
 </li>
 <% end %>
 <% if @policy_holders && controller_name == "policies" && action_name != "index" %>
-<li class="item">No Results Found <span class="action"><input type="submit" name="add_policy_holder" value="Add" /></span></li>
+<li class="item">No Results Found <input class="action" type="submit" name="add_policy_holder" value="Add" /></li>
 <% end %>
 <% elsif @policy_holders && controller_name == "policies" && action_name != "index" %>
-<li class="item">No Results Found <span class="action"><input type="submit" name="add_policy_holder" value="Add" /></span></li>
+<li class="item">No Results Found <input class="action" type="submit" name="add_policy_holder" value="Add" /></li>
 <% else %>
 <li class="item"><h4 class="result-title">No Results Found</h4></li>
 <% end %>
