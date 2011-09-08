@@ -13,7 +13,7 @@ form.form, .inline-form {
   .field-group, .sub-field-group { border-top: 1px dotted #B7B9BE; margin-top: 0; }
   .field-group-head, .sub-field-group-head {background-color: #F6F6F6; color: #696966;  text-transform: uppercase; font-weight: normal; position: static; }
   .field-group-head .action { margin-left: 1em; }
-  .error input[type=text] { border-color: #E3A2A5; color: #BC180F; background: #FDE2E4; }
+  .error input[type=text], textarea { border-color: #E3A2A5; color: #BC180F; background: #FDE2E4; }
   .error select { color: #BC180F; background-color: #FDE2E4; }
 }
 
