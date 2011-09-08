@@ -3,13 +3,14 @@ $(document).delegate("#paidPremiumForm .sum-action", "click", function calculate
     , totalPremium = $(".paid-premium .input", row).spreadsheet("parseNumber", true);
 
   // update override
-  totalOverride =  Math.round(totalPremium * $(".override-percent .input", row).spreadsheet("parseNumber"))/100;    
+  totalOverride =  Math.round(totalPremium * $(".override-percent .input", row).spreadsheet("parseNumber"))/100;
   $("td.override .input", row).val(isNaN(totalOverride) ? 0 : totalOverride.toFixed(2));
 
+  $(this).trigger("overrideChange");
   return false;
 });
   
-$(document).delegate("#paidPremiumForm", "keyup change", function updatePaidPremiumTotals(e) {
+$(document).delegate("#paidPremiumForm", "keyup change overrideChange", function updatePaidPremiumTotals(e) {
     // premium total
   var total = $(".paid-premium .input", this).spreadsheet("sum", true);
   $(".total-paid-premium .value", this).html(total).spreadsheet("insertCommas").spreadsheet("insertDollar");

@@ -50,12 +50,7 @@
       var action = results.children(".selected").find("a, input[type='submit']"),
           href = action.attr("href");
         
-      if (action.hasClass("action")) { // Action: Open as Overlay
-        Overlay.open(href, function () {
-          HQApp.load(form.attr("action"), form.serialize(), {"method" : method});
-          search.attr("disabled", "disabled"); // disabled the search, as the form is reloading
-        });
-      } else if (href) { // Anchor: Full page reload
+      if (href) { // Anchor: Full page reload
         window.location = href;
       } else if (action.attr("type") === "submit") { // Submit: AJAX Load it
         HQApp.load(form.attr("action"), $.param(form.serializeArray().concat([{"name" : action.attr("name"),"value" :  action.attr("value")}])), {

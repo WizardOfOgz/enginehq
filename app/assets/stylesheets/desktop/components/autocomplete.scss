@@ -9,7 +9,7 @@
     &:first-child { border-top-width: 4px; }
     &.selected { background-color: #f8fbff; }
     
-    .action {  float: right; margin: 1px 3px 0; text-indent: 0; padding: 0; }
+    .action {  float: right; margin: 1px 3px 0; text-indent: 0; height: 26px; line-height: 26px; }
   }
 
   .result-title { font-weight:normal; line-height: normal; font-size: 12px; text-indent: 0; position: relative; width: 96%;  overflow: hidden; color: #587aa2; ; margin: 0; padding: .5em 2%;  border-top: 1px solid #FFF; border-bottom: 1px solid #4e6e9d;
