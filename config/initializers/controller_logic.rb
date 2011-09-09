@@ -66,7 +66,7 @@ module ControllerLogic
   end
 
   def add_path
-    resource ? resource.class.table_name : controller_name
+    controller.resource ? controller.resource.class.table_name : controller_name
   end
 
   def tab
