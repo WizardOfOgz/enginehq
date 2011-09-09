@@ -35,7 +35,8 @@ module ControllerLogic
 
   def set_time_zone
     if current_user
-      Time.zone = current_user.organization.time_zone
+      puts "setting tz.. current user is #{current_user} - if its nil i shouldn't even be here"
+      Time.zone = current_user.try(:organization).try(:time_zone) 
     end
   end
   
