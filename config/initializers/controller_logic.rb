@@ -39,10 +39,6 @@ module ControllerLogic
     end
   end
 
-  def get_entity_route
-    request.fullpath.split('/')[1]
-  end
-
   def load(entity_route = nil)
     entity_route = controller_name if entity_route.nil?
     entity_name = entity_route.singularize
@@ -65,8 +61,8 @@ module ControllerLogic
     nil
   end
 
-  def add_path
-    controller.resource ? controller.resource.class.table_name : controller_name
+  def base_path
+    request.fullpath.split('/')[1]
   end
 
   def tab

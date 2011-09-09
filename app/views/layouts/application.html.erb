@@ -47,7 +47,7 @@
           </li>
         </ul>
         <% if screens = Applications.get_application_option("screens") %>
-        <% screen = screens.detect{|s| s == controller_name.titleize} || screens.first %>
+        <% screen = screens.detect{|s| controller.base_path == s.gsub(" ","").tableize} || screens.first %>
         <form class="global-search" action="/search_global" method="get" autocomplete="off" novalidate="novalidate">
           <%= render :partial => "/shared/search/form", :locals => {:query => @global_query, :screen => screen, :screens => screens, :prefix => "global", :error => false } %>
           <p class="field actions">
@@ -58,9 +58,8 @@
         <% end %>
         <% if !Applications.get_application_option("tabs").empty? %>
         <ul class="main-navigation">
-          <% active = controller.resource.nil? ? controller_name.titleize : controller.resource.class.to_s.pluralize %>
           <% Applications.get_application_option("tabs").each do |tab| %>
-          <li class="link<%= " active" if active == tab %>">
+          <li class="link<%= " active" if controller.base_path == tab.gsub(" ","").tableize %>">
             <a title="<%= tab %>" href="/<%= tab.gsub(" ","").tableize %>"><%= tab %></a>
           </li>
           <% end %>
@@ -87,11 +86,11 @@
           <div class="action-group">
             <h3 class="action add-action">Add</h3>
             <ul class="action-options">
-              <%= render "#{controller.add_path}/add" %>
+              <%= render "/#{controller.base_path}/add" %>
             </ul>
           </div>
           <% else %>
-          <a class="action add-action" href="/<%= controller.add_path %>/new">Add</a>
+          <a class="action add-action" href="/<%= controller.base_path %>/new">Add</a>
           <% end %>
           <a class="find<%= " active" if controller.resource.nil? %>" href="/<%= controller_name %>"><span>Find</span></a>
           <%= render "/layouts/shared/recently_viewed.html" %>
