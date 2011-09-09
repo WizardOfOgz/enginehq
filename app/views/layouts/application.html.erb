@@ -87,11 +87,11 @@
           <div class="action-group">
             <h3 class="action add-action">Add</h3>
             <ul class="action-options">
-              <%= render "#{controller_name}/add" %>
+              <%= render "#{controller.add_path}/add" %>
             </ul>
           </div>
           <% else %>
-          <a class="action add-action" href="/<%= controller_name %>/new">Add</a>
+          <a class="action add-action" href="/<%= controller.add_path %>/new">Add</a>
           <% end %>
           <a class="find<%= " active" if controller.resource.nil? %>" href="/<%= controller_name %>"><span>Find</span></a>
           <%= render "/layouts/shared/recently_viewed.html" %>

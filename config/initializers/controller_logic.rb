@@ -38,7 +38,7 @@ module ControllerLogic
       Time.zone = current_user.organization.time_zone
     end
   end
-  
+
   def get_entity_route
     request.fullpath.split('/')[1]
   end
@@ -52,17 +52,21 @@ module ControllerLogic
     end
     current_user.add_recently_viewed(instance_variable_get("@#{entity_name}")) if recently_vieweds
   end
-  
+
   def recently_vieweds
-    false
-  end
-  
-  def add_partial
-    false
+    nil
   end
 
   def resource
     instance_variable_get("@#{controller_name.singularize}")
+  end
+
+  def add_partial
+    nil
+  end
+
+  def add_path
+    resource ? resource.class.table_name : controller_name
   end
 
   def tab
