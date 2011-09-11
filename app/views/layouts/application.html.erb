@@ -47,7 +47,7 @@
           </li>
         </ul>
         <% if screens = Applications.get_application_option("screens") %>
-        <% screen = screens.detect{|s| controller.base_path == s.gsub(" ","").tableize} || screens.first %>
+        <% screen = screens.detect{|s| controller.base_path == s.gsub(" ","").tableize || @global_screen == s.gsub(" ","").tableize} || screens.first %>
         <form class="global-search" action="/search_global" method="get" autocomplete="off" novalidate="novalidate">
           <%= render :partial => "/shared/search/form", :locals => {:query => @global_query, :screen => screen, :screens => screens, :prefix => "global", :error => false } %>
           <p class="field actions">
