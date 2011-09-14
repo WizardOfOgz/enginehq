@@ -62,8 +62,7 @@ module ControllerLogic
   end
 
   def base_path
-debugger
-    request.fullpath.split('/')[1]
+    request.path_info.split('/')[1]
   end
 
   def tab
