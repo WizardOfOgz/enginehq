@@ -62,6 +62,7 @@ module ControllerLogic
   end
 
   def base_path
+debugger
     request.fullpath.split('/')[1]
   end
 
