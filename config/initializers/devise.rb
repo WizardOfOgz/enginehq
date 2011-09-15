@@ -3,7 +3,7 @@
 Devise.setup do |config|
   #cas config
   #if Rails.env == "production"
-    config.cas_base_url = "http://singlesignonhq.agencieshq.com" 
+    config.cas_base_url = "http://singlesignonhq.dev" 
   # else
   #   config.cas_base_url = "http://localhost:33000" 
   # end
