@@ -17,14 +17,14 @@
   .action-group { float: right; margin-bottom: 10px; }
 }
 
-.screen-records-field {  float: left; margin: 0; padding: 0 3px; height: 28px; line-height: 28px; border: 1px solid #e3e3e3; background-color: #e9ebee; border-radius: 7px;
+.screen-records-field { float: left; margin: 0; padding: 0 3px; height: 28px; line-height: 28px; border: 1px solid #e3e3e3; background-color: #e9ebee; border-radius: 7px;
   > label { float: left; }
   > .action { display: none; }
 }
 
-.records-actions + .records { overflow-x: scroll; overflow-y: visible; border-top: none; margin-bottom: 10px;  border-bottom: 1px solid #EDF0F7;   }
+.records-actions + .records { overflow-y: visible; border-top: none; margin-bottom: 10px;  border-bottom: 1px solid #EDF0F7; }
 
-.records { position: relative; border: 1px solid #EDF0F7;
+.records { position: relative; border: 1px solid #EDF0F7; overflow-x: scroll;
   table { clear: both;  border-spacing: 0; border-collapse: collapse; width: 100%; font-size: 12px; text-align: left; position: relative; }
   th { border: 1px solid #BDD2F0; color: #122A3C; padding: .5em 0;  background-color: $blue-gray; text-indent: .5em; line-height: 22px; white-space: nowrap; cursor: pointer; }
   th label { padding: 0 5px 0 0; }

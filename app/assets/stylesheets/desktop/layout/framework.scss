@@ -176,7 +176,7 @@
 }
 
 .loading-indicator { position: fixed; width: 1000px; top: 0; left: 50%; margin-left: -500px; z-index: 100000; text-align: center; opacity: .8; 
-  > div { position: relative; box-shadow: 0 1px 1px rgba(0,0,0,.15); display: inline; background-color: #F6F6F6; color: #16355B; font-size: 12px; padding: .5em .75em .5em 25px; text-shadow: 0 1px 0 #FFF; font-family: Lucida Sans; text-align: center; border-radius: 0 0 5px 5px; }
+  > div { position: relative; box-shadow: 0 1px 1px rgba(0,0,0,.15); display: inline; background-color: #F6F6F6; color: #16355B; font-size: 12px; padding: .5em .75em .25em 25px; text-shadow: 0 1px 0 #FFF; font-family: Lucida Sans; text-align: center; border-radius: 0 0 5px 5px; }
 }
 
 .hot-value { display:inline; background-color: #F9ECA5; border: 1px solid #DFCF74; border-radius: 3px; color: #B56E09; font-size: 10px; font-weight: normal; padding: 0.25em 0.5em !important; text-transform: uppercase; white-space: nowrap; }
