@@ -3,14 +3,15 @@
 Devise.setup do |config|
   #cas config
   #if Rails.env == "production"
-    #config.cas_base_url = "http://singlesignonhq.agencieshq.com" 
-    config.cas_base_url = "http://singlesignonhq.dev/"
+    config.cas_base_url = "http://singlesignonhq.agencieshq.com" 
   # else
   #   config.cas_base_url = "http://localhost:33000" 
   # end
-  config.cas_login_url = "#{config.cas_base_url}/cas/login"
-  config.cas_logout_url = "#{config.cas_base_url}/cas/logout"
+  config.cas_login_url    = "#{config.cas_base_url}/cas/login"
+  config.cas_logout_url   = "#{config.cas_base_url}/cas/logout"
   config.cas_validate_url = "#{config.cas_base_url}/cas/serviceValidate"
+
+  config.cas_create_user = true
   
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
@@ -34,16 +35,16 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   #
-  config.authentication_keys = [:username]
-  #config.authentication_keys = [:id]
+  #config.authentication_keys = [:username]
+  config.authentication_keys = [:id]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
-  # config.request_keys = []
-
+  #config.request_keys = [:id]
+  #
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
