@@ -1,19 +1,19 @@
 module Applications
-  SINGLESIGNONHQ = {:url => Rails.env.production? ? "http://singlesignonhq.agencieshq.com" : "http://singlesignonhq.dev",
+  SINGLESIGNONHQ = {:url => Rails.env.production? ? "http://singlesignonhq.agencieshq.com" : "http://localhost:3300",
 #  SINGLESIGNONHQ = {:url => "http://singlesignonhq.agencieshq.com",
     :name => "SingleSignOnHQ", 
     :tabs => nil,
     :mores => nil,
     :screens => nil}
 
-  AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "http://agencieshq.dev",
+  AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "http://localhost:3000",
     :name => "AgenciesHQ", 
     :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
     :mores => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Companies", "Programs", "Premium Reports", "Activity Reports"],
     :screens => ["Advisors", "Agencies", "Carriers", "Contracts", "Licenses", "Policy Holders", "Policies", "Programs", "Products", 
       "Transfer Companies"]}
 
-  MARKETINGHQ = {:url => Rails.env.production? ? "http://marketinghq.agencieshq.com" : "http://marketinghq.dev",
+  MARKETINGHQ = {:url => Rails.env.production? ? "http://marketinghq.agencieshq.com" : "http://localhost:3001",
     :name => "MarketingHQ", 
     :tabs => ["Campaigns", "Lists", "Newsletters", "Templates"],
     :mores => nil,

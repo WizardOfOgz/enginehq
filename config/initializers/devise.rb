@@ -2,11 +2,11 @@
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
   #cas config
-  #if Rails.env == "production"
-    config.cas_base_url = "http://singlesignonhq.dev" 
-  # else
-  #   config.cas_base_url = "http://localhost:33000" 
-  # end
+  if Rails.env == "production"
+    config.cas_base_url = "http://singlesignonhq.agencieshq.com" 
+   else
+     config.cas_base_url = "http://localhost:3300" 
+   end
   config.cas_login_url    = "#{config.cas_base_url}/cas/login"
   config.cas_logout_url   = "#{config.cas_base_url}/cas/logout"
   config.cas_validate_url = "#{config.cas_base_url}/cas/serviceValidate"
@@ -43,7 +43,7 @@ Devise.setup do |config|
   # find_for_authentication method and considered in your model lookup. For instance,
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
-  #config.request_keys = [:id]
+  config.request_keys = [:id]
   #
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
