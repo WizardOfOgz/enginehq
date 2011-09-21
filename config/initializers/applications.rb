@@ -1,6 +1,6 @@
 module Applications
-  #SINGLESIGNONHQ = {:url => Rails.env.production? ? "http://singlesignonhq.agencieshq.com" : "http://localhost:33000",
-  SINGLESIGNONHQ = {:url => "http://singlesignonhq.agencieshq.com",
+  SINGLESIGNONHQ = {:url => Rails.env.production? ? "http://singlesignonhq.agencieshq.com" : "http://localhost:3300",
+#  SINGLESIGNONHQ = {:url => "http://singlesignonhq.agencieshq.com",
     :name => "SingleSignOnHQ", 
     :tabs => nil,
     :mores => nil,
@@ -19,13 +19,13 @@ module Applications
     :mores => nil,
     :screens => nil}
 
-  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "http://administratorshq.agencieshq.com" : "http://localhost:3002",
+  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "http://administratorshq.agencieshq.com" : "http://administratorshq.dev",
     :name => "AdministratorsHQ", 
     :tabs => ["Organizations", "Users"],
     :mores => nil,
     :screens => nil}
   
-  REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "http://localhost:3003",
+  REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "http://reportinghq.dev",
     :name => "ReportingHQ", 
     :tabs => nil,
     :mores => nil,
