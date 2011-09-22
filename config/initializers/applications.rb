@@ -19,13 +19,13 @@ module Applications
     :mores => nil,
     :screens => nil}
 
-  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "http://administratorshq.agencieshq.com" : "http://administratorshq.dev",
+  ADMINISTRATORSHQ = {:url => Rails.env.production? ? "http://administratorshq.agencieshq.com" : "http://localhost:3002",
     :name => "AdministratorsHQ", 
     :tabs => ["Organizations", "Users"],
     :mores => nil,
     :screens => nil}
   
-  REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "http://reportinghq.dev",
+  REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "http://localhost:3003",
     :name => "ReportingHQ", 
     :tabs => nil,
     :mores => nil,

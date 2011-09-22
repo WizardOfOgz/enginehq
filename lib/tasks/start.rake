@@ -2,7 +2,7 @@ namespace :start do
   task :all => ["singlesignonhq", "agencieshq", "marketinghq", "administratorshq", "reportinghq", "sphinx", "sass"]
 
   task :singlesignonhq do
-    system "rails s -u --port 33000"
+    system "rails s -u --port 3300"
   end
 
   task :agencieshq do
@@ -27,17 +27,17 @@ namespace :start do
     Rake::Task['ts:run'].invoke
     Rake::Task['ts:dd'].invoke
   end
-  
+
   task :sass do
     system "sass --watch app/assets/stylesheets:public/stylesheets"
     puts "sass --watch #{Gem.loaded_specs['enginehq'].full_gem_path}/app/assets/stylesheets:public/stylesheets"
     system "sass --watch #{Gem.loaded_specs['enginehq'].full_gem_path}/app/assets/stylesheets:public/stylesheets"
   end
-  
+
   task :images do
     system "rm -rf public/images/sprite"
     system "mkdir public/images/sprite"
     system "cp -rf #{Gem.loaded_specs['enginehq'].full_gem_path}/public/images/sprite/* public/images/sprite"
   end
-  
+
 end
