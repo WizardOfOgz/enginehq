@@ -7,7 +7,7 @@
     <% entity.addresses.group_by(&:location).values.flatten.each do |address| %>
     <li class="item address">
       <p class="field type">
-        <span class="field-label">Type</span> <span class="value"><%= format_field(address.location) %></span>
+        <span class="field-label">Type</span> <span class="value"><%= address.location %></span>
       </p>
       <p class="field favorite<%= " checked" if address.is_favorite? %>"<%= raw(" title=\"Preferred Address\"") if address.is_favorite? %>>
         <span class="field-label">Favorite</span> <span class="value"><%= "Yes" if address.is_favorite? %></span>

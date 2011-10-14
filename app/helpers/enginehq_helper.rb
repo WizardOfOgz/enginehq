@@ -62,14 +62,20 @@ module EnginehqHelper
       objects = params.collect {|object_name| instance_variable_get("@#{object_name}") }.compact
     end
   
-    count  = objects.inject(0){|sum, object| sum + object.errors.count }
-    unless count.zero?
+    count = objects.inject(0){|sum, object| sum + object.errors.count }
+    if !count.zero?
       error_messages = []
       objects.each{|object| object.errors.each{ |attr,msg| error_messages << msg if msg != "is invalid"}}
       error_message_string = ""
       error_messages.uniq.each{|em| error_message_string += content_tag(:li,"#{em}", :class => "alert error")}
       contents = content_tag(:ul, raw(error_message_string), :class => "alerts errors")
-      contents = content_tag(:div, raw("<h4 class=\"title\">Please Fix the errors below...</h4>") + contents, :class => "content-alerts content-errors")
+      contents = content_tag(:div, raw("<h4 class=\"title\">#{flash[:error]}  Please Fix the errors below...</h4>") + contents, :class => "content-alerts content-errors")
+    elsif flash[:error]
+      contents = content_tag(:div, raw("<h4 class=\"title\">#{flash[:error]}</h4>") + contents, :class => "content-alerts content-errors")
+    elsif flash[:success]
+      contents = content_tag(:div, raw("<h4 class=\"title\">#{flash[:success]}</h4>") + contents, :class => "content-alerts content-successes")
+    elsif flash[:warning]
+      contents = content_tag(:div, raw("<h4 class=\"title\">#{flash[:warning]}.</h4>") + contents, :class => "content-alerts content-warnings")
     else
       ""
     end

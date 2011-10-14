@@ -46,12 +46,12 @@
 ***************************************/
 .footer { clear: both; background-color: #F6F6F6; border-top: 1px dashed #cbcac8; margin: 10px; height: 35px; letter-spacing: .01em; padding: 20px 20px 0; 
   .footer-head { position: absolute; visibility: hidden; }
-  .copyright { color: #696966; font-size: 12px; float: left; margin: 0; padding: 0; }
+  .copyright { color: $gray; font-size: 12px; float: left; margin: 0; padding: 0; }
 }
 .footer-links { display: block; float: left; 
   .link { display: block; float: left; 
     a {  display: block; height: 14px; line-height: 10px; border-left: 1px solid #858993; border-bottom: none; padding-left: 10px; margin-left: 10px; }
-    span { color: #696966; font-size: 12px;  border-bottom-color: #696966; }
+    span { color: $gray; font-size: 12px;  border-bottom-color: $gray; }
   }
 }
 

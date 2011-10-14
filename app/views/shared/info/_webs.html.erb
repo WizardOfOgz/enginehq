@@ -20,17 +20,13 @@
       <tr class="item">
         <td class="url">
           <span class="value">
-            <% if !web.url.nil? %>
-            <a rel="external" href="<%= web.url %>"><span><%= web.url %></span></a>
-            <% else %>
-            <% format_field(nil) %>
-            <% end %>
+            <% if !web.url.nil? %><a rel="external" href="<%= web.url %>"><span><%= web.url %></span></a><% end %>
           </span>
         </td>
         <td class="location"><span class="value"><%= web.location %></span></td>
         <% if entity.is_a?(Carrier) %>
-        <td class="username"><span class="value"><%= format_field(web.username) %></span></td>
-        <td class="password"><span class="value"><%= format_field(web.password) %></span></td>
+        <td class="username"><span class="value"><%= web.username %></span></td>
+        <td class="password"><span class="value"><%= web.password %></span></td>
         <% end %>
       </tr>
       <% end %>

@@ -17,7 +17,7 @@
       <tr class="item">
         <td class="number"><span class="value"><%= phone.display_number %></span></td>
         <td class="number"><span class="value"><%= phone.extension %></span></td>
-        <td class="type"><span class="value"><%= format_field(phone.location) %></span></td>
+        <td class="type"><span class="value"><%= phone.location %></span></td>
         <td class="favorite<%= " checked" if phone.is_favorite? %>"<%= raw(" title=\"Preferred Phone\"") if phone.is_favorite? %>><%= "Yes" if phone.is_favorite? %></td>
       </tr>
       <% end %>

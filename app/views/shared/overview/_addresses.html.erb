@@ -12,8 +12,8 @@
         <% addresses.each do |address| %>
         <dd class="value<%= " favorite" if address.is_favorite %>">
           <address>
-            <span><%= format_field(address.line_one) %></span><br/>
-            <% if address.line_two %><span><%= format_field(address.line_two) %></span><br/><% end %>
+            <span><%= address.line_one %></span><br/>
+            <% if address.line_two %><span><%= address.line_two %></span><br/><% end %>
             <span><% if address.city.present? %><%= address.city %>,&nbsp;<% end %><%= address.state %>&nbsp;<%= address.display_zipcode %></span>
           </address>
         </dd>

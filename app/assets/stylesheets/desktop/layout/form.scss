@@ -11,7 +11,7 @@
 form.form { padding: 10px; background-color: $gray-lightest; border: 1px solid #cbcac8; }
 form.form, .inline-form { 
   .field-group, .sub-field-group { border-top: 1px dotted #B7B9BE; margin-top: 0; }
-  .field-group-head, .sub-field-group-head {background-color: #F6F6F6; color: #696966;  text-transform: uppercase; font-weight: normal; position: static; }
+  .field-group-head, .sub-field-group-head {background-color: #F6F6F6; color: $gray;  text-transform: uppercase; font-weight: normal; position: static; }
   .field-group-head .action { margin-left: 1em; }
   .error {
     input[type=text], textarea { border-color: #E3A2A5; color: #BC180F; background: #FDE2E4; }
@@ -124,8 +124,14 @@ ul.field-list, ol.field-list { list-style: none;
   .warning { background-position: sprite-position($icons, exclamationWarning, 0, 0); color: #AD370D; }
 }
 
+.content-successes { background-color: #E6F8DD; border-color: #478D3E;  color: #63B558;
+  .title {  color: #63B558; }
+  .success { background-position: sprite-position($icons, exclamationWarning, 0, 0); color: #63B558; }
+}
+
 .validation-errors {
  .validation-actions { margin: 1em 0 0;
     .delete-action { float: right; }
   }
 }
+

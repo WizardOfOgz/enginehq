@@ -9,25 +9,23 @@
 
 $app-background: #E8E8E3;
 
-$blue-dark: #587AA2;
-$blue-darker: #2B4263;
 $blue-darkest: #35383E;
-
+$blue-darker: #2B4263;
+$blue-dark: #587AA2;
+$blue: transparent;
 $blue-lightest: #EDF4FE;
 $blue-lighter: #BECDE3;
 $blue-light: #8DADD6;
 
-
-$gray-darkest:transparent;
-$gray-darker:transparent;
-$gray-dark:#696966;
-$gray:transparent;
+$gray-darkest: #262626;
+$gray-darker: #464A50;
+$gray-dark: #D4D4D4;
+$gray: #737373;
 $gray-light: #CBCAC8;
 $gray-lighter: #E3E3E3;
 $gray-lightest: #F6F6F6;
 
 $blue-gray-lightest: #F5F7FA;
 $blue-gray: #E6F0FD;
-
 
 $icons: sprite-map("sprite/*.png", $spacing: 15px);

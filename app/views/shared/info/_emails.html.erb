@@ -16,7 +16,7 @@
       <% entity.emails.group_by(&:location).values.flatten.each do |email| %>
       <tr class="item">
         <td class="address"><a href="mailto:<%= email.address %>" class="value"><span><%= email.address %></span></a></td>
-        <td class="location"><span class="value"><%= format_field(email.location) %></span></td>
+        <td class="location"><span class="value"><%= email.location %></span></td>
         <td class="favorite<%= " checked" if email.is_favorite? %>"<%= raw(" title=\"Preferred Email Address\"") if email.is_favorite? %>><%= "Yes" if email.is_favorite? %></td>
         <td class="contact<%= " checked" if email.is_admin? %>"<% if email.is_admin? %> title="This email is used for administration"<% end %>>
           <%= "Yes" if email.is_admin? %>
