@@ -30,7 +30,7 @@ module ControllerLogic
   def pdf_response(entity_type, template)
     entities = instance_variable_get("@#{entity_type.tableize}")
     headers.merge!("Content-Type" => "application/octet-stream", "Content-Disposition" => "attachment; filename=\"#{entity_type.tableize.dasherize}.pdf\"")
-      render :pdf => "#{entity_type.tableize.dasherize}", :template => template
+    render :pdf => "#{entity_type.tableize.dasherize}", :template => template
   end
 
   def set_time_zone

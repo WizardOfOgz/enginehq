@@ -41,3 +41,10 @@ namespace :start do
   end
 
 end
+
+namespace :run do
+  task :clear do
+    Rake::Task['tmp:clear'].invoke
+    Rake::Task['log:clear'].invoke
+	end
+end
