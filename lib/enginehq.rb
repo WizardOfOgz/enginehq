@@ -13,9 +13,8 @@ module Enginehq
 
     #TODO: load all and not define individually
     rake_tasks do
-      load "#{root}/lib/tasks/clear.rake"
+      load "#{root}/lib/tasks/run.rake"
       load "#{root}/lib/tasks/palette.rake"
-      load "#{root}/lib/tasks/start.rake"
     end
 
     initializer "static assets" do |app|
