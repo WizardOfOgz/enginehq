@@ -2,8 +2,8 @@
 <% screen = params["#{params.detect{|k,v| v == "Search" || v == "Find"}.first}_screen"] %>
 <% results.each do |result| %>
 <li class="item result">
-  <h4 class="result-title" tabIndex="0"><% if screen == "global" %><a href="/<%= screen %>/<%= result.id %>/overview"><%= result.full_name %></a><% else %><%= result.full_name %><% end %></h4>
-  <% if screen != "global" %><input class="add" type="submit" value="add" name="search_add[<%= screen %>][<%= result.id %>]" /><% end %>
+  <h4 class="result-title" tabIndex="0"><% if params[:search_global].nil? %><%= result.full_name %><% else %><a href="/<%= screen %>/<%= result.id %>/overview"><%= result.full_name %></a><% end %></h4>
+  <% if params[:search_global].nil? %><input class="add" type="submit" value="add" name="search_add[<%= screen %>][<%= result.id %>]" /><% end %>
   <% if [Advisor, PolicyHolder, Policy, Contract, License, Product].include?(result.class) %>
   <%= render :partial => "/shared/search/#{result.class.table_name}/expanded_details", :locals => {:entity => result} %>
   <% end %>

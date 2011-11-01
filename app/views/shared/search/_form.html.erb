@@ -11,6 +11,8 @@
         <%= options_for_select(screens.collect{|s| [s, s.sub(" ","").tableize]}, screen.sub(" ","").tableize) %> 
       </select>
     </p>
+    <% else %>
+    <input type="hidden" name="search_<%= prefix %>_screen" value="<%= screen.sub(" ","").tableize %>" />
     <% end %>
     <ul class="tokens">
       <% if defined?(entities) %>
