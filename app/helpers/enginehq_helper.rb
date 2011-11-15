@@ -26,8 +26,8 @@ module EnginehqHelper
     address.latitude ? "http://maps.google.com?daddr=#{address.display_address}" : nil
   end
 
-  def format_date(datetime)
-    datetime.nil? ? "--" : h(datetime.strftime("%m/%d/%Y"))
+  def format_date(date)
+    date.nil? ? "--" : h(date.strftime("%m/%d/%Y"))
   end
 
   def format_time(time)

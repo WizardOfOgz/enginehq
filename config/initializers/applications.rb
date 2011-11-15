@@ -9,8 +9,8 @@ module Applications
   AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "http://localhost:3000",
     :name => "AgenciesHQ", 
     :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
-    :mores => ["Agencies", "Carriers", "Products", "Policy Holders", "Transfer Companies", "Programs", "Premium Reports", "Activity Reports"],
-    :screens => ["Advisors", "Agencies", "Carriers", "Contracts", "Licenses", "Policy Holders", "Policies", "Programs", "Products", 
+    :mores => ["Contacts", "Agencies", "Carriers", "Products", "Policy Holders", "Programs", "Transfer Companies", "Premium Reports", "Activity Reports"],
+    :screens => ["Advisors", "Agencies", "Carriers", "Contacts", "Contracts", "Licenses", "Policy Holders", "Policies", "Programs", "Products", 
       "Transfer Companies"]}
 
   MARKETINGHQ = {:url => Rails.env.production? ? "http://marketinghq.agencieshq.com" : "http://localhost:3001",
