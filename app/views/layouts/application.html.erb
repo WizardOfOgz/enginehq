@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title><%= Applications.get_application_option("name") %> - <%= controller.base_path.titleize %></title>
 <% if !user_signed_in? %>
@@ -119,6 +119,7 @@
         </ul>
       </div>
       <%= include_javascripts "desktop" %>
+      <!--[if CF]><script type="text/javascript">$(function() {$('input[autofocus]').focus(); $('input[autofocus]').focus(); $('input[autofocus]').focus();});</script><![endif]-->
     </div>
 <% end %>
   </body>
