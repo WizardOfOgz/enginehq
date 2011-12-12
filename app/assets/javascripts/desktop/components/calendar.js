@@ -1,5 +1,6 @@
 /*jslint browser: true, indent: 2 */
 /*global $, window */
+
 (function () {  
   var weekdays = ["S", "M", "T", "W", "T", "F", "S"],
   container = $(["<div class=\"calendar-control\"><p class=\"header\">Select Date</p><ul class=\"date-control month\"><li class=\"link previous\"><a href=\"#\">View Previous Month</a></li><li class=\"link next\"><a href=\"#\">View Next Month</a></li></ul><ul class=\"date-control year\"><li class=\"link previous\"><a href=\"#\">View Previous Year</a></li><li class=\"link next\"><a href=\"#\">View Next Year</a></li></ul><table class=\"dates\"><caption class=\"title\"><span class=\"month\"></span>&nbsp;<span class=\"year\"></span></caption><thead><tr class=\"row weekdays\"><th>", weekdays.join("</th><th>"), "</th></tr></thead><tbody></tbody></table></div>"].join("")),
@@ -12,7 +13,8 @@
   formInputs = null,
   yearControl = $(".date-control.year", container),
   eventTarget = null,
-  monthControl = $(".date-control.month", container);
+  monthControl = $(".date-control.month", container),
+  dblclick;
 
   /**
   * Sets the input to focus the calendar onto. 
@@ -412,12 +414,29 @@
   * inputs.month {Node} The input containing the month.
   * inputs.year {Node} The input containing the year.
   */
-  $(document).bind("openCalendar", function (event, node, inputs) {  
+  $(document).bind("openCalendar", function (event, node, inputs) { 
     
+    
+    setTimeout(function() { dblclick = false; }, 500);
+
     if (eventTarget === event.target) {
-       close();
-      return;
+      close();
+      
+      // set calendar to today on double click
+      if(dblclick) {
+        var today = new Date();
+        inputs.day.value = today.getDay();
+        inputs.month.value = today.getMonth();
+        inputs.year.value = today.getFullYear();
+        setFormInputs(inputs);
+        var dblclickSelection = window.getSelection();
+        dblclickSelection.collapse();
+       }
+       
+       return false;
     }
+    
+    dblclick = true;
 
     close();
     eventTarget = event.target;
