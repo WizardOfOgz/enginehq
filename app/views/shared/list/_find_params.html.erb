@@ -1,9 +1,0 @@
-<div>
-  <input type="hidden" value="Find <%= controller_name.titleize %>" name="find" />
-  <% CGI::unescape(request.query_string).split("&").each do |input| %>
-  <% if input[0..14] == "advanced_search" || input[0..3] == "list" %>
-  <% input_array = input.split("=") %>
-  <input type="hidden" name="<%= input_array.first %>" value="<%= input_array.last if input_array.length == 2 %>" />
-  <% end %>
-  <% end %>
-</div>

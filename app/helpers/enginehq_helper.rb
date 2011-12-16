@@ -1,4 +1,27 @@
 module EnginehqHelper
+  def params_to_hidden_fields(params, scope=[], depth=0, options={})
+    reject_list = %w(action controller authenticity_token)
+    reject_list = reject_list + options[:reject] if options[:reject]
+    params = params.reject{|key, value| reject_list.include?(key)}
+
+    output = ""
+    params.each do |key, value|
+      output << if value.class == HashWithIndifferentAccess
+        "#{params_to_hidden_fields(value, scope + [key], depth+1, options)}"
+      else
+
+      name = if scope.empty?
+        "#{key}"
+      else
+        scope.first.to_s + scope[1..scope.length].inject(""){|sum, crumb| "#{sum}[#{crumb}]" } + "[#{key}]"
+      end
+
+      "<input type=\"hidden\" name=\"#{h name}\" value=\"#{h value}\" />"
+      end
+    end
+    output
+  end
+
   def param_to_time(hash, param)
     if hash && (!hash["#{param}(1i)"].blank? || !hash["#{param}(3i)"].blank? || !hash["#{param}(3i)"].blank?)
       begin
