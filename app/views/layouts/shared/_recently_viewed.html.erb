@@ -1,4 +1,4 @@
-<% recently_vieweds = current_user.recently_vieweds(controller.resource ? controller.resource.class.to_s.underscore : controller.base_path.singularize) %>
+<% recently_vieweds = current_user.recently_vieweds(controller.resource ? controller.resource.class.to_s.underscore : controller_base_path_or_name.singularize) %>
 <%- if recently_vieweds.count > 0 -%>
 <div class="listing last-viewed">
   <h3 class="listing-head"><span>Recently Viewed</span></h3>

@@ -1,4 +1,9 @@
 module EnginehqHelper
+
+  def controller_base_path_or_name
+    controller.base_path ? controller.base_path : controller.controller_name
+  end
+
   def params_to_hidden_fields(params, scope=[], depth=0, options={})
     reject_list = %w(action controller authenticity_token)
     reject_list = reject_list + options[:reject] if options[:reject]
@@ -39,7 +44,7 @@ module EnginehqHelper
       direction = sort.split("_").last
       if column == sort.split("_").reject{|s| s == direction}.join("_")
         raw "<input class=\"sort-control #{direction}\" value=\"#{column}_#{direction == "descending" ? "ascending" : "descending"}\" type=\"submit\" name=\"sort\" />"
-      else 
+      else
         raw "<input class=\"sort-control\" value=\"#{column}_ascending\" type=\"submit\" name=\"sort\" />"
       end
     end
@@ -84,7 +89,7 @@ module EnginehqHelper
     else
       objects = params.collect {|object_name| instance_variable_get("@#{object_name}") }.compact
     end
-  
+
     count = objects.inject(0){|sum, object| sum + object.errors.count }
     if !count.zero?
       error_messages = []

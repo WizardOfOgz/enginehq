@@ -4,14 +4,13 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title><%= Applications.get_application_option("name") %> - <%= controller.base_path.titleize %></title>
+    <title><%= Applications.get_application_option("name") %> - <%= controller_base_path_or_name.titleize %></title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
 <% if !user_signed_in? %>
-    <%= include_stylesheets "desktop", :media => "all" %>
   </head>
   <body>
     <%= yield %>
 <% else %>
-    <%= include_stylesheets "desktop", :media => "all" %>
   </head>
   <body data-form-authenticity-token="<%= form_authenticity_token %>">
     <div class="app-wrap" id="appWrap">
@@ -79,7 +78,7 @@
         <% end %>
       </div>
       <div class="main-content" id="mainContent">
-        <h2 class="main-content-head"><%= controller.base_path.titleize %></h2>
+        <h2 class="main-content-head"><%= controller_base_path_or_name.titleize %></h2>
         <% if controller.recently_vieweds %>
         <div class="content-index">
           <% if controller.add_partial %>
@@ -90,9 +89,9 @@
             </ul>
           </div>
           <% else %>
-          <a class="action add-action" href="/<%= controller.base_path %>/new">Add</a>
+          <a class="action add-action" href="/<%= controller.base_path.to_s %>/new">Add</a>
           <% end %>
-          <a class="find<%= " active" if controller.resource.nil? %>" href="/<%= controller.base_path %>"><span>Find</span></a>
+          <a class="find<%= " active" if controller.resource.nil? %>" href="/<%= controller.base_path.to_s %>"><span>Find</span></a>
           <%= render "/layouts/shared/recently_viewed.html" %>
         </div>
         <% end %>
