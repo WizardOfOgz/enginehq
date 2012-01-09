@@ -53,7 +53,7 @@ $(document).delegate(".records input[type=submit], .records-form input[type=subm
       $('body').append($el);
       
       return t.each(function(i, el) {
-        $(el).addClass(hideCSSClass).hide();
+        $(el).addClass(hideCSSClass);
         hideDelayTimer = null;
       });
     } else {
@@ -90,7 +90,7 @@ $(document).delegate(".records input[type=submit], .records-form input[type=subm
     if($this.is('tr')) { // we're hovering over a table row
       var row = this.sectionRowIndex; // get index of row
       var $ed = $('body').find('.'+popoutClass); // find popout link
-      var $hed = $this.find('.'+linkClass); // find hidden link in tr
+      var $hed = $this.find('.'+linkClass+' a'); // find hidden link in tr
       var position = $this.offset(); // get position on page
       var edheight = $ed.outerHeight(); // get height of popout link
       var edwidth = $ed.outerWidth(); // get width of popout link
