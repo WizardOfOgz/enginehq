@@ -425,7 +425,7 @@
       // set calendar to today on double click
       if(dblclick) {
         var today = new Date();
-        inputs.day.value = today.getDay();
+        inputs.day.value = today.getDate();
         inputs.month.value = today.getMonth() + 1;
         inputs.year.value = today.getFullYear();
         setFormInputs(inputs);
