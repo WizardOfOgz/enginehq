@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "enginehq"
 
   s.add_dependency "railties", "~> 3.0"
-  s.add_dependency "compass", "~> 0.12.alpha"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
