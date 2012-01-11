@@ -2,7 +2,7 @@
 
 .content-section { position: absolute; width: 100%; top: 50%; margin-top: -170px; }
 
-.unauthenticated-form { width: 500px;  margin: 0 auto 0; background-color: #FFF;  border: 7px solid $gray-light; padding: 10px; 
+.unauthenticated-form { width: 500px;  margin: 0 auto 0; background-color: #FFF;  border: 7px solid $gray-light; padding: 10px;
   .field-group { padding-bottom: 0; margin-top: 0; border-top: none; }
   .field-group-head { background: transparent; }
   .form-actions { background: transparent; border: none; text-align: left; padding: 10px 0; clear: both; }
@@ -11,11 +11,20 @@
 }
 
 /* Logo Skin */
-.logo { margin: 0 auto; text-align: center; }
-  a { color: #000;  font-size: 24px; }
+.logo {
+  margin: 0 auto;
+  text-align: center;
+  a { color: #000;
+      font-size: 24px; }
 }
 
-.footer-message { width: 500px; text-align: right; margin: 0 auto; padding: 1em 0; font-size: 12px; }
+
+.footer-message {
+  width: 500px;
+  text-align: right;
+  margin: 0 auto;
+  padding: 1em 0;
+  font-size: 12px;
   a span { color: #E10000; }
 }
 
@@ -26,15 +35,15 @@
 .chrome-frame-container .logo { margin: 10px 0; }
 .chrome-frame { padding: 0; margin: 0 auto; }
 
-.session-form { 
-  > .username .field-group-head { display: none; }
+.session-form {
+  .username .field-group-head { display: none; }
   .username .message { margin-top: 1em; }
   .field { margin-bottom: .5em; }
   .password { width: 68%; float: left; }
   .forgot-password-action { float: left; width: 30%; margin-top: 22px; }
 }
 
-.password-reset-form { }
+.password-reset-form {
   .field-group-head { visibility: hidden; position: absolute; }
   .password { float: none; }
   .username { margin-bottom: 0; }
