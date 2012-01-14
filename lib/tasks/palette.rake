@@ -10,7 +10,7 @@
 # 
 #   desc 'show all colors from css file'
 #   task :palette do
-#     assets = open("#{RAILS_ROOT}/config/assets.yml") {|f| YAML.load(f) }
+#     assets = open("#{Rails.root}/config/assets.yml") {|f| YAML.load(f) }
 # 
 #     assets['stylesheets']['desktop'].each do |stylesheet|
 #       read_file(stylesheet)
@@ -20,7 +20,7 @@
 #   end
 # 
 #   def read_file(file)
-#     File.open("#{RAILS_ROOT}/#{file}", "r").each_line do |line|
+#     File.open("#{Rails.root}/#{file}", "r").each_line do |line|
 #       parse_css_string line
 #     end
 #   end
