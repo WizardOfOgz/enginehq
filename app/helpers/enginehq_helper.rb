@@ -69,6 +69,10 @@ module EnginehqHelper
   def format_dollar(dollar)
     number_to_currency(dollar).sub(/^\$-/, '-$') if dollar
   end
+  
+  def format_boolean(boolean)
+    boolean ? "Yes" : "No"
+  end
 
   def format_percent(percent)
     percent ? number_to_percentage(percent, :strip_insignificant_zeros => true) : "--"

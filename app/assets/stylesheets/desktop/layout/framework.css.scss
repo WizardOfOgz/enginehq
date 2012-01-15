@@ -161,7 +161,7 @@
 .last-viewed { margin: 0; background-color: $blue-lightest; padding: 0 0 35px; border-bottom: 1px solid #C4D4ED; 
   .listing-head { color: #858993; font-size: 12px; font-weight: normal; letter-spacing: 0.03em; margin: 0px 0px 3px 8px; padding: 10px 8px 2px 10px; text-transform: uppercase; }
   .listing-items { margin: 0 10px; border-top: 1px solid #C4D4ED; 
-    > .link { list-style: none; border-bottom: 1px solid #C4D4ED; padding-left: .25em; }
+    > .link { list-style: none; border-bottom: 1px solid #C4D4ED; }
     > .link + .link { border-top: 1px solid #FFF;  }
     > .link > a { list-style: none; color: #587aa2; text-decoration: none; padding: 5px; display: block; border: none; font-size: 13.5px; text-shadow:1px 1px #EFF6FE; }
 

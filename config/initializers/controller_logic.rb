@@ -20,17 +20,17 @@ module ControllerLogic
     ActionMailer::Base.default_url_options[:host] = request.host_with_port
   end
 
-  def csv_response(entity_type)
-    entities = instance_variable_get("@#{entity_type.tableize}")
-    headers.merge!("Content-Type" => "text/csv", "Content-Disposition" => "attachment; filename=\"#{entity_type.tableize.dasherize}.csv\"")
-    self.response_body = proc {|response, output| output.write(CSV.generate_line(entity_type.constantize::CSV_HEADER))
-      entities.each{|e| output.write CSV.generate_line(e.csv_row)}}
+  def render_csv(filename, entities)
+    if entities.length > 0
+      headers.merge!("Content-Type" => "text/csv", "Content-Disposition" => "attachment; filename=\"#{filename}.csv\"")
+      self.response_body = proc {|response, output| output.write(CSV.generate_line(entities.first.class::CSV_HEADER))
+        entities.each{|e| output.write CSV.generate_line(e.csv_row)}}
+    end
   end
 
-  def pdf_response(entity_type, template)
-    entities = instance_variable_get("@#{entity_type.tableize}")
-    headers.merge!("Content-Type" => "application/octet-stream", "Content-Disposition" => "attachment; filename=\"#{entity_type.tableize.dasherize}.pdf\"")
-    render :pdf => "#{entity_type.tableize.dasherize}", :template => template
+  def render_pdf(filename, template)
+    headers.merge!("Content-Type" => "application/octet-stream", "Content-Disposition" => "attachment; filename=\"#{filename}.pdf\"")
+    render :pdf => filename, :template => template
   end
 
   def set_time_zone
