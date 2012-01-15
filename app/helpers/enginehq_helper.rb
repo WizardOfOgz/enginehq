@@ -1,6 +1,6 @@
 module EnginehqHelper
 
-  def controller_base_path_or_name
+  def base_path
     controller.base_path ? controller.base_path : controller.controller_name
   end
 
@@ -39,10 +39,10 @@ module EnginehqHelper
     end
   end
 
-  def sort_control(sort, column)
+  def sort_control(column)
     if request.format != "pdf"
-      direction = sort.split("_").last
-      if column == sort.split("_").reject{|s| s == direction}.join("_")
+      direction = @sort.split("_").last
+      if column == @sort.split("_").reject{|s| s == direction}.join("_")
         raw "<input class=\"sort-control #{direction}\" value=\"#{column}_#{direction == "descending" ? "ascending" : "descending"}\" type=\"submit\" name=\"sort\" />"
       else
         raw "<input class=\"sort-control\" value=\"#{column}_ascending\" type=\"submit\" name=\"sort\" />"

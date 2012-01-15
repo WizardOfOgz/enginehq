@@ -1,14 +1,13 @@
 module ControllerLogic
   def list_logic(prefix, sort)
     if params[:next_page]
-      instance_variable_set("@#{prefix}_page", params[:next_page].keys.first.to_i)
+      @page = params[:next_page].keys.first.to_i
     elsif params[:previous_page]
-      instance_variable_set("@#{prefix}_page", params[:previous_page].keys.first.to_i)
+      i@page = (params[:previous_page].keys.first.to_i)
     else
-      instance_variable_set("@#{prefix}_page", params[:page].to_i > 0 ? params[:page].to_i : 1)
+      @page = (params[:page].to_i > 0 ? params[:page].to_i : 1)
     end
-
-    instance_variable_set("@#{prefix}_sort", params[:sort] ? params[:sort] : sort)
+    @sort = (params[:sort] ? params[:sort] : sort)
   end
   
   def document_formats
