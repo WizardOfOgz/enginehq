@@ -5,7 +5,7 @@
   <ul class="listing-items">
     <%- recently_vieweds.each do |recently_viewed| -%>
     <li class="link<%= " selected" if controller.resource == recently_viewed %>">
-      <a title="<%= recently_viewed.summary if [Contract, License, Policy, Product, Program].include?(entity.class) %>" href="/<%= recently_viewed.class.table_name %>/<%= recently_viewed.id %>/overview"><%= recently_viewed.name %></a>
+      <a title="<%= recently_viewed.summary if [Contract, License, Policy, Product, Program].include?(recently_viewed.class) %>" href="/<%= recently_viewed.class.table_name %>/<%= recently_viewed.id %>/overview"><%= recently_viewed.name %></a>
     </li>
     <%- end -%>
   </ul>
