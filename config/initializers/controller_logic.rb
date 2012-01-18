@@ -3,7 +3,7 @@ module ControllerLogic
     if params[:next_page]
       @page = params[:next_page].keys.first.to_i
     elsif params[:previous_page]
-      i@page = (params[:previous_page].keys.first.to_i)
+      @page = (params[:previous_page].keys.first.to_i)
     else
       @page = (params[:page].to_i > 0 ? params[:page].to_i : 1)
     end
