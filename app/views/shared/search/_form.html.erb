@@ -1,19 +1,18 @@
-<div class="field search-field <%= skin %><%= " screened-search" if screens %><%= " error" if error %><%= " search-multiple" if is_multiple %>">
+<div class="field search-field <%= skin %><%= " screened-search" if screens %><%= " error" if is_error %><%= " search-multiple" if is_multiple %>">
   <h4 class="field-label"><label for="<%= skin %>EntitySearch"><%= skin.titleize %></label></h4>
   <div>
     <% if screens %>
     <p class="screens">
-      <select name="search_<%= prefix %>_screen">
-        <%= options_for_select(screens.collect{|s| [s, s.sub(" ","").tableize]}, skin.tableize) %>
+      <select name="search_<%= screen %>_screen">
+        <%= options_for_select(screens.collect{|s| [s, s.gsub(" ","").tableize]}, screen) %>
       </select>
     </p>
     <% else %>
-    <input type="hidden" name="search_<%= prefix %>_screen" value="<%= skin.tableize %>" />
+    <input type="hidden" name="search_<%= screen %>_screen" value="<%= screen %>" />
     <% end %>
     <ul class="tokens">
-      <% if defined?(entities) %>
+      <% if entities %>
       <% entities.each do |name, entity| %>
-      <% next if entity.nil? %>
       <li class="token">
         <label>
           <input type="checkbox" checked="checked" name="<%= name %>" value="<%= entity.id %>" />
@@ -23,8 +22,8 @@
       <% end %>
       <% end %>
       <li class="query">
-        <input placeholder="Find <%= screens ? "..." : "#{skin.titleize}" %>" id="<%= skin %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= prefix %>_query"<%= " autofocus" if prefix == "global" %> autocomplete="off" />
-        <input type="submit" name="search_<%= prefix %>" value="Search" class="search-action" />
+        <input placeholder="Find <%= screens ? "..." : "#{skin.titleize}" %>" id="<%= skin %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= screen %>_query"<%= " autofocus" if is_autofocus %> autocomplete="off" />
+        <input type="submit" name="search_<%= screen %>" value="Search" class="search-action" />
       </li>
     </ul>
   </div>
