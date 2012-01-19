@@ -1,3 +1,5 @@
+<% is_autofocus = (skin == "global") ? true : nil %>
+<% query = screens.nil? ? instance_variable_get("@#{screen}_query") : instance_variable_get("@#{skin}_query") %>
 <div class="field search-field <%= skin %><%= " screened-search" if screens %><%= " error" if is_error %><%= " search-multiple" if is_multiple %>">
   <h4 class="field-label"><label for="<%= skin %>EntitySearch"><%= skin.titleize %></label></h4>
   <div>
@@ -11,15 +13,14 @@
     <input type="hidden" name="search_<%= screen %>_screen" value="<%= screen %>" />
     <% end %>
     <ul class="tokens">
-      <% if entities %>
       <% entities.each do |name, entity| %>
+      <% next if entity.nil? %>
       <li class="token">
         <label>
           <input type="checkbox" checked="checked" name="<%= name %>" value="<%= entity.id %>" />
           <span><%= entity.name %></span>
         </label>
       </li>
-      <% end %>
       <% end %>
       <li class="query">
         <input placeholder="Find <%= screens ? "..." : "#{skin.titleize}" %>" id="<%= skin %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= screen %>_query"<%= " autofocus" if is_autofocus %> autocomplete="off" />
