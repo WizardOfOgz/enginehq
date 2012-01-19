@@ -11,14 +11,14 @@
     if (!imagePreview) {
       imagePreview =  $(this).closest(".avatar").find(".preview");
       imagePreview.bind("preview", function(e, pngData) {
-  	    $(".avatar-current img").attr("src", pngData);
+        $(".avatar-current img").attr("src", pngData);
 
-  	    if (!imageDataInput) {
-  	      imageDataInput = $("<input type=\"hidden\" name=\"avatar_uri\" />").insertAfter(fileInput);
-  	    }
-  	    imageDataInput.val(pngData);
-  	    fileInput.closest("form").get(0).reset();
-  	  });
+        if (!imageDataInput) {
+          imageDataInput = $("<input type=\"hidden\" name=\"avatar_uri\" />").insertAfter(fileInput);
+        }
+        imageDataInput.val(pngData);
+        fileInput.closest("form").get(0).reset();
+      });
     }
     
     if (!imageEditor) {
