@@ -1,16 +1,22 @@
-<% is_autofocus = (skin == "global") ? true : nil %>
-<% query = screens.nil? ? instance_variable_get("@#{screen}_query") : instance_variable_get("@#{skin}_query") %>
+<% if screens.nil? %>
+<% instance_variable_get("@#{screen}_query") %>
+<% prefix = screen %>
+<% else %>
+<% instance_variable_get("@#{skin}_query") %>
+<% prefix = skin %>
+<% end %>
+
 <div class="field search-field <%= skin %><%= " screened-search" if screens %><%= " error" if is_error %><%= " search-multiple" if is_multiple %>">
   <h4 class="field-label"><label for="<%= skin %>EntitySearch"><%= skin.titleize %></label></h4>
   <div>
     <% if screens %>
     <p class="screens">
-      <select name="search_<%= screen %>_screen">
+      <select name="search_<%= skin %>_screen">
         <%= options_for_select(screens.collect{|s| [s, s.gsub(" ","").tableize]}, screen) %>
       </select>
     </p>
     <% else %>
-    <input type="hidden" name="search_<%= screen %>_screen" value="<%= screen %>" />
+    <input type="hidden" name="search_<%= skin %>_screen" value="<%= screen %>" />
     <% end %>
     <ul class="tokens">
       <% entities.each do |name, entity| %>
@@ -23,8 +29,8 @@
       </li>
       <% end %>
       <li class="query">
-        <input placeholder="Find <%= screens ? "..." : "#{skin.titleize}" %>" id="<%= skin %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= screen %>_query"<%= " autofocus" if is_autofocus %> autocomplete="off" />
-        <input type="submit" name="search_<%= screen %>" value="Search" class="search-action" />
+        <input placeholder="Find <%= screens ? "..." : "#{skin.titleize}" %>" id="<%= skin %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= skin %>_query"<%= " autofocus" if skin == "global" %> autocomplete="off" />
+        <input type="submit" name="search_<%= skin %>" value="Search" class="search-action" />
       </li>
     </ul>
   </div>
