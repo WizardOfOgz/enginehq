@@ -2,7 +2,7 @@
 <% if screens.nil? %>
 <% query = instance_variable_get("@#{screen}_query"); prefix = screen %>
 <% else %>
-<% query = instance_variable_get("@#{skin}_query"); prefix = screen %>
+<% query = instance_variable_get("@#{skin}_query"); prefix = skin %>
 <% end %>
 <div class="field search-field <%= skin %><%= " screened-search" if screens %><%= " error" if is_error %><%= " search-multiple" if is_multiple %>">
   <h4 class="field-label"><label for="<%= skin %>EntitySearch"><%= skin.titleize %></label></h4>
