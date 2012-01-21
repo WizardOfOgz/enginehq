@@ -1,4 +1,7 @@
+require 'will_paginate/view_helpers/link_renderer'
+
 class PaginationListLinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
+
   def to_html
     @options[:outer_window] = 0; links = windowed_links
     links.unshift(page_control("previous", "previous_page[#{@collection.current_page - 1}]", "control previous")) if @collection.previous_page
