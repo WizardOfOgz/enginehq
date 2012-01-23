@@ -41,7 +41,7 @@ module ControllerLogic
   def load(entity_route = nil)
     entity_route = controller_name if entity_route.nil?
     entity_name = entity_route.singularize
-    if entity_name == "Organization"
+    if entity_name == "organization"
       @organization = current_user.organization
     else
       if !instance_variable_set("@#{entity_name}", current_user.organization.send(entity_name.pluralize).find_by_id((params["#{entity_name}_id"] || params["id"]).to_i))
