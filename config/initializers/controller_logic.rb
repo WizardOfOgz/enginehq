@@ -41,11 +41,15 @@ module ControllerLogic
   def load(entity_route = nil)
     entity_route = controller_name if entity_route.nil?
     entity_name = entity_route.singularize
-    if !instance_variable_set("@#{entity_name}", current_user.organization.send(entity_name.pluralize).find_by_id((params["#{entity_name}_id"] || params["id"]).to_i))
-      flash[:error] = "The requested #{entity_name} could not be located."
-      return(redirect_to(eval("#{entity_route}_path")))
+    if entity_name == "Organization"
+      @organization = current_user.organization
+    else
+      if !instance_variable_set("@#{entity_name}", current_user.organization.send(entity_name.pluralize).find_by_id((params["#{entity_name}_id"] || params["id"]).to_i))
+        flash[:error] = "The requested #{entity_name} could not be located."
+        return(redirect_to(eval("#{entity_route}_path")))
+      end
+      current_user.add_recently_viewed(instance_variable_get("@#{entity_name}")) if recently_vieweds
     end
-    current_user.add_recently_viewed(instance_variable_get("@#{entity_name}")) if recently_vieweds
   end
 
   def recently_vieweds
