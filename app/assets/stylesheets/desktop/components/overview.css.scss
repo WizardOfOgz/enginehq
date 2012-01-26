@@ -66,7 +66,7 @@ table.overview-listing { border-spacing: 0; border-collapse: collapse; width: 10
 
 /* Policy Holders Overview */
 .policy-holders-overview { 
-  .name { float: left; }
+  .name { float: left; font-weight: bold; }
   .relation-type { float: right; color: #858993; }
   dl {  width: 50%; padding: .5em 0 0;  }
   dl > * { display: inline; }
