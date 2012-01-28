@@ -1,5 +1,5 @@
 <ul class="search-results listed"><%= render :partial => "/shared/search/results_items", :locals => {:results => results} %>
 <% if inline_add %>
-<li class="item">No Results Found <input class="action" type="submit" name="inline[add][<%= inline_add %>]" value="Add" /></li>
+<li class="item">Add a new <%= inline_add.titleize %><input class="action" type="submit" name="inline[add][<%= inline_add %>]" value="Add" /></li>
 <% end %>
 </ul>
