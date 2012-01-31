@@ -12,3 +12,6 @@
 <% else %>
 <li class="item"><h4 class="result-title">No Results Found</h4></li>
 <% end %>
+<% if inline_add %>
+<li class="item">Add a new <%= inline_add.titleize %><input class="action" type="submit" name="inline[add][<%= inline_add %>]" value="Add" /></li>
+<% end %>
