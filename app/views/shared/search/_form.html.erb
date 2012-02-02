@@ -14,9 +14,10 @@
     <input type="hidden" name="search_<%= prefix %>_screen" value="<%= prefix %>" />
     <% end %>
     <ul class="tokens">
-      <% entities.each do |name, entity| %>
+      <% added = @search_add && @search_add[prefix] %>
+      <% entities.each_with_index do |(name, entity), index| %>
       <% next if entity.nil? %>
-      <li class="token">
+      <li class="token<%= " added" if added && index == (entities.length - 1) %>">
         <label>
           <input type="checkbox" checked="checked" name="<%= name %>" value="<%= entity.id %>" />
           <span><%= entity.name %></span>

@@ -17,7 +17,7 @@ $(document).delegate("a", "click", function tab(e) {
       container = null;
     }
   } else {
-    $(this).parent().addClass("selected").siblings().removeClass("selected")
+    $(this).parent().addClass("selected").siblings().removeClass("selected");
   }
 
   if (!container || container.length < 1) {
@@ -29,13 +29,14 @@ $(document).delegate("a", "click", function tab(e) {
   group.find("a").each(function() { 
     $(this.hash).hide(); 
   });
-  
+
   container.show();
-  
+
   // save tab selection
   HQApp.setSelectedTab(group.get(0).className, this.hash);
-  
-  
+
+  container.find("a, input, textarea, select").eq(0).focus();
+
   e.stopPropagation();
   e.preventDefault();
 });

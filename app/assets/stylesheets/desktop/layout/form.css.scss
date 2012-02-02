@@ -92,7 +92,7 @@ ul.field-list, ol.field-list { list-style: none;
   .index:first-child { border-top: 1px solid #C4C4C4;  border-radius: 3px 3px 0 0; }
   .index:last-child { border-radius: 0 0 3px 3px; }
   a { position: relative; padding: .75em 0; text-indent: 1.5em; display: block; text-decoration: none; color: #494C51; font-size: 12px; font-weight: normal; border-bottom: none; }
-  a:focus { outline: none; }
+  a:focus { outline: none; color:#D07C02; }
   
   .selected { border: 1px solid #B0B0B0 !important; @include background(linear-gradient(top, #FAFAFA, #F4F4F5)); 
     a { color: #D07C02; }
