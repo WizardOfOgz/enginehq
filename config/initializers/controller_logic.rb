@@ -21,16 +21,29 @@ module ControllerLogic
 
   def render_csv(filename, entities)
     if entities.length > 0
-      headers.merge!("Content-Type" => "text/csv", "Content-Disposition" => "attachment; filename=\"#{filename}.csv\"")
-      self.response_body = Enumerator.new do |csv|
-        csv << (CSV.generate_line(entities.first.class::CSV_HEADER))
-        entities.each{|e| csv << CSV.generate_line(e.csv_row)}
+      if request.env["HTTP_USER_AGENT"] =~ /msie/i
+        headers["Pragma"] = "public"
+        type = "text/plain"
+        headers["Cache-Control"] = "no-cache, must-revalidate, post-check=0, pre-check=0"
+        headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\"" 
+        headers["Expires"] = "0" 
+      else
+        type = "text/csv"
+        headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\"" 
       end
+
+      csv = CSV.generate_line(entities.first.class::CSV_HEADER)
+      entities.each do |e|
+        csv << CSV.generate_line(e.csv_row)
+      end
+
+      self.send_data csv, :filename => "#{filename}.csv", :type => type
     end
   end
 
   def render_pdf(filename, template, orientation = "Landscape")
-    headers.merge!("Content-Type" => "application/octet-stream", "Content-Disposition" => "attachment; filename=\"#{filename}.pdf\"")
+    headers["Content-Type"] = "application/octet-stream"
+    headers["Content-Disposition"] = "attachment; filename=\"#{filename}.pdf\"")
     render :pdf => filename, :template => template, :orientation => orientation
   end
 
