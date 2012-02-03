@@ -35,8 +35,8 @@ $(document).delegate("a", "click", function tab(e) {
   // save tab selection
   HQApp.setSelectedTab(group.get(0).className, this.hash);
 
-  container.find("a, input, textarea, select").eq(0).focus();
+  // selects first tabable field when the tab is selected
+  container.find("a, input:not(input[type=hidden]), textarea, select").eq(0).focus();
 
-  e.stopPropagation();
   e.preventDefault();
 });
