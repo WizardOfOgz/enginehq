@@ -21,23 +21,10 @@ module ControllerLogic
 
   def render_csv(filename, entities)
     if entities.length > 0
-      if request.env["HTTP_USER_AGENT"] =~ /msie/i
-        headers["Pragma"] = "public"
-        type = "text/plain"
-        headers["Cache-Control"] = "no-cache, must-revalidate, post-check=0, pre-check=0"
-        headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\"" 
-        headers["Expires"] = "0" 
-      else
-        type = "text/csv"
-        headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\"" 
-      end
-
+      headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\""
       csv = CSV.generate_line(entities.first.class::CSV_HEADER)
-      entities.each do |e|
-        csv << CSV.generate_line(e.csv_row)
-      end
-
-      self.send_data csv, :filename => "#{filename}.csv", :type => type
+      entities.each{|e| csv << CSV.generate_line(e.csv_row)}
+      send_data csv, :filename => "#{filename}.csv", :type => "text/csv"
     end
   end
 
