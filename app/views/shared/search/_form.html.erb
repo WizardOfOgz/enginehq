@@ -1,25 +1,23 @@
 <% is_autofocus = (skin == "global") ? true : nil %>
-<% if screens.nil? %>
-<% query = instance_variable_get("@#{screen}_query"); prefix = screen %>
-<% else %>
-<% query = instance_variable_get("@#{skin}_query"); prefix = skin %>
-<% end %>
+<% prefix = skin.gsub("-", "_") %>
+<% query = instance_variable_get("@#{prefix}_query") %>
 <div class="field search-field <%= skin %><%= " screened-search" if screens %><%= " error" if is_error %><%= " search-multiple" if is_multiple %>">
   <h4 class="field-label"><label for="<%= skin %>EntitySearch"><%= skin.titleize %></label></h4>
   <div>
     <% if screens %>
     <p class="screens">
       <select name="search_<%= prefix %>_screen">
-        <%= options_for_select(screens.collect{|s| [s, s.gsub(" ","").tableize]}, screen) %>
+        <%= options_for_select(screens[:options].collect{|s| [s, s.gsub(" ","").tableize]}, screens[:selected]) %>
       </select>
     </p>
     <% else %>
-    <input type="hidden" name="search_<%= prefix %>_screen" value="<%= screen %>" />
+    <input type="hidden" name="search_<%= prefix %>_screen" value="<%= prefix %>" />
     <% end %>
     <ul class="tokens">
-      <% entities.each do |name, entity| %>
+      <% added = @search_add && @search_add[prefix] %>
+      <% entities.each_with_index do |(name, entity), index| %>
       <% next if entity.nil? %>
-      <li class="token">
+      <li class="token<%= " added" if added && index == (entities.length - 1) %>">
         <label>
           <input type="checkbox" checked="checked" name="<%= name %>" value="<%= entity.id %>" />
           <span><%= entity.name %></span>
@@ -28,6 +26,9 @@
       <% end %>
       <li class="query">
         <input placeholder="Find <%= screens ? "..." : "#{skin.titleize}" %>" id="<%= skin %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= prefix %>_query"<%= " autofocus" if is_autofocus %> autocomplete="off" />
+        <% if is_inline_add %>
+        <input type="hidden" name="inline_<%= prefix %>_add" value="<%= prefix %>" />
+        <% end %>
         <input type="submit" name="search_<%= prefix %>" value="Search" class="search-action" />
       </li>
     </ul>

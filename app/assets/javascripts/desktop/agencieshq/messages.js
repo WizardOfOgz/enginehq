@@ -1,6 +1,12 @@
 $(document).delegate(".show-notes-message", "click", function expandMessageComments() {
-  $(this).next(".message-notes").addClass("expanded");
-  $(this).remove();
+  var messageNotes = $(this).next(".message-notes");
+  if(messageNotes.hasClass('expanded')) {
+    messageNotes.removeClass("expanded");
+    $(this).html($(this).html().replace("Collapse", "View"));
+  } else {
+    messageNotes.addClass('expanded');
+    $(this).html($(this).html().replace("View", "Collapse"));
+  }
 });
   
 $(document).delegate(".message-sub-forms .form-title", "click", function expandMessageSubForm() {

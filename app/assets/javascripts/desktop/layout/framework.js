@@ -142,6 +142,10 @@
         success : function(html, textStatus, xhr) {
           try {
             process(html);
+            var current = $(html).find(".added");
+            if (current.length > 0) {
+              $(document).trigger("addedSearchToken");
+            }
           } catch (e) {
             logError({"exception" : e.toString(), "action" : [action, "?", data].join(""), "html" : html }, reload);
           }

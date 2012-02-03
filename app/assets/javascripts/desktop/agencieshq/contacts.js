@@ -20,6 +20,5 @@ $(document).delegate(".entity-emails .contact-field", "click", function checkPri
     input.attr("checked", !input.attr("checked"));
     $(this).toggleClass("checked");
   }
-  e.stopPropagation();
   e.preventDefault();
 });

@@ -9,11 +9,9 @@
   <% end %>
 </li>
 <% end %>
-<% if @policy_holders && controller_name == "policies" && action_name != "index" %>
-<li class="item">No Results Found <input class="action" type="submit" name="add_policy_holder" value="Add" /></li>
-<% end %>
-<% elsif @policy_holders && controller_name == "policies" && action_name != "index" %>
-<li class="item">No Results Found <input class="action" type="submit" name="add_policy_holder" value="Add" /></li>
 <% else %>
 <li class="item"><h4 class="result-title">No Results Found</h4></li>
+<% end %>
+<% if inline_add %>
+<li class="item">Add a new <%= inline_add.titleize %><input class="action" type="submit" name="inline[add][<%= inline_add %>]" value="Add" /></li>
 <% end %>

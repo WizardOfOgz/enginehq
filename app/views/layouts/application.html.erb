@@ -48,7 +48,7 @@
         <% if screens = Applications.get_application_option("screens") %>
         <% screen = screens.detect{|s| base_path == s.gsub(" ","").tableize || @global_screen == s.gsub(" ","").tableize} || screens.first %>
         <form class="global-search" action="/find/global" method="get" autocomplete="off" novalidate="novalidate">
-          <%= render :partial => "/shared/search/form.html", :locals => {:screens => screens, :screen => screen.gsub(" ","").tableize, :skin => "global", :entities => {}, :is_error => nil, :is_multiple => nil} %>
+          <%= render :partial => "/shared/search/form.html", :locals => {:screens => {:options => screens, :selected => screen.gsub(" ","").tableize}, :skin => "global", :entities => {}, :is_error => nil, :is_multiple => nil, :is_inline_add => nil} %>
           <p class="field actions">
             <!--[if IE]><input type="text" style="display: none;" disabled="disabled" size="1" /><![endif]-->
             <input type="submit" value="Find" name="search_global" class="input" />
