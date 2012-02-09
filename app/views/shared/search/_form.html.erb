@@ -25,7 +25,7 @@
       </li>
       <% end %>
       <li class="query">
-        <input placeholder="Find <%= screens ? "..." : "#{skin.titleize}" %>" id="<%= skin %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= prefix %>_query"<%= " autofocus" if is_autofocus %> autocomplete="off" />
+        <input placeholder="Find <%= screens ? "..." : "#{skin.titleize}" %>" id="<%= skin %>EntitySearch" class="input" type="text" value="<%= query %>" name="search_<%= prefix %>_query"<%= " autofocus" if is_autofocus %> autocomplete="off"<% if is_disabled %> disabled="disabled"<% end %> />
         <% if is_inline_add %>
         <input type="hidden" name="inline_<%= prefix %>_add" value="<%= prefix %>" />
         <% end %>
