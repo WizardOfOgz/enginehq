@@ -51,19 +51,19 @@ module EnginehqHelper
   end
 
   def format_map_url(address)
-    address.latitude ? "http://maps.google.com?daddr=#{address.display_address}" : nil
+    "http://maps.google.com?daddr=#{address.display_address}" if address.latitude
   end
 
   def format_date(date)
-    date.nil? ? "--" : h(date.strftime("%m/%d/%Y"))
+    h(date.strftime("%m/%d/%Y")) if date
   end
 
   def format_time(time)
-    h(time.strftime("%l:%M %p")) if time != nil
+    h(time.strftime("%l:%M %p")) if time
   end
 
   def format_datetime(datetime)
-    h(datetime.strftime("%m/%d/%Y %l:%M %p")) if !datetime.nil?
+    h(datetime.strftime("%m/%d/%Y %l:%M %p")) if datetime
   end
 
   def format_dollar(dollar)
@@ -75,7 +75,7 @@ module EnginehqHelper
   end
 
   def format_percent(percent)
-    percent ? number_to_percentage(percent, :strip_insignificant_zeros => true) : "--"
+    percent ? number_to_percentage(percent, :strip_insignificant_zeros => true) : ""
   end
 
   def ce?(b)
@@ -83,7 +83,7 @@ module EnginehqHelper
   end
 
   def e?(b)
-    b ? " error" : ""
+    " error" if b
   end
 
   def common_error_messages(*params)

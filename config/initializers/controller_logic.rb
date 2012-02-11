@@ -50,7 +50,7 @@ module ControllerLogic
         flash[:error] = "The requested #{entity_name} could not be located."
         return(redirect_to(eval("#{entity_route}_path")))
       end
-      current_user.add_recently_viewed(instance_variable_get("@#{entity_name}")) if recently_vieweds
+      current_user.add_recently_viewed(instance_variable_get("@#{entity_name}")) if recently_vieweds && controller_name == entity_route
     end
   end
 
