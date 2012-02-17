@@ -36,7 +36,7 @@ module ControllerLogic
 
   def set_time_zone
     if current_user
-      Time.zone = current_user.try(:organization).try(:time_zone) 
+      Time.zone = current_user.try(:organization).try(:time_zone)
     end
   end
 
@@ -50,7 +50,9 @@ module ControllerLogic
         flash[:error] = "The requested #{entity_name} could not be located."
         return(redirect_to(eval("#{entity_route}_path")))
       end
-      current_user.add_recently_viewed(instance_variable_get("@#{entity_name}")) if recently_vieweds && controller_name == entity_route
+      if recently_vieweds && controller_name == entity_route && ["overview", "show"].include?(action_name)
+        current_user.add_recently_viewed(instance_variable_get("@#{entity_name}"))
+      end
     end
   end
 
