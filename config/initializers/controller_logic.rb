@@ -31,7 +31,7 @@ module ControllerLogic
   def render_pdf(filename, template, orientation = "Landscape")
     headers["Content-Type"] = "application/octet-stream"
     headers["Content-Disposition"] = "attachment; filename=\"#{filename}.pdf\""
-    render :pdf => filename, :template => template, :orientation => orientation, :formats => [:html]
+    render :pdf => filename, :template => "#{template}.html", :orientation => orientation
   end
 
   def set_time_zone
