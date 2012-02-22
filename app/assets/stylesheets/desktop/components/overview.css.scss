@@ -70,6 +70,8 @@ table.overview-listing { border-spacing: 0; border-collapse: collapse; width: 10
   .relation-type { float: right; color: #858993; }
   dl {  width: 50%; padding: .5em 0 0;  }
   dl > * { display: inline; }
+  .risk-class { float: left; clear: left; }
+  .tobacco-status { float: right; text-align: right; }
   .age { float: left; clear: left; }
   .ssn { float: right; text-align: right; }
 }
