@@ -12,7 +12,7 @@ module ControllerLogic
   
   def document_formats
     request.format = :csv if params[:csv]
-    request.format = :pdf if (params[:pdf] || (params[:transmit] && params[:transmit][:pdf]))
+    request.format = :pdf if params[:pdf] || params[:transmittal]
   end
 
   def mailer_set_url_options
