@@ -20,9 +20,10 @@
 ****************************************/
 .action { @include background($icons -9999px 0, linear-gradient(top, #EEE, #FFF)); position: relative; z-index: 1; margin: 0; display: inline-block; cursor: pointer; 
   font-size: 12px; line-height: 30px; font-weight: bold; text-decoration: none; color: $gray; text-transform: uppercase; text-shadow: 1px 1px 0 #fff;
-   white-space: nowrap;  padding: 0 9px; margin: 0; letter-spacing:0.02em; height: 30px; -moz-box-sizing: border-box;   box-sizing: border-box;
-   border: 1px solid #bdbdbd; border-radius: 7px;  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px; background-repeat: no-repeat;
+  white-space: nowrap;  padding: 0 9px; margin: 0; letter-spacing:0.02em; height: 30px; -moz-box-sizing: border-box; box-sizing: border-box;
+  border: 1px solid #bdbdbd; border-radius: 7px;  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px; background-repeat: no-repeat;
   &:hover { color: #000; border-color: #999; }
+  [disabled]{ color: $gray; border-color: #bdbdbd; }
 }
 
 .ical-action, 
