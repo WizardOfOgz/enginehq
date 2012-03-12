@@ -35,7 +35,7 @@ module ControllerLogic
   end
 
   def set_time_zone
-    Time.zone = current_user.organization.time_zone) if current_user
+    Time.zone = current_user.organization.time_zone if current_user
   end
 
   def load(entity_route = nil)
