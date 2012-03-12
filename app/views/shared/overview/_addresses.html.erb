@@ -14,7 +14,7 @@
           <address>
             <span><%= address.line_one %></span><br/>
             <% if address.line_two %><span><%= address.line_two %></span><br/><% end %>
-            <span><% if address.city.present? %><%= address.city %>,&nbsp;<% end %><%= address.state %>&nbsp;<%= address.display_zipcode %></span>
+            <span><% if address.city.present? %><%= address.city %>,&nbsp;<% end %><%= address.state_id && address.state.abbreviation %>&nbsp;<%= address.display_zipcode %></span>
           </address>
         </dd>
         <% end %>

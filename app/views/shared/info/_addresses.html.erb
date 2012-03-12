@@ -19,7 +19,7 @@
         <span class="field-label">City</span> <span class="value"><%= address.city %></span>
       </p>
       <p class="field state">
-        <span class="field-label">State</span> <span class="value"><%= address.state %></span>
+        <span class="field-label">State</span> <span class="value"><%= address.state_id && address.state.abbreviation %></span>
       </p>
       <p class="field zip">
         <span class="field-label">Zip</span> <span class="value"><%= address.display_zipcode %></span>

@@ -8,7 +8,7 @@ $(document).delegate(".show-notes-message", "click", function expandMessageComme
     $(this).html($(this).html().replace("View", "Collapse"));
   }
 });
-  
+
 $(document).delegate(".message-sub-forms .form-title", "click", function expandMessageSubForm() {
   var siblings = $(this).siblings();
   if (!$(this).hasClass("active")) {

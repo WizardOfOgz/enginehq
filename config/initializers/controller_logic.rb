@@ -9,7 +9,7 @@ module ControllerLogic
     end
     @sort = (params[:sort] ? params[:sort] : sort)
   end
-  
+
   def document_formats
     request.format = :csv if params[:csv]
     request.format = :pdf if params[:pdf] || params[:transmittal]
@@ -21,9 +21,9 @@ module ControllerLogic
 
   def render_csv(filename, entities)
     if entities.length > 0
-      headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\""
       csv = CSV.generate_line(entities.first.class::CSV_HEADER)
       entities.each{|e| csv << CSV.generate_line(e.csv_row)}
+      headers["Content-Disposition"] = "attachment; filename=\"#{filename}.csv\""
       send_data csv, :filename => "#{filename}.csv", :type => "text/csv"
     end
   end
@@ -35,9 +35,7 @@ module ControllerLogic
   end
 
   def set_time_zone
-    if current_user
-      Time.zone = current_user.try(:organization).try(:time_zone)
-    end
+    Time.zone = current_user.organization.time_zone) if current_user
   end
 
   def load(entity_route = nil)
