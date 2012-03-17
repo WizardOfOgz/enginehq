@@ -4,7 +4,7 @@
 <li class="item result">
   <h4 class="result-title" tabIndex="0"><% if params[:search_global].nil? %><%= result.name %><% else %><a href="/<%= screen %>/<%= result.id %>/overview"><%= result.name %></a><% end %></h4>
   <% if params[:search_global].nil? %><input class="add" type="submit" value="add" name="search_add[<%= screen %>][<%= result.id %>]" /><% end %>
-  <% if [Advisor, PolicyHolder, Policy, Contract, License, Product].include?(result.class) %>
+  <% if [Advisor, PolicyHolder, Policy, Contract, License, Product, Campaign].include?(result.class) %>
   <%= render :partial => "/shared/search/#{result.class.table_name}/expanded_details", :locals => {:entity => result} %>
   <% end %>
 </li>
