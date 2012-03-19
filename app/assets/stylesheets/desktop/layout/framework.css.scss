@@ -148,7 +148,8 @@
   .alt-head { font-size: 16px; position: relative; bottom: 4px; color: #696969; font-style: italic;  }
   > img { float: left; margin-right: 15px; margin-top: -7.5px; border:none; overflow: hidden; text-indent: -9999px; }
   .secondary-head { font-size: 14px; display: block; font-weight: bold; } 
-  .terminated { font-size: 12px; padding: 3px 5px; border-radius: 3px;  position: relative; top: -5px; }
+  .important { font-size: 12px; padding: 3px 5px; border-radius: 3px;  position: relative; top: -5px; color: #BC180F; text-transform: uppercase; background-color: #FDE2E4; 
+    border: 1px solid #E3A2A5; font-weight: bold; }
 }
 
 .content-links ~ .content-section { padding-top: 10px; clear: both; 
@@ -180,4 +181,3 @@
 }
 
 .hot-value { display:inline; background-color: #F9ECA5; border: 1px solid #DFCF74; border-radius: 3px; color: #B56E09; font-size: 10px; font-weight: normal; padding: 0.25em 0.5em !important; text-transform: uppercase; white-space: nowrap; }
-.terminated { color: #BC180F; text-transform: uppercase; background-color: #FDE2E4; border: 1px solid #E3A2A5; font-weight: bold; }
