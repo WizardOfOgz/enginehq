@@ -389,15 +389,6 @@
     eventTarget = null;
     setFocusInput(null);
     setFormInputs(null);
-    
-    parent = $(this).('.date-field');
-    var nextField = parent.next().find('input, select, textarea').eq(0);
-    while(nextField.length === 0) {
-      // we'll traverse the dom tree until we come to the next focusable input
-      parent = parent.parent();
-      nextField = parent.next().find('input, select, textarea').eq(0);
-    }
-    nextField.focus();
   }
 
   $("a", monthControl).click(pageMonth);
