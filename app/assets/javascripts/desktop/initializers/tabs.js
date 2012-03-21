@@ -54,7 +54,6 @@ $(document).on('blur', '.field-group input, .field-group select, .field-group te
   });
   lastElement = lastElement.last().get(0);
 
-  console.log(id, focusedElement, lastElement);
   if(focusedElement === lastElement) {
     var $fieldGroupIndex = $('.field-group-index');
     var $tab = $fieldGroupIndex.find('li').find('a[href$=#'+id+']');
@@ -67,6 +66,5 @@ $(document).on('blur', '.field-group input, .field-group select, .field-group te
       e.preventDefault();
       $nextTab.focus();
     }
-    console.log('fired', $nextTab, $tab, lastFGElement, tabElement);
   }
 });
