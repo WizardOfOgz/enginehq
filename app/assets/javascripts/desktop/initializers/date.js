@@ -45,6 +45,7 @@ $(document).on('keypress', '.date-field .control > label > input', function(e) {
     $month.val(month);
     $day.val(day);
     $year.val(year);
+    $year.focus();
 
     // var nextField = parent.next().find('input, select, textarea').eq(0);
     // while(nextField.length === 0) {
