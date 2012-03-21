@@ -24,8 +24,8 @@ $(document).delegate("a", "click", function tab(e) {
     container = $("<div></div>").attr("id", this.hash.substr(1)).css({display: "block"});
     $("#contentSections").append(container);
     HQApp.load(this.href);
-  } 
-  
+  }
+
   group.find("a").each(function() { 
     $(this.hash).hide(); 
   });
@@ -39,4 +39,26 @@ $(document).delegate("a", "click", function tab(e) {
   container.find("a, input:not(input[type=hidden]), textarea, select").eq(0).focus();
 
   e.preventDefault();
+});
+
+$(document).on('blur', '.field-group input, .field-group select, .field-group textarea', function(e) { 
+  var $this=$(this);
+  var $fieldGroup = $this.parents('.field-group');
+  var lastElement = $fieldGroup.find('input, select, textarea').last().get(0);
+  var focusedElement = $this.get(0);
+  var id = $fieldGroup.attr('id');
+
+  if(focusedElement === lastElement) {
+    var $fieldGroupIndex = $('.field-group-index');
+    var $tab = $fieldGroupIndex.find('li').find('a[href$=#'+id+']');
+    var $nextTab = $tab.parent('li').next().find('a');
+
+    var lastFGElement = $fieldGroupIndex.find('li').last().find('a').get(0);
+    var tabElement = $tab.get(0);
+
+    if(lastFGElement !== tabElement) {
+      e.preventDefault();
+      $nextTab.focus();
+    }
+  }
 });
