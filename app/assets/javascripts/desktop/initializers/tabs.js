@@ -44,10 +44,17 @@ $(document).delegate("a", "click", function tab(e) {
 $(document).on('blur', '.field-group input, .field-group select, .field-group textarea', function(e) { 
   var $this=$(this);
   var $fieldGroup = $this.parents('.field-group');
-  var lastElement = $fieldGroup.find('input, select, textarea').last().get(0);
   var focusedElement = $this.get(0);
   var id = $fieldGroup.attr('id');
 
+  var lastElement = $fieldGroup.find('input, select, textarea');
+  lastElement = lastElement.not(':hidden');
+  lastElement = lastElement.filter(function() {
+    return $(this).css('visibility') !== 'hidden';
+  });
+  lastElement = lastElement.last().get(0);
+
+  console.log(id, focusedElement, lastElement);
   if(focusedElement === lastElement) {
     var $fieldGroupIndex = $('.field-group-index');
     var $tab = $fieldGroupIndex.find('li').find('a[href$=#'+id+']');
@@ -60,5 +67,6 @@ $(document).on('blur', '.field-group input, .field-group select, .field-group te
       e.preventDefault();
       $nextTab.focus();
     }
+    console.log('fired', $nextTab, $tab, lastFGElement, tabElement);
   }
 });
