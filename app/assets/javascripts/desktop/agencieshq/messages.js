@@ -1,3 +1,15 @@
+$(document).on('focus', '.message-form .note textarea', function() {
+  var textarea = $(this);
+  $(document).one('click', 'a:not(.save-action)', function(e) {
+    if(textarea.val() !== '') {
+      if(!confirm('You have not submitted your note. Would you like to leave this page?')) {
+        e.preventDefault(); // don't follow the link
+        e.stopPropagation(); // don't allow other handlers to continue with ajax
+      }
+    }
+  });
+});
+
 $(document).delegate(".show-notes-message", "click", function expandMessageComments() {
   var messageNotes = $(this).next(".message-notes");
   if(messageNotes.hasClass('expanded')) {
