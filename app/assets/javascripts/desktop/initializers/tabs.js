@@ -99,4 +99,3 @@ $(document).on('keydown.tab', '.field-group input, .field-group select, .field-g
     }
   }
 });
-
