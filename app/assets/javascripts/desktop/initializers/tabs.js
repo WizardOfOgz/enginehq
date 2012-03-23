@@ -92,7 +92,7 @@ $(document).on('keydown.tab', '.field-group input, .field-group select, .field-g
       var lastFGElement = $fieldGroupIndex.find('li').last().find('a').get(0);
       var tabElement = $tab.get(0);
 
-      if(lastFGElement !== tabElement) {
+      if(lastFGElement !== tabElement && $tab.length) {
         e.preventDefault();
         $nextTab.focus();
       }
