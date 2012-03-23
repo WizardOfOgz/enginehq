@@ -69,29 +69,39 @@ $(document).on('focus.actionLinks', '.action-options .option a', function() {
   var previous = option.prev().find('a');
   var next = option.next().find('a');
 
-  $(document).one('keydown.actionLinkKeys', function(e){
-    if(e.which === keymap.up) {
-      if(previous.length) {
-        e.preventDefault();
-        previous.focus();
+  arrowKeys();
+  
+  function arrowKeys() {
+    $(document).one('keydown.actionLinkKeys', function(e){
+      if(e.which === keymap.up) {
+        if(previous.length) {
+          e.preventDefault();
+          previous.focus();
+        } else {
+          e.preventDefault(); // stop the page from moving down/up
+          arrowKeys();
+        }
       }
-    }
 
-    if(e.which === keymap.down) {
-      if(next.length) {
-        e.preventDefault();
-        next.focus();
+      if(e.which === keymap.down) {
+        if(next.length) {
+          e.preventDefault();
+          next.focus();
+        } else {
+          e.preventDefault(); // stop the page from moving down/up
+          arrowKeys();
+        }
       }
-    }
 
-    // if(e.which === keymap.right) {
-    //   e.preventDefault();
-    //   $this.click();
-    // }
+      // if(e.which === keymap.right) {
+      //   e.preventDefault();
+      //   $this.click();
+      // }
 
-    // if(e.which === keymap.left) {
-    //   e.preventDefault();
-    //   option.parents('.action-group').removeClass('active');
-    // }
-  });
+      // if(e.which === keymap.left) {
+      //   e.preventDefault();
+      //   option.parents('.action-group').removeClass('active');
+      // }
+    });
+  }
 });

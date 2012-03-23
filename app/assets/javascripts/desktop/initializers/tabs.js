@@ -68,3 +68,35 @@ $(document).delegate("a", "click", function tab(e) {
 //     }
 //   }
 // });
+
+$(document).on('keydown.tab', '.field-group input, .field-group select, .field-group textarea, .field-group h4', function(e) { 
+  if(e.which === 9) { // tab key
+    var $this=$(this);
+    var $fieldGroup = $this.parents('.field-group');
+    var focusedElement = $this.get(0);
+    var id = $fieldGroup.attr('id');
+
+    var lastElement = $fieldGroup.find('input, select, textarea, button, h4');
+    lastElement = lastElement.not(':hidden');
+    lastElement = lastElement.filter(function() {
+      return $(this).css('visibility') !== 'hidden';
+    });
+    lastElement = lastElement.last().get(0);
+
+    if(focusedElement === lastElement) {
+
+      var $fieldGroupIndex = $('.field-group-index');
+      var $tab = $fieldGroupIndex.find('li').find('a[href$=#'+id+']');
+      var $nextTab = $tab.parent('li').next().find('a');
+
+      var lastFGElement = $fieldGroupIndex.find('li').last().find('a').get(0);
+      var tabElement = $tab.get(0);
+
+      if(lastFGElement !== tabElement) {
+        e.preventDefault();
+        $nextTab.focus();
+      }
+    }
+  }
+});
+
