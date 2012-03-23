@@ -1,13 +1,11 @@
+
 // define keys
 var keymap = {
   'copy' : 119, // F8
   'edit' : 120, // F9
   'add'  : 115, // F4
-
-  'left' : 37,
-  'up'   : 38,
-  'right': 39,
-  'down' : 40
+  'up'   : 38,  // up arror
+  'down' : 40   // down arrow
 }
 
 // map keys
@@ -58,6 +56,11 @@ $(document).on('keydown.shortcuts', function(e) {
     if(action.hasClass('active'))
       action.find('.action-options').find('.option a').eq(0).focus();
 
+    // hide drop down if you click anywhere on the page
+    $(document).one('click', function() {
+      action.removeClass('active');
+    });
+
     // event focus.actionLinks takes over from here
   }
 });
@@ -92,16 +95,6 @@ $(document).on('focus.actionLinks', '.action-options .option a', function() {
           arrowKeys();
         }
       }
-
-      // if(e.which === keymap.right) {
-      //   e.preventDefault();
-      //   $this.click();
-      // }
-
-      // if(e.which === keymap.left) {
-      //   e.preventDefault();
-      //   option.parents('.action-group').removeClass('active');
-      // }
     });
   }
 });

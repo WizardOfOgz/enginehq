@@ -21,10 +21,14 @@ function addChromeFrameFocusWorkaround() {
             // Add the empty div to the DOM
             $("body").prepend("<div style='width: 0; height: 0;' tabindex='1' id='ChromeFrameWorkaroundDiv'></div>");
             // Track the element that is losing focus
-            var lastFocus = null;
+            var lastFocus = null, fsElem = null, index = null;
             $(document).focusout(function(evt) {
                 if (evt && evt.target) {
-                    lastFocus = evt.target;
+                    lastFocus = $(evt.target);
+                    // we will get next target rather than move back to the original selection
+                    fsElem = lastFocus.parents('body').find('a, input, textarea, select');
+                    index = fsElem.index(lastFocus);
+                    lastFocus = fsElem.eq(index+1);
                 }
             });
             // When focus is given to the ChromeFrameWorkaroundDiv, give it back to the previous element.
