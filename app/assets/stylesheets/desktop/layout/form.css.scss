@@ -67,6 +67,7 @@ table.field-list { width: 100%; border-spacing: 0;
   thead th { text-align: left; }
   thead .error { color: #BC180F; font-weight: bold; }
   .item > td { border-top: 1px dotted #DADCE0; padding: 6px 10px 6px 0; list-style: none; vertical-align: middle; }
+  .item > td:last-child { padding-right: 0; }
   .search-field { width: 100%; }
   .search-field, .date-field, .time-field { margin-bottom: 0; /* Hide field labels of dates and searches in tables */
     .field-label { display: none; }
