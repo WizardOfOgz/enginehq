@@ -50,8 +50,7 @@ $(document).on('focus', '.message-form .note textarea, .message-form .subject in
   bindings.bind('click.preventNavigation', function(e) {
 
     if(textarea.val() !== '') {
-      console.log('note contents', e.isDefaultPrevented(), tab, formElements, bindings);
-
+  
       if(e.isDefaultPrevented()) { 
       // if there's already an event handler on the element that is preventing the default action
         noteConfirmation(textarea, tab, bindings, false);
@@ -98,7 +97,13 @@ function noteConfirmation(textarea, tab, bindings, clickedElement) {
       setTimeout(function() { textarea.focus(); }, 200);
     } else {
       if(clickedElement) { // return the normal browsing path to whatever they were doing
-        clickedElement.click(); // force the normal action
+        console.log(clickedElement);
+    if(clickedElement.is('a')) {
+      var url = clickedElement.attr('href');
+      window.location.assign(url);
+    } else {
+      clickedElement.click(); // force the normal action
+    }
       } else {
         // it seems it was an ajax call and we'll just remove the overlay and it should be where they want it
       }
