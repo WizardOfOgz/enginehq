@@ -1,4 +1,3 @@
-
 // define keys
 var keymap = {
   'edit' : 120, // F9
