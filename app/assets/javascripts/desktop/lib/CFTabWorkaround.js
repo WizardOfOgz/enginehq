@@ -28,7 +28,12 @@ function addChromeFrameFocusWorkaround() {
                     // we will get next target rather than move back to the original selection
                     fsElem = lastFocus.parents('body').find('a, input, textarea, select');
                     index = fsElem.index(lastFocus);
-                    lastFocus = fsElem.eq(index+1);
+                    
+                    // chromeframe bug for autocomplete
+                    var i = 1;
+                    // try and find the next focusable element, because we can't focus the now hidden h4s
+                    while(!fsElem.eq(index+i).is('a, input, textarea, select')) i++;
+                    lastFocus = fsElem.eq(index+i);
                 }
             });
             // When focus is given to the ChromeFrameWorkaroundDiv, give it back to the previous element.

@@ -48,10 +48,10 @@ $(document).on('keydown.tab', '.field-group input, .field-group select, .field-g
     var focusedElement = $this.get(0);
     var id = $fieldGroup.attr('id');
 
-    var lastElement = $fieldGroup.find('input, select, textarea, button, h4');
-    lastElement = lastElement.not(':hidden');
+    // h4 is in this list due to autocompletes
+    var lastElement = $fieldGroup.find('input[type=text], input[type=submit], input[type=checkbox], input[type=radio], select, textarea, h4');
     lastElement = lastElement.filter(function() {
-      return $(this).css('visibility') !== 'hidden';
+      return $(this).css('visibility') !== 'hidden' && !$(this).is(':disabled');;
     });
     lastElement = lastElement.last().get(0);
 

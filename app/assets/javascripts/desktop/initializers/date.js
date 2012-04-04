@@ -46,13 +46,5 @@ $(document).on('keypress', '.date-field .control > label > input', function(e) {
     $day.val(day);
     $year.val(year);
     $year.focus();
-
-    // var nextField = parent.next().find('input, select, textarea').eq(0);
-    // while(nextField.length === 0) {
-    //   // we'll traverse the dom tree until we come to the next focusable input
-    //   parent = parent.parent();
-    //   nextField = parent.next().find('input, select, textarea').eq(0);
-    // }
-    // nextField.focus();
   }
 });

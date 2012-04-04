@@ -12,7 +12,7 @@ $(document).delegate(".show-notes-message", "click", function expandMessageComme
 $(document).delegate(".message-sub-forms .form-title", "click", function expandMessageSubForm() {
   var siblings = $(this).siblings();
   if (!$(this).hasClass("active")) {
-    $(this).addClass("active").next().addClass("active").find("textarea").focus();
+    $(this).addClass("active").next().addClass("active").find("input[type=text], input[type=submit], input[type=checkbox], input[type=radio], select, textarea").eq(0).focus();
   } else {
     siblings = siblings.andSelf();
   }
@@ -22,21 +22,6 @@ $(document).delegate(".message-sub-forms .form-title", "click", function expandM
 $(document).delegate("#messagesPagingForm input", "click", function(e) {
   HQApp.submitForm($(this).closest("form"), $(this));
   return false;
-});
-
-$(document).on('focus', '.message-form .note textarea', function() {
-  var textarea = $(this);
-  var tab = $('.content-links').find('.selected');
-  $(document).one('click', 'a, input', function(e) {
-    if(textarea.val() !== '' && !$(this).hasClass('save-action')) {
-      e.preventDefault();
-      noteConfirmation(textarea, tab);
-      // if(!confirm('You have not submitted your note. Would you like to leave this page?')) {
-      //   e.preventDefault(); // don't follow the link
-      //   e.stopPropagation(); // don't allow other handlers to continue with ajax
-      // }
-    }
-  });
 });
 
 $(document).on('focus', '.message-form .note textarea, .message-form .subject input', function() {
@@ -88,24 +73,19 @@ function noteConfirmation(textarea, tab, bindings, clickedElement) {
     $('.note-confirmation').hide().remove();
 
     // unbind the event so it won't register any more clicks until they reblur the textarea again
-    bindings.unbind('click.preventNavigation'); 
+    bindings.unbind('click.preventNavigation');
 
     if($this.hasClass('note-deny')) { // we still have reference to the removed object
       // return them to the previous tab (if applicable) and focus the textarea
       tab.find('a').click();
-      // cause javascript is stupid
-      setTimeout(function() { textarea.focus(); }, 200);
     } else {
       if(clickedElement) { // return the normal browsing path to whatever they were doing
-        console.log(clickedElement);
-    if(clickedElement.is('a')) {
-      var url = clickedElement.attr('href');
-      window.location.assign(url);
-    } else {
-      clickedElement.click(); // force the normal action
-    }
-      } else {
-        // it seems it was an ajax call and we'll just remove the overlay and it should be where they want it
+        if(clickedElement.is('a')) {
+          var url = clickedElement.attr('href');
+          window.location.assign(url);
+        } else {
+          clickedElement.click(); // force the normal action
+        }
       }
     }
   });

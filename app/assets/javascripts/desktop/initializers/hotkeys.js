@@ -8,6 +8,8 @@ var keymap = {
   'down' : 40   // down arrow
 }
 
+// event.shiftKey for shift
+
 // map keys
 keymap.allKeys = [];
 for(var key in keymap) {
@@ -21,24 +23,48 @@ $(document).on('keydown.shortcuts', function(e) {
   // check to see if key used is a shortcut key
   if(keymap.allKeys.indexOf(e.which) > -1) {
     var action = false;
+    if(!e.shiftKey) {
+      if(e.which === keymap.copy) {
+        action = $('.copy-action');
+        followUrl(action);
+        handleDropdown(action);
+      }
 
-    if(e.which === keymap.copy) {
-      action = $('.copy-action');
-      followUrl(action);
-      handleDropdown(action);
-    }
-
-    if(e.which === keymap.edit) {
-      action = $('.edit-action');
-      followUrl(action);
-      handleDropdown(action);
+      if(e.which === keymap.edit) {
+        action = $('.edit-action');
+        followUrl(action);
+        handleDropdown(action);
+      }
+    
+      if(e.which === keymap.add) {
+        action = $('.add-action');
+        followUrl(action);
+        handleDropdown(action);
+      }
     }
     
-    if(e.which === keymap.add) {
-      action = $('.add-action');
-      followUrl(action);
-      handleDropdown(action);
+    // shift key + F? key
+    if(e.shiftKey) {
+      var activeSection = $('.content-links .selected a').get(0).hash;
+      if(e.which === keymap.copy) {
+        action = $(activeSection+' .records-actions .copy-action');
+        followUrl(action);
+        handleDropdown(action);
+      }
+      
+      if(e.which === keymap.edit) {
+        action = $(activeSection+' .records-actions .edit-action');
+        followUrl(action);
+        handleDropdown(action);
+      }
+      
+      if(e.which === keymap.add) {
+        action = $(activeSection+' .records-actions .add-action');
+        followUrl(action);
+        handleDropdown(action);
+      }
     }
+    
   }
 
   function followUrl(action) {
