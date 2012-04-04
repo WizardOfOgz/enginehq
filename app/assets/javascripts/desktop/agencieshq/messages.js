@@ -53,16 +53,18 @@ $(document).on('focus', '.message-form .note textarea, .message-form .subject in
 });
 
 function noteConfirmation(textarea, tab, bindings, clickedElement) {
-/* NOTE:
- *   I didn't style this well because the html will probably be removed to somewhere else. This is basically just to test that it works.
- */
-  var html = [
-    '<fieldset class="inline-form note-confirmation">',
-      '<p>You have an unsent note. Are you sure you want to navigate away from this page?</p>',
-      '<a href="#" class="action note-confirm">Hells yeah, that note was stupid.</a>',
-      '<a href="#" class="action note-deny">Whoa, wait a sec... I didn\'t actually send that yet?!!11!one!</a>',
-    '</fieldset>'
-  ].join('');
+
+ var html = [
+  '<fieldset class="inline-form note-confirmation">', 
+    '<legend class="inline-form-head">Message Confirmation</legend>', 
+    '<div class="content-alerts content-errors">', 
+      '<h4 class="title">You have an message that was not saved or sent...</h4>', 
+    '</div>', 
+    '<p class="form-actions">', 
+      '<a class="action" href="#">Please take me back!</a>', 
+      '<a class="cancel-link note-cancel" href="#">cancel</a>', 
+    '</p>', 
+  '</fieldset>'].join('');
   $('body').append(html);
 
   $('.note-confirmation').one('click', 'a', function(e) {
@@ -75,7 +77,7 @@ function noteConfirmation(textarea, tab, bindings, clickedElement) {
     // unbind the event so it won't register any more clicks until they reblur the textarea again
     bindings.unbind('click.preventNavigation');
 
-    if($this.hasClass('note-deny')) { // we still have reference to the removed object
+    if($this.hasClass('note-cancel')) { // we still have reference to the removed object
       // return them to the previous tab (if applicable) and focus the textarea
       tab.find('a').click();
     } else {

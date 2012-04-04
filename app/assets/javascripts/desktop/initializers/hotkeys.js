@@ -1,9 +1,8 @@
 
 // define keys
 var keymap = {
-  'copy' : 119, // F8
   'edit' : 120, // F9
-  'add'  : 115, // F4
+  'add'  : 119, // F8
   'up'   : 38,  // up arror
   'down' : 40   // down arrow
 }
@@ -24,12 +23,6 @@ $(document).on('keydown.shortcuts', function(e) {
   if(keymap.allKeys.indexOf(e.which) > -1) {
     var action = false;
     if(!e.shiftKey) {
-      if(e.which === keymap.copy) {
-        action = $('.copy-action');
-        followUrl(action);
-        handleDropdown(action);
-      }
-
       if(e.which === keymap.edit) {
         action = $('.edit-action');
         followUrl(action);
@@ -46,12 +39,6 @@ $(document).on('keydown.shortcuts', function(e) {
     // shift key + F? key
     if(e.shiftKey) {
       var activeSection = $('.content-links .selected a').get(0).hash;
-      if(e.which === keymap.copy) {
-        action = $(activeSection+' .records-actions .copy-action');
-        followUrl(action);
-        handleDropdown(action);
-      }
-      
       if(e.which === keymap.edit) {
         action = $(activeSection+' .records-actions .edit-action');
         followUrl(action);
