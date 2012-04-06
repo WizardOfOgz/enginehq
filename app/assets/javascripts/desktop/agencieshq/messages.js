@@ -54,19 +54,26 @@ $(document).on('focus', '.message-form .note textarea, .message-form .subject in
 
 function noteConfirmation(textarea, tab, bindings, clickedElement) {
 
- var html = [
-  '<fieldset class="inline-form note-confirmation">', 
-    '<legend class="inline-form-head">Message Confirmation</legend>', 
-    '<div class="content-alerts content-warnings">', 
-      '<h4 class="title">You have an message that was not saved or sent...</h4>', 
-    '</div>', 
-    '<p class="form-actions">', 
-      '<a class="action note-back" href="#">Please take me back!</a>', 
-      '<a class="cancel-link note-cancel" href="#">cancel</a>', 
-    '</p>', 
-  '</fieldset>'].join('');
-  $('body').append(html);
+  // unbind the event so it won't register any more clicks until they reblur the textarea again
+  bindings.unbind('click.preventNavigation'); 
 
+  var html = [
+    '<fieldset class="inline-form note-confirmation">', 
+      '<legend class="inline-form-head">Message Confirmation</legend>', 
+      '<div class="content-alerts content-warnings">', 
+        '<h4 class="title">You have an message that was not saved or sent...</h4>', 
+      '</div>', 
+      '<p class="form-actions">', 
+        '<a class="action note-back" href="#">Please take me back!</a>', 
+        '<a class="cancel-link" href="#">cancel</a>', 
+      '</p>', 
+    '</fieldset>'].join('');
+
+  if($('.note-confirmation').length === 0) {
+    // we want to make sure only one overlay gets created
+    $('body').append(html);
+  }
+  
   $('.note-confirmation').one('click', 'a', function(e) {
     var $this = $(this);
     e.preventDefault(); // we'll stop the links in the confirmation box from doing anything normally
@@ -74,12 +81,11 @@ function noteConfirmation(textarea, tab, bindings, clickedElement) {
     // prompt gets removed/hidden regardless of what they select
     $('.note-confirmation').hide().remove();
 
-    // unbind the event so it won't register any more clicks until they reblur the textarea again
-    bindings.unbind('click.preventNavigation');
 
     if($this.hasClass('note-back')) { // we still have reference to the removed object
       // return them to the previous tab (if applicable) and focus the textarea
       tab.find('a').click();
+
     } else {
       if(clickedElement) { // return the normal browsing path to whatever they were doing
         if(clickedElement.is('a')) {
