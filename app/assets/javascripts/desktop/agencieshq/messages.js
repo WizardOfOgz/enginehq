@@ -30,6 +30,7 @@ $(document).on('focus', '.message-form .note textarea, .message-form .subject in
 
   // make sure none of the inputs are those in the note form
   var formElements = $(this).parents('form').find('input');
+  var inputElement = $(this).parents('form').find('input[type=submit]');
   var bindings = $('a, input').not(formElements);
 
   bindings.bind('click.preventNavigation', function(e) {
@@ -49,6 +50,12 @@ $(document).on('focus', '.message-form .note textarea, .message-form .subject in
       // if note is empty, we don't want to do anything so remove any trace this was here
       bindings.unbind('click.preventNavigation');
     }
+  });
+
+  inputElement.bind('click.cancelNotePrompt', function(e) {
+    // reset everything so it won't be called again
+    inputElement.unbind('click.cancelNotePrompt');
+    bindings.unbind('click.preventNavigation');
   });
 });
 
