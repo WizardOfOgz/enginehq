@@ -57,7 +57,7 @@ function noteConfirmation(textarea, tab, bindings, clickedElement) {
  var html = [
   '<fieldset class="inline-form note-confirmation">', 
     '<legend class="inline-form-head">Message Confirmation</legend>', 
-    '<div class="content-alerts content-errors">', 
+    '<div class="content-alerts content-warnings">', 
       '<h4 class="title">You have an message that was not saved or sent...</h4>', 
     '</div>', 
     '<p class="form-actions">', 
