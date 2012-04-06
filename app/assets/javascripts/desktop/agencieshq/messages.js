@@ -61,7 +61,7 @@ function noteConfirmation(textarea, tab, bindings, clickedElement) {
       '<h4 class="title">You have an message that was not saved or sent...</h4>', 
     '</div>', 
     '<p class="form-actions">', 
-      '<a class="action note-return" href="#">Please take me back!</a>', 
+      '<a class="action note-back" href="#">Please take me back!</a>', 
       '<a class="cancel-link" href="#">cancel</a>', 
     '</p>', 
   '</fieldset>'].join('');
@@ -77,7 +77,7 @@ function noteConfirmation(textarea, tab, bindings, clickedElement) {
     // unbind the event so it won't register any more clicks until they reblur the textarea again
     bindings.unbind('click.preventNavigation');
 
-    if($this.hasClass('note-return')) { // we still have reference to the removed object
+    if($this.hasClass('note-back')) { // we still have reference to the removed object
       // return them to the previous tab (if applicable) and focus the textarea
       tab.find('a').click();
     } else {
