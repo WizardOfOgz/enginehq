@@ -67,6 +67,7 @@
   .pdf-option > *{ padding-left: 25px; @include background($icons no-repeat); background-position: sprite-position($icons, pdf, 4px, 5px); }
   .transmittal-option > *{ padding-left: 25px; @include background($icons no-repeat); background-position: sprite-position($icons, transmittal, 4px, 5px); }
   .receive-option > *{ padding-left: 25px; @include background($icons no-repeat); background-position: sprite-position($icons, receive, 4px, 5px); }
+  .order-option > *{ padding-left: 25px; @include background($icons no-repeat); background-position: sprite-position($icons, order, 4px, 5px); }
   .csv-option > * { padding-left: 25px; @include background($icons no-repeat); background-position: sprite-position($icons, csv, 6px, 5px); }
   .email-option > * { padding-left: 25px; @include background($icons no-repeat); background-position: sprite-position($icons, email, 4px, 8px);}
 }
