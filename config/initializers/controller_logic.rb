@@ -1,9 +1,11 @@
 module ControllerLogic
   def list_logic(prefix, sort)
-    if params[:next_page] && params[:page].nil?
+    if params[:next_page]
       @page = params[:next_page].keys.first.to_i
-    elsif params[:previous_page] && params[:page].nil?
+      params.delete(:next_page)
+    elsif params[:previous_page]
       @page = (params[:previous_page].keys.first.to_i)
+      params.delete(:previous_page)
     else
       @page = (params[:page].to_i > 0 ? params[:page].to_i : 1)
     end
