@@ -4,8 +4,8 @@ class PaginationListLinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
 
   def to_html
     @options[:outer_window] = 0; links = windowed_links
-    links.unshift(page_control("previous", "previous_page[#{@collection.current_page - 1}]", "control previous")) if @collection.previous_page
-    links.push(page_control("next", "next_page[#{@collection.current_page + 1}]", "control next")) if @collection.next_page
+    links.unshift(page_control("previous", "page[#{@collection.current_page - 1}]", "control previous")) if @collection.previous_page
+    links.push(page_control("next", "page[#{@collection.current_page + 1}]", "control next")) if @collection.next_page
 
     html = "<ul class=\"page-control\">#{links.join("")}</ul>"
   end
