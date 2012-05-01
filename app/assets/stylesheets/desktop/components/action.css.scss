@@ -29,18 +29,20 @@
 .add-action,
 .find-action,
 .sum-action,
+.link-action,
 .pdf-action,
 .add-tag-action,
 .csv-action { padding-left: 27px; }
 
-.ical-action { background-position: sprite-position($icons, calendar, 8px, 5px), top;  }
-.csv-action { background-position: sprite-position($icons, csv, 8px, 5px), top;  }
+.ical-action { background-position: sprite-position($icons, calendar, 8px, 5px), top; }
+.csv-action { background-position: sprite-position($icons, csv, 8px, 5px), top; }
 .add-action { background-position: sprite-position($icons, add, 8px, 5px), top; }
 .find-action { background-position: sprite-position($icons, find, 8px, 5px), top; }
 .pdf-action { background-position: sprite-position($icons, pdf, 8px, 5px), top; }
-.add-tag-action { background-position: sprite-position($icons, tag, 8px, 5px), top; } 
+.add-tag-action { background-position: sprite-position($icons, tag, 8px, 5px), top; }
 
 .sum-action { background-position: sprite-position($icons, sum, 3px, 5px), top; }
+.link-action { background-position: sprite-position($icons, link, 3px, 5px), top; }
 .calendar-action { background-position: sprite-position($icons, calendar, 3px, 5px), top; }
 
 /*
