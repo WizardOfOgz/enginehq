@@ -31,7 +31,7 @@ function addChromeFrameFocusWorkaround() {
         if (evt && evt.target) {
           lastFocus = $(evt.target);
           // we will get next target rather than move back to the original selection
-          fsElem = lastFocus.parents('body').find('a, input, textarea, select, h4').not('[tabindex="-1"');
+          fsElem = lastFocus.parents('body').find('a, input, textarea, select, h4').not('[tabindex="-1"]');
           index = fsElem.index(lastFocus);
           if(lastFocus.is('h4')) {
             h4Parent = lastFocus.parents('.autocomplete-results');
