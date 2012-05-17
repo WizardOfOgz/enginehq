@@ -9,7 +9,7 @@ module Applications
   AGENCIESHQ = {:url => Rails.env.production? ? "https://agencieshq.com" : "http://localhost:3000",
     :name => "AgenciesHQ", 
     :tabs => ["Advisors", "Policies", "Contracts", "Licenses"],
-    :mores => ["Contacts", "Agencies", "Carriers", "Products", "Policy Holders", "Programs", "Transfer Companies", "Premium Reports", "Activity Reports"],
+    :mores => ["Contacts", "Agencies", "Carriers", "Products", "Policy Holders", "Programs", "Transfer Companies", "Premium Reports", "Activity Reports", "Tools"],
     :screens => ["Advisors", "Agencies", "Carriers", "Contacts", "Contracts", "Licenses", "Policy Holders", "Policies", "Programs", "Products", 
       "Transfer Companies"]}
 
@@ -24,14 +24,8 @@ module Applications
     :tabs => ["Organizations", "Users"],
     :mores => nil,
     :screens => nil}
-  
-  REPORTINGHQ = {:url => Rails.env.production? ? "http://reportinghq.agencieshq.com" : "http://localhost:3003",
-    :name => "ReportingHQ", 
-    :tabs => nil,
-    :mores => nil,
-    :screens => nil}
 
-  APPLICATIONS = [AGENCIESHQ, MARKETINGHQ, ADMINISTRATORSHQ, REPORTINGHQ]
+  APPLICATIONS = [AGENCIESHQ, MARKETINGHQ, ADMINISTRATORSHQ]
 
   def self.get_application_option(option)
     eval("Applications::#{Rails.application.class.parent_name.upcase}[:#{option}]")
