@@ -74,7 +74,7 @@ module ControllerLogic
 
   def tab
     if ["show", "edit", "create", "update"].include?(action_name)
-      "info"
+      params[:details] ? "details" : "info"
     else
       action_name
     end

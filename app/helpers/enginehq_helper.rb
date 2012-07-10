@@ -107,7 +107,7 @@ module EnginehqHelper
     elsif flash[:success]
       contents = content_tag(:div, raw("<h4 class=\"title\">#{flash[:success]}</h4>") + contents, :class => "content-alerts content-successes")
     elsif flash[:warning]
-      contents = content_tag(:div, raw("<h4 class=\"title\">#{flash[:warning]}.</h4>") + contents, :class => "content-alerts content-warnings")
+      contents = content_tag(:div, raw("<h4 class=\"title\">#{flash[:warning]}</h4>") + contents, :class => "content-alerts content-warnings")
     else
       ""
     end

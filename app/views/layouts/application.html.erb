@@ -99,16 +99,13 @@
         <p class="copyright">&copy; <%= Time.zone.now.year %> <%= Applications.get_application_option("name") %></p>
         <ul class="footer-links">
           <li class="link">
-            <a href="/about"><span>About</span></a>
+            <a href="/"><span>Home</span></a>
           </li>
           <li class="link">
-            <a href="<%= Applications::SINGLESIGNONHQ[:url] %>/terms_license?service=<%= Applications::AGENCIESHQ[:url] %>"><span>Terms</span></a>
+            <a href="<%= Applications::SINGLESIGNONHQ[:url] %>/legal/terms?service=<%= Applications::AGENCIESHQ[:url] %>"><span>Terms</span></a>
           </li>
           <li class="link">
-            <a href="/privacy"><span>Privacy</span></a>
-          </li>
-          <li class="link">
-            <a href="/help"><span>Help</span></a>
+            <a href="<%= Applications::SINGLESIGNONHQ[:url] %>/legal/privacy?service=<%= Applications::AGENCIESHQ[:url] %>"><span>Privacy</span></a>
           </li>
         </ul>
       </div>
