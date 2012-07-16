@@ -1,4 +1,5 @@
 require "enginehq/version"
+require "enginehq/active_record.rb"
 module Enginehq
   class Engine < Rails::Engine
     #engine_name :enginehq

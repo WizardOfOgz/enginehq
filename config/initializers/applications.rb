@@ -21,7 +21,7 @@ module Applications
 
   ADMINISTRATORSHQ = {:url => Rails.env.production? ? "http://administratorshq.agencieshq.com" : "http://localhost:3002",
     :name => "AdministratorsHQ", 
-    :tabs => ["Organizations", "Users"],
+    :tabs => ["Organizations", "Users", "Roles"],
     :mores => nil,
     :screens => nil}
 
