@@ -40,7 +40,7 @@ module ControllerLogic
     Time.zone = current_user.organization.time_zone if current_user
   end
 
-  def load(entity_route = nil)
+  def load_resource(entity_route = nil)
     entity_route = controller_name if entity_route.nil?
     entity_name = entity_route.singularize
     if entity_name == "organization"
