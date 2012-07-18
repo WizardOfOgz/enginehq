@@ -1,11 +1,7 @@
 module EnginehqHelper
 
   def base_path
-    if respond_to?(:controller)
-      controller.base_path ? controller.base_path : controller.controller_name
-    else
-      request.path_info.split('/')[1]
-    end
+    controller.base_path ? controller.base_path : controller.controller_name
   end
 
   def params_to_hidden_fields(params, scope=[], depth=0, options={})
