@@ -1,3 +1,5 @@
 <%= render :partial => "/shared/list/actions.html", :locals => {:screens => screens, :add => add} %>
-<%= render "/#{records}/table" %>
+<%= render :partial => "/#{partial || records}/table", :locals => {:records => records} %>
+<% unless instance_variable_get("@#{records}").class == Array %>
 <%= will_paginate(instance_variable_get("@#{records}"), :renderer => "PaginationListLinkRenderer") %>
+<% end %>
