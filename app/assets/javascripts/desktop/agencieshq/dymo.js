@@ -49,19 +49,48 @@ $(function() {
       label.print(printerName);
     }
   }
+
+  // Return the fields for the given address DOM element container as an array of strings
+  function extractAddressFields(address) {
+    if(address.closest('form')[0]) { // Address is nested inside form, address fields are form inputs
+      return extractAddressFieldsFromForm(address);
+    }
+    else { 
+      return extractAddressFieldsFromText(address);
+    }
+  }
+
+  function extractAddressFieldsFromForm(address) {
+    var textParts = [];
+    textParts = pushText(textParts, toText(extractAddressRecipient(), true), "\n");
+    textParts = pushText(textParts, $(".street input", address).map(function(index, input){ return input.value }).toArray().join("\n"), "\n");
+    textParts = pushText(textParts, $(".city input", address).val(), ", ");
+    var stateSelect = $(".state select", address)[0];
+    textParts = pushText(textParts, stateSelect.options[stateSelect.selectedIndex].text, " ");
+    textParts = pushText(textParts, $(".zip input", address).val());
+    return textParts;
+  }
+
+  function extractAddressFieldsFromText(address) {
+    var textParts = [];
+    textParts = pushText(textParts, toText(extractAddressRecipient(), true), "\n");
+    textParts = pushText(textParts, toText($(".street .value", address).contents()), "\n");
+    textParts = pushText(textParts, $(".city .value", address).text(), ", ");
+    textParts = pushText(textParts, $(".state .value", address).text(), " ");
+    textParts = pushText(textParts, $(".zip .value", address).text());
+    return textParts;
+  }
+
+  function extractAddressRecipient() {
+    return $(".content-sections-head").contents();
+  }
   
   $(document.body).delegate(".address-print", "click", function() {
-    var address = $(this).closest(".address")
-      , text = [];
-    
-    text = pushText(text, toText($(".content-sections-head").contents(), true), "\n");
-    text = pushText(text, toText($(".street .value", address).contents()), "\n");
-    text = pushText(text, $(".city .value", address).text(), ", ");
-    text = pushText(text, $(".state .value", address).text(), " ");
-    text = pushText(text, $(".zip .value", address).text());
+    var address = $(this).closest(".address");
+    var textParts = extractAddressFields(address);
     
     try {
-      printLabel(text.join(""));
+      printLabel(textParts.join(""));
     } catch(e) {
       if (confirm("The latest DYMO printer drivers are needed to print labels. Would you like to download them now?")) {
       	if (navigator.appVersion.indexOf("Win")!=-1) {
