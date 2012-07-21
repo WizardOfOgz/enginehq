@@ -55,6 +55,9 @@ $(function() {
     if(address.closest('form')[0]) { // Address is nested inside form, address fields are form inputs
       return extractAddressFieldsFromForm(address);
     }
+    if($('address', address)[0]) { // Address is nested inside form, address fields are form inputs
+      return extractAddressFieldsFromAddressElement(address);
+    }
     else { 
       return extractAddressFieldsFromText(address);
     }
@@ -78,6 +81,13 @@ $(function() {
     textParts = pushText(textParts, $(".city .value", address).text(), ", ");
     textParts = pushText(textParts, $(".state .value", address).text(), " ");
     textParts = pushText(textParts, $(".zip .value", address).text());
+    return textParts;
+  }
+
+  function extractAddressFieldsFromAddressElement(address) {
+    var textParts = [];
+    textParts = pushText(textParts, toText(extractAddressRecipient(), true), "\n");
+    textParts = pushText(textParts, toText($("address", address).contents()));
     return textParts;
   }
 
