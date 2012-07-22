@@ -1,4 +1,4 @@
-$(document).delegate(".field-group-head input[name='add'][type='submit'], input[name$='[remove]'][type='submit']", "click", function addSubFormItem(e) {
+$(document).delegate(".field-group-head input[name='add'][type='submit'], input[name$='[remove]'][type='submit'], input[name$='[x]'][type='submit']", "click", function addSubFormItem(e) {
   var form = $(this).closest("form")
     , submit = $(this);
 
