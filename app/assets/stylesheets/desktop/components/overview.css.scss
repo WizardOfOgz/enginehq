@@ -25,6 +25,7 @@ table.overview-listing { border-spacing: 0; border-collapse: collapse; width: 10
   li:after { content: "."; display: block; visibility: hidden; clear: both; height: 0; }
   .favorite { width: 11px; overflow: hidden; position: relative; vertical-align: top; padding-right: 0; }
   .favorite .yes { text-indent: -999px; display: block; width: 11px; height: 11px; @include background($icons no-repeat); background-position: sprite-position($icons, favorite, 0, 0); overflow: hidden; }
+  .print { float: right; text-align: left; }
   tr.total:first-child > * { border-top: 1px solid #DADCE0; color: #000; font-weight: bold; }
   .number { text-align: right;  width: 1px; white-space: nowrap; }
   a { word-break: break-word; }
