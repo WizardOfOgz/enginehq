@@ -125,8 +125,8 @@ td.time-field { width: 135px; }
   .token + .query { display: block; }
 }
 
-.file-field { float: none;
-	.field-label { display: block; }
+.file-field { 
+  .field-label { display: block; }
   .action { float: right !important; width: 75px !important; text-align: center; }
   .input { position: absolute; opacity: 0; top: 0; bottom: 0; right: 0; z-index: 9999; cursor: pointer;}
   .control {  text-align: right; height: 24px; line-height: 24px; background-color: #fff; border: 1px solid #DADCE0; position: relative; overflow: hidden; cursor: pointer; }
