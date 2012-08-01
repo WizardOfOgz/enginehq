@@ -47,7 +47,7 @@ $(document).delegate(".select-all-action", "click", function selectAllCheckboxes
 });
 
 $(document).delegate(".file-field input", "change", function() {
-  var label = $('.file-field .file-label');
+  var label = $(this).closest('.file-field').find(".file-label");
   if (this.value) {
     var file = this.files ? this.files[0] : {};
     label.removeClass("empty").html(file.name || this.value);
