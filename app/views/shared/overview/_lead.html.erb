@@ -1,26 +1,23 @@
 <div class="field-group-overview estimated-premium-overview">
   <h5 class="field-group-overview-head">Estimated Premium</h5>
-  <% estimated_premiums = entity.estimated_premiums.reject{|estimated_premium| estimated_premium.new_record?} %>
-  <% if estimated_premiums.empty? %>
-  <p class="empty">None</p>
-  <% else %>
   <table class="overview-listing">
     <thead>
       <tr>
-        <th>Channel></th>
+        <th>Channel</th>
         <th>Estimated Premium</th>
       </tr>
     </thead>
     <tbody>
-    <% estimated_premiums.each do |estimated_premium| %>
+      <% ["life", "annuity", "long_term_care", "disability"].each do |channel| %>
       <tr class="item">
-        <th><%= estimated_premium.channel.channel_type %></th>
-        <td class="number"><%= format_dollar(estimated_premium.estimated_premium) %></td>
+        <td><%= channel.titleize %></td>
+        <td class="number">
+          <td class="number"><%= @advisor.send("estimated_#{channel}_premium") %></td>
+        </td>
       </tr>
-    <% end %>
+      <% end %>
     </tbody>
   </table>
-  <% end %>
 </div>
 <div class="field-group-overview lead-overview">
   <h5 class="field-group-overview-head">Lead</h5>
