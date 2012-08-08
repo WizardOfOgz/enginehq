@@ -42,7 +42,7 @@
           <span class="field-label">State</span>
           <select class="input" name="<%= prefix %>[state]">
             <option<% if address.state.nil? %> selected="selected"<% end %>></option>
-            <%= options_for_select(Constantations::ABBR_STATES, address.state) %>
+            <%= options_for_select(State.all, address.state) %>
           </select>
         </label>
       </p>
