@@ -8,3 +8,12 @@ ul { list-style: none; }
 html, body, dl, p, dt, dd, ul, li { padding: 0; margin: 0; }
 
 td > * { page-break-inside: avoid; }
+
+.records {
+	overflow-x: visible;
+
+	th {
+		padding: 0.5em;
+		text-indent: 0;
+	}
+}
