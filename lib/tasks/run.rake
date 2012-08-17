@@ -1,14 +1,16 @@
 namespace :run do 
-  task :all => ["singlesignonhq", "agencieshq", "marketinghq", "administratorshq", "reportinghq", "sphinx", "sass"]
+  task :ahq => ["agencieshq", "delayed_job", "sphinx"]
 
   task :singlesignonhq do
     system "rails s -u --port 3300"
   end
 
   task :agencieshq do
-    Rake::Task['jobs:work QUEUE=Import'].invoke
     system "rails s -u --port 3000"
-    Rake::Task['run:sphinx'].invoke
+  end
+  
+  task :delayed_job do
+    Rake::Task['jobs:work'].invoke
   end
 
   task :marketinghq do
