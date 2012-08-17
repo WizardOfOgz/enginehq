@@ -6,9 +6,9 @@ namespace :run do
   end
 
   task :agencieshq do
+    Rake::Task['jobs:work QUEUE=Import'].invoke
     system "rails s -u --port 3000"
     Rake::Task['run:sphinx'].invoke
-    Rake::Task['jobs:work QUEUE=Import'].invoke
   end
 
   task :marketinghq do
