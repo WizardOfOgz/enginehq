@@ -15,7 +15,11 @@
     
     html.attr("style", container.attr("style"));
     container.replaceWith(html);
-    
+
+    // Triggering on container won't work as expected since it has
+    // been replaced in the DOM by html.  Trigger on html instead.
+    html.trigger("sectionLoaded." + container.attr("id"));
+
     for (group in tabs) {  
       var className = "." + group.replace(/\s/, ".");
        var tab = $(className).find("a[href='" + tabs[group] + "']");
